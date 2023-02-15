@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBD Perk Maker</title>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> -->
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="body">
+
+    <div id="headerIcon">
+        <button class="openbtn" onclick="openNav()">
+            <img style="padding-top: 4px;" width="50px" height="50px"src="./images/banana.png">
+        </button>
+    </div>
+    <div id="sidebarLinks" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="https://twitter.com/BHammer33" target="_blank"><img width="20px" height="20px" src="./images/twitter.png"> Twitter</a>
+        <!-- <a href="#" target="_blank">Reddit</a> -->
+        <!-- <a href="#" target="_blank">Discord</a> -->
+    </div>
+
+    <div class="container">
+        <div class="vertical-center">
+          
+            <div id="selectionButtonsDiv">
+                <h1 id="welcomeMessage">Welcome to DBD Perk Maker!</h1>
+        
+                <button class="selectionButtons" onclick="switchPage(1)">1 Perk</button>
+                <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
+                <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
+                <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
+                <button class="selectionButtons" onclick="switchPage(5)">Lore</button>
+                <button class="selectionButtons" onclick="switchPage(6)">FAQ</button>
+            </div>
+        
+            <div id="homeStuff">
+                <button class="selectionButtons" id="homeButton" onclick="switchPage(7)">Home</button>
+                <button class="selectionButtons" id="blackBackgroundCheck" onclick="blackBackgroundCheck()" value="no">Background</button>
+                <!-- <button class="selectionButtons" id="saveImageButton">Save</button> -->
+            </div>
+
+            <br>
+
+            <div id="onePerk">
+                <br>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerkIcon(event)">
+                        <p><img class="over" id="output" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+
+                <br><br>
+            </div>
+        
+            <div id="threePerks">
+                <br>
+                
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk1Icon(event)">
+                        <p><img class="over" id="output1" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk2Icon(event)">
+                        <p><img class="over" id="output2" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk3Icon(event)">
+                        <p><img class="over" id="output3" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <br><br>
+                
+                
+                <!-- <div style="display:inline-block">
+                    <textarea class="perkTitle"></textarea>
+                    <br>
+                    <textarea class="perkDescription"></textarea>
+                </div>
+                <div style="display:inline-block">
+                    <textarea class="perkTitle"></textarea>
+                    <br>
+                    <textarea class="perkDescription"></textarea>
+                </div>
+                <div style="display:inline-block">
+                    <textarea class="perkTitle"></textarea>
+                    <br>
+                    <textarea class="perkDescription"></textarea>
+                </div> -->
+            </div>
+        
+            <div id="killerPower">
+                <br>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:white;" type="file" accept="image/*" onchange="killerPowerIcon(event)">
+                        <p><img class="over" id="output4" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/killerPower.png">
+                    </div>
+                    <div class="killerTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+
+                <br><br>
+            </div>
+        
+            <div id="fullKiller">
+                <br>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:white;" type="file" accept="image/*" onchange="fullKillerPowerIcon(event)">
+                        <p><img class="over" id="output5" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/killerPower.png">
+                    </div>
+                    <div class="killerTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk1Icon(event)">
+                        <p><img class="over" id="output6" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk2Icon(event)">
+                        <p><img class="over" id="output7" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk3Icon(event)">
+                        <p><img class="over" id="output8" width="120"/></p>
+                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                    </div>
+                    <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <br><br>
+            </div>
+            
+            <div id="lore">
+                <br>
+
+                <div style="display:inline-block">
+                    <div class="loreTitle" contenteditable="true"></div>
+                    <div class="loreDescription" contenteditable="true"></div>
+                </div>
+
+                <br><br>
+            </div>
+
+            <div id="faq">
+                <h1 id="welcomeMessage">Frequently Asked Questions</h1>
+                <div id="questionsAndAnswers">
+                    <button type="button" class="collapsibleQuestion">How do I save a concept I have made?</button>
+                    <div class="answer">
+                        <p>Currently, there is no functionality to save an image directly from the site. If you would like to save it, you can take a
+                            screenshot of your screen and crop it out in paint or any other tool. Alternatively, on Windows, you can press <kbd>⊞ Win</kbd> +
+                            <kbd>Shift</kbd> + <kbd>S</kbd> and then select the portion of your screen you wish to copy.</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">Why does the website link have infinityfreeapp in it?</button>
+                    <div class="answer">
+                        <p>Currently, I am hosting this website on a free web-hosting platform and because of that, I must use their name in my domain 
+                            name. In the future, I plan on hosting my own website with my own domain name, however at the moment it is not a priority as this is my only
+                            website for now.</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">Can I save my progress on a concept and come back to it later?</button>
+                    <div class="answer">
+                        <p>At the moment, if the page was to be reloaded in any way (refresh, close then open, etc.) anything written will disappear. I am 
+                        planning on adding a feature that will automatically store anything written in your local cookies of your browser so if something did happen to 
+                        your browser, you would not lose progress.</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">Do my images get saved in some sort of database?</button>
+                    <div class="answer">
+                        <p>No, anything you write or any image you upload is not saved in any way.</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">How do I remove an image I placed?</button>
+                    <div class="answer">
+                        <p>At the moment, you can open these images in new tabs, save them to your device and upload them over the image you want to remove. You can 
+                            also refresh the page (REMEMBER THIS REMOVES ALL WRITTEN TEXT). The functionality is in the works for an easier way.</p>
+                        <img src="./images/teachablePerk.png">
+                        <img src="./images/killerPower.png">
+                    </div>
+                    <button type="button" class="collapsibleQuestion">How do the text features work?</button>
+                    <div class="answer">
+                        <p>After highlighting your written text, you may click any of the buttons to apply those styles to the text.</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">When I press enter, my text is centered?</button>
+                    <div class="answer">
+                        <p>To skip a line, you can press <kbd>Shift</kbd> + <kbd>Enter</kbd></p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">What's coming next?</button>
+                    <div class="answer">
+                        <p>Save function to save your concepts as an image to your device, a local save to save your current progress, better mobile functionality, 
+                            better visuals overall, and more!
+                        </p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">How often do you plan on updating the website?</button>
+                    <div class="answer">
+                        <p>As often as I can! I'm still adding some functionalities to the site and once those are complete, I plan to update the visuals of 
+                            it to make it look better. I wanted to get the base of it complete so that others can start creating concepts as soon as possible!</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">Are you affiliated with Behaviour Interactive?</button>
+                    <div class="answer">
+                        <p>No I am not, I'm simply a fan of their game who wanted to help others express their unique ideas!</p>
+                    </div>
+                    <button type="button" class="collapsibleQuestion">Are you open to suggestions?</button>
+                    <div class="answer">
+                        <p>Of course! For any suggestions, questions, or bugs, feel free to contact me at any time! Click on the button at the top left for 
+                            ways to contact me!</p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div id="editTextButtonsDiv">
+                <button class="editTextButtons" value="span-0" onclick="changeStyle(this)">Reset</button>
+                <button class="editTextButtons" value="span-q" onclick="changeStyle(this)" style="background-color: rgb(181, 182, 122); font-style: italic;">Quote</button>
+                <button class="editTextButtons" value="span-b" onclick="changeStyle(this)" style="background-color: grey; font-weight: bold;">Bold</button>
+                <button class="editTextButtons" value="span-i" onclick="changeStyle(this)" style="background-color: grey; font-style: italic;">Italic</button>
+                <button class="editTextButtons" value="span-y" onclick="changeStyle(this)" style="background-color: yellow;">Yellow</button>
+                <button class="editTextButtons" value="span-o" onclick="changeStyle(this)" style="background-color: orange;">Orange</button>
+                <button class="editTextButtons" value="span-r" onclick="changeStyle(this)" style="background-color: red;">Red</button>
+                <button class="editTextButtons" value="span-g" onclick="changeStyle(this)" style="background-color: green;">Green</button>
+                <button class="editTextButtons" value="span-p" onclick="changeStyle(this)" style="background-color: purple;">Purple</button>
+
+
+                <!-- <button onclick="resetButton()">Reset</button>
+                <button onclick="boldButton()">Bold</button>
+                <button onclick="italicButton()">Italic</button>
+                <button onclick="yellowButton()">Yellow</button>
+                <button onclick="orangeButton()">Orange</button>
+                <button onclick="redButton()">Red</button>
+                <button onclick="greenButton()">Green</button>
+                <button onclick="purpleButton()">Purple</button> -->
+            </div>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>

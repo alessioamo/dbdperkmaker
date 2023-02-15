@@ -1,0 +1,320 @@
+* {
+    font-family: Roboto;
+    text-align: center;
+}
+
+body {
+    padding-top: 7%;
+}
+
+#headerIcon {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    text-align: left;
+}
+
+#welcomeMessage {
+    color: red;
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+}
+
+#selectionButtonsDiv {
+    
+}
+
+.selectionButtons {
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 19, 137);
+    width: 100px;
+    height: 40px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.selectionButtons:hover {
+    background-color: rgb(180, 100, 163);
+}
+
+#onePerk {
+    display: none;
+    /* background-color: rgb(0, 0, 0); */
+}
+
+#threePerks {
+    display: none;
+    /* background-color: rgb(0, 0, 0); */
+}
+
+#killerPower {
+    display: none;
+    /* background-color: rgb(0, 0, 0); */
+}
+
+#fullKiller {
+    display: none;
+}
+
+#lore {
+    display: none;
+}
+
+#faq {
+    display: none;
+    width: 80%;
+    margin: auto;
+    /* background-image: url("./images/fog-background.png"); */
+}
+
+#questionsAndAnswers {
+    /* background-color: rgba(0, 0, 0, 0.7);
+    padding: 1%; */
+}
+
+/* collapsible faq start */
+.collapsibleQuestion {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsibleQuestion:hover {
+    background-color: #2b2b2b;
+}
+/* Style the collapsible content. Note: hidden by default */
+.answer {
+    padding: 0 18px;
+    background-color: rgb(78, 78, 78);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    font-size: 18px;
+    color: white;
+}
+.collapsibleQuestion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/* collapsible faq end */
+
+/* .question {
+    color: rgb(19, 104, 214);
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.answer {
+    color: white;
+    text-align: left; 
+} */
+
+#homeStuff {
+    display: none;
+}
+
+#homeButton {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 19, 137);
+    width: 100px;
+    height: 40px;
+    border-radius: 20%;
+}
+
+#homeButton:hover {
+    background-color: rgb(180, 100, 163);
+}
+
+.perkTitle {
+    background-image: url("./images/orangeperkbackground.png");
+    height:80px;
+    width:470px;
+    font-size: 30px;
+    color: white;
+    resize: none;
+    text-align: left;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.perkDescription {
+    background-color: rgb(48, 48, 48);
+    height:400px;
+    width:470px;
+    font-size: 18px;
+    color: white;
+    resize: none;
+    text-align: left;
+    overflow: hidden;
+}
+
+.killerTitle {
+    background-image: url("./images/killerPowerBackground.png");
+    height:80px;
+    width:470px;
+    font-size: 30px;
+    color: white;
+    resize: none;
+    text-align: left;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.loreTitle {
+    background-image: url("./images/loreBackground.png");
+    height:80px;
+    width:800px;
+    font-size: 30px;
+    color: white;
+    resize: none;
+    text-align: left;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.loreDescription {
+    background-color: rgb(48, 48, 48);
+    height:650px;
+    width:800px;
+    font-size: 18px;
+    color: white;
+    resize: none;
+    text-align: left;
+    overflow: hidden;
+}
+
+.perkDescription .span-0 { /* Added to reset styles correctly */
+    font-weight: normal;   /* Reset b */
+    text-decoration: none; /* Reset u */
+    font-style: normal;    /* Reset i */
+    color: white;    /* Reset color */
+}
+
+.perkDescription .span-q {
+    font-style: italic;
+    color: rgb(181, 182, 122);
+    font-size: 15px;
+}
+
+.perkDescription .span-b {
+    font-weight: bolder;
+}
+
+.perkDescription .span-i {
+    font-style: italic;
+}
+
+.perkDescription .span-y {
+    color: yellow;
+}
+
+.perkDescription .span-o {
+    color: orange;
+}
+
+.perkDescription .span-r {
+    color: red;
+}
+
+.perkDescription .span-g {
+    color: #159b1e;
+}
+
+.perkDescription .span-p {
+    color: #ac3ee3;
+}
+
+#editTextButtonsDiv {
+    display: none;
+}
+
+.editTextButtons {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    width: 100px;
+    height: 40px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.editTextButtons:hover {
+    color: blue;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.under {
+    position: absolute;
+    z-index: 0;
+  }
+  
+.over {
+    position: absolute;
+    z-index: 1;
+}
+
+/* sidebar start */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+  
+.sidebar a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+  
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+  
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+  
+.openbtn {
+    cursor: pointer;
+    /* background-color: rgb(46,52,59); */
+    background-color: #111;
+    color: white;
+    border: none;
+}
+  
+.openbtn:hover {
+    background-color: #444;
+}
+/*sidebar end*/
