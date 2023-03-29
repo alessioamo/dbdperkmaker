@@ -44,8 +44,32 @@
         <div class="vertical-center">
           
             <div id="selectionButtonsDiv">
-                <h1 id="welcomeMessage">Welcome to DBD Perk Maker!</h1>
-                <p id="welcomeMessage">Version 1.1</p>
+                <h1 class="welcomeMessage">Welcome to DBD Perk Maker!</h1>
+                <p class="welcomeMessage" id="welcomeMessageID" onclick="showUpdateNotes()">Version 1.1 (Click for updates)</p>
+
+                <div id="popupContainer" class="popupContainer">
+                    <div class="updateNotes">
+                        <span class="close">&times;</span>
+                        <h2>New Changes</h2>
+                        <p>
+                            - Fixed styling of background image to be more consistent<br>
+                            - Edited sidebar to include a new link and fixed issues with the sidebar<br>
+                            - Made buttons across all website to be more consistent with each other and have better styling<br>
+                            - Made FAQ section more consistent and fixed some bugs with it<br>
+                            - Made the overall styling of the perk layout more clean and more akin to how it is in game<br>
+                            - Added an update notes feature<br>
+                            - Fixed some minor bugs all around the site<br>
+                        </p>
+                        <h2>Upcoming</h2>
+                        <p>
+                            - New domain that I will be purchasing and hosting<br>
+                            - Feature to save your work as an image<br>
+                            - Feature to reset the image you have placed<br>
+                            - Section to build your own perk icon<br>
+                            - Better mobile functionality<br>
+                        </p>
+                    </div>
+                </div>
         
                 <button class="selectionButtons" onclick="switchPage(1)">1 Perk</button>
                 <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
@@ -206,7 +230,7 @@
             </div>
 
             <div id="faq">
-                <h1 id="welcomeMessage">Frequently Asked Questions</h1>
+                <h1 class="welcomeMessage">Frequently Asked Questions</h1>
                 <div id="questionsAndAnswers">
                     <button type="button" class="collapsibleQuestion">How do I save a concept I have made?</button>
                     <div class="answer">

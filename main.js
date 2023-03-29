@@ -212,6 +212,24 @@ function closeNav() {
     document.getElementById("sidebarLinks").style.left = "-250px";
 }
 
+//update notes
+var modal = document.getElementById("popupContainer");
+var btn = document.getElementById("welcomeMessageID");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    popupContainer.style.display = "block";
+}
+
+span.onclick = function() {
+    popupContainer.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == popupContainer) {
+        popupContainer.style.display = "none";
+    }
+}
 
 
 
