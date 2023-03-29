@@ -30,6 +30,7 @@ body {
     background-color: rgb(170, 19, 137);
     width: 100px;
     height: 40px;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 20%;
     cursor: pointer;
 }
@@ -143,15 +144,17 @@ body {
 }
 
 .perkTitle {
-    background-image: url("./images/orangeperkbackground.png");
+    background-image: url("./images/orangeperkbackgroundteachable.png");
     height:80px;
     width:470px;
-    font-size: 30px;
+    font-size: 28px;
     color: white;
     resize: none;
     text-align: left;
     text-transform: uppercase;
     overflow: hidden;
+    text-indent: 5px;
+    white-space: nowrap;
 }
 
 .perkDescription {
@@ -166,7 +169,7 @@ body {
 }
 
 .killerTitle {
-    background-image: url("./images/killerPowerBackground.png");
+    background-image: url("./images/killerPowerBackgroundTeachable.png");
     height:80px;
     width:470px;
     font-size: 30px;
@@ -175,6 +178,8 @@ body {
     text-align: left;
     text-transform: uppercase;
     overflow: hidden;
+    text-indent: 5px;
+    white-space: nowrap;
 }
 
 .loreTitle {
@@ -187,6 +192,8 @@ body {
     text-align: left;
     text-transform: uppercase;
     overflow: hidden;
+    text-indent: 5px;
+    white-space: nowrap;
 }
 
 .loreDescription {
@@ -274,18 +281,17 @@ body {
 /* sidebar start */
 .sidebar {
     height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
+    left: -250px;
+    width: 250px;
     top: 0;
-    left: 0;
+    position: fixed;
     background-color: #111;
-    overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
   
 .sidebar a {
+    
     padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 25px;

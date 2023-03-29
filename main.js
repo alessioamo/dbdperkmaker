@@ -7,6 +7,7 @@ var tempRandom = Math.floor(Math.random()*(images.length));
 imageHead.style.backgroundImage = "url(" + images[tempRandom] + ")";
 imageHead.style.backgroundRepeat = "no-repeat";
 imageHead.style.backgroundAttachment = "fixed";
+imageHead.style.backgroundSize = "cover";
 
 
 function switchPage(i) {
@@ -170,37 +171,45 @@ var fullKillerPerk3Icon = function(event) {
 //for collpasable in FAQ
 var coll = document.getElementsByClassName("collapsibleQuestion");
 var i;
+
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+    coll[i].addEventListener("click", function() {
+    // Close all other sections
+    var j;
+    for (j = 0; j < coll.length; j++) {
+        if (coll[j] !== this) {
+            coll[j].classList.remove("active");
+            coll[j].nextElementSibling.style.maxHeight = null;
+        }
+    }
+
+    // Open the clicked section
     this.classList.toggle("active");
     var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
     } else {
-      content.style.maxHeight = content.scrollHeight + "px";
+        content.style.maxHeight = content.scrollHeight + "px";
     }
-  });
+    });
 }
 
 //sidebar
-sideBarCounter = 0;
 function openCloseNav() {
-    if (sideBarCounter % 2 == 0) {
-        document.getElementById("sidebarLinks").style.width = "250px";
+    if (sidebar.style.left === "-250px") {
+        document.getElementById("sidebarLinks").style.left = "0px";
     }
     else {
-        document.getElementById("sidebarLinks").style.width = "0px";
+        document.getElementById("sidebarLinks").style.width = "-250px";
     }
     sideBarCounter++;
 }
 function openNav() {
-    document.getElementById("sidebarLinks").style.width = "250px";
-    //document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("sidebarLinks").style.left = "0px";
 }
   
 function closeNav() {
-    document.getElementById("sidebarLinks").style.width = "0";
-    //document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("sidebarLinks").style.left = "-250px";
 }
 
 
