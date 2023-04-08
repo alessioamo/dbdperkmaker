@@ -20,6 +20,8 @@
     <title>Dead By Daylight Perk Maker</title>
     
     <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body id="body">
 
@@ -39,25 +41,31 @@
           
             <div id="selectionButtonsDiv">
                 <h1 class="welcomeMessage">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessage" id="welcomeMessageID" onclick="showUpdateNotes()">Version 1.2 (Click for updates)</p>
+                <p class="welcomeMessage" id="welcomeMessageID" onclick="showUpdateNotes()">Version 1.3 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span class="close">&times;</span>
                         <h2>New Changes</h2>
                         <p>
-                            - New and custom domain dbdperkmaker.ca<br>
-                            - Old link will automatically redirect to the new link<br>
+                            - Added a save button to save your perk and killer creations as an image<br>
+                            - Updated the FAQ to remove out of date questions<br>
+                            - Updated some styling to aid the functionality of the saving feature<br>
                         </p>
                         <h2>Upcoming</h2>
                         <p>
-                            - Feature to save your work as an image<br>
                             - Feature to reset the image you have placed<br>
                             - Section to build your own perk icon<br>
                             - Better mobile functionality<br>
                         </p>
                         <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 04-04-2023
+                            Updated on 04-08-2023
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.2 Changes</h2>
+                        <p>
+                            - New and custom domain dbdperkmaker.ca<br>
+                            - Old link will automatically redirect to the new link<br>
                         </p>
                         <p>______________________________</p>
                         <h2>Version 1.1 Changes</h2>
@@ -84,7 +92,7 @@
             <div id="homeStuff">
                 <button class="selectionButtons" id="homeButton" onclick="switchPage(7)">Home</button>
                 <button class="selectionButtons" id="blackBackgroundCheck" onclick="blackBackgroundCheck()" value="no">Background</button>
-                <!-- <button class="selectionButtons" id="saveImageButton">Save</button> -->
+                <button class="selectionButtons" id="saveImageButton">Save</button>
             </div>
 
             <br>
@@ -219,15 +227,8 @@
                 <div id="questionsAndAnswers">
                     <button type="button" class="collapsibleQuestion">How do I save a concept I have made?</button>
                     <div class="answer">
-                        <p>Currently, there is no functionality to save an image directly from the site. If you would like to save it, you can take a
-                            screenshot of your screen and crop it out in paint or any other tool. Alternatively, on Windows, you can press <kbd>⊞ Win</kbd> +
-                            <kbd>Shift</kbd> + <kbd>S</kbd> and then select the portion of your screen you wish to copy.</p>
-                    </div>
-                    <button type="button" class="collapsibleQuestion">Why does the website link have infinityfreeapp in it?</button>
-                    <div class="answer">
-                        <p>Currently, I am hosting this website on a free web-hosting platform and because of that, I must use their name in my domain 
-                            name. In the future, I plan on hosting my own website with my own domain name, however at the moment it is not a priority as this is my only
-                            website for now.</p>
+                        <p>By pressing the "Save" button, your image will appear in a new tab for you to right click and save. If it doesn't work, make sure
+                             your popups aren't blocked for this website!</p>
                     </div>
                     <button type="button" class="collapsibleQuestion">Can I save my progress on a concept and come back to it later?</button>
                     <div class="answer">
@@ -256,9 +257,7 @@
                     </div>
                     <button type="button" class="collapsibleQuestion">What's coming next?</button>
                     <div class="answer">
-                        <p>Save function to save your concepts as an image to your device, a local save to save your current progress, better mobile functionality, 
-                            better visuals overall, and more!
-                        </p>
+                        <p>A local save to save your current progress, better mobile functionality, a custom perk icon creator tool, better visuals overall, and more!</p>
                     </div>
                     <button type="button" class="collapsibleQuestion">How often do you plan on updating the website?</button>
                     <div class="answer">
@@ -295,6 +294,5 @@
     </div>
 
     <script src="main.js"></script>
-
-</body>
+    <script src="saveImage.js"></script>
 </html>

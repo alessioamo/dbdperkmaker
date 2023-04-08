@@ -231,81 +231,8 @@ window.onclick = function(event) {
     }
 }
 
-
-
-
-// const myElement = document.getElementById('threePerks');
-// //myElement.crossOrigin = "anonymous";
-// function saveImage() {
-//     html2canvas(myElement).then(canvas => {
-//         // Create a temporary link element to download the image
-//         const link = document.createElement('a');
-//         link.download = 'my-image.png';
-//         link.href = canvas.toDataURL();
-//         // Simulate a click on the link to start the download
-//         link.click();
-//       });
-// }
-
-// const downloadBtn = document.getElementById('saveImageButton');
-// const myElement = document.getElementById('threePerks');
-
-// // Add click event listener to the download button
-// downloadBtn.addEventListener('click', () => {
-//     console.log("saving");
-//   // Use html2canvas to capture the HTML element and convert it to an image
-//   html2canvas(myElement).then(canvas => {
-//     // Create a temporary link element to download the image
-//     const link = document.createElement('a');
-//     link.download = 'my-image.png';
-//     link.href = canvas.toDataURL();
-//     // Simulate a click on the link to start the download
-//     link.click();
-//   });
-// });
-
-// //best one so far
-// function downloadImage() {
-//     // Get the HTML element to be converted
-//     const element = document.getElementById('threePerks');
-  
-//     // Create a new window with the element and a print stylesheet
-//     const windowContent = '<!DOCTYPE html><html><head><title></title><style> @media print { body { margin: 0; padding: 0; } img, video { max-width: 100% !important; height: auto !important; } } </style></head><body>' + element.innerHTML + '</body></html>';
-//     const printWindow = window.open('', '', 'height=600,width=800');
-  
-//     // Write the window content and print it
-//     printWindow.document.write(windowContent);
-//     printWindow.document.close();
-//     printWindow.focus();
-//     printWindow.print();
-  
-//     // Close the window
-//     printWindow.close();
-//   }
-
-function downloadImage() {
-    const element = document.getElementById("threePerks");
-    const width = element.offsetWidth;
-    const height = element.offsetHeight;
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
-    const context = canvas.getContext("2d");
-    const image = new Image();
-    image.onload = function() {
-      context.drawImage(image, 0, 0);
-      const link = document.createElement("a");
-      link.download = "image.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    };
-    image.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(`
-      <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
-        <foreignObject width="100%" height="100%">
-          <div xmlns="http://www.w3.org/1999/xhtml">
-            ${new XMLSerializer().serializeToString(element)}
-          </div>
-        </foreignObject>
-      </svg>
-    `)));
-  }
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        modal.style.display = "none";
+    }
+});
