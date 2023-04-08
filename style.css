@@ -329,7 +329,7 @@ body {
 }
 /*sidebar end*/
 
-/*update notes stuff start*/
+/*update notes start*/
 .popupContainer {
     display: none;
     position: fixed;
@@ -344,7 +344,8 @@ body {
 
 .updateNotes {
     background-color: #000000;
-    margin: 15% auto;
+    margin: auto;
+    margin-top: 5%;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -363,4 +364,4 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
-/*update notes stuff end*/
+/*update notes end*/
