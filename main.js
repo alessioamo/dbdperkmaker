@@ -39,23 +39,28 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "2%";
             break;
         case 6:
-            document.getElementById("faq").style.display = "block";
+            document.getElementById("iconEditor").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             break;
         case 7:
+            document.getElementById("faq").style.display = "block";
+            document.getElementById("body").style.paddingTop = "3%";
+            break;
+        case 8:
             document.getElementById("selectionButtonsDiv").style.display = "block";
             document.getElementById("onePerk").style.display = "none";
             document.getElementById("threePerks").style.display = "none";
             document.getElementById("killerPower").style.display = "none";
             document.getElementById("fullKiller").style.display = "none";
             document.getElementById("lore").style.display = "none";
+            document.getElementById("iconEditor").style.display = "none";
             document.getElementById("faq").style.display = "none";
             document.getElementById("homeStuff").style.display = "none";
             document.getElementById("editTextButtonsDiv").style.display = "none";
             document.getElementById("body").style.paddingTop = "7%";
     }
 
-    if (i != 7) {
+    if (i != 8) {
         document.getElementById("homeStuff").style.display = "block";
     }
 }
@@ -215,15 +220,15 @@ function closeNav() {
 //update notes
 var modal = document.getElementById("popupContainer");
 var btn = document.getElementById("welcomeMessageID");
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementById("close");
 
 btn.onclick = function() {
     popupContainer.style.display = "block";
 }
 
-span.onclick = function() {
+span.addEventListener('click', function() {
     popupContainer.style.display = "none";
-}
+});
 
 window.onclick = function(event) {
     if (event.target == popupContainer) {
@@ -234,5 +239,25 @@ window.onclick = function(event) {
 document.addEventListener('keydown', function(event) {
     if (event.key === "Escape") {
         modal.style.display = "none";
+        iconModal.style.display = "none";
     }
 });
+
+//how to use icon editor
+var iconModal = document.getElementById("iconPopupContainer");
+var iconBtn = document.getElementById("iconPopupClick");
+var iconSpan = document.getElementById("closeP");
+
+iconBtn.onclick = function() {
+    iconPopupContainer.style.display = "block";
+}
+
+iconSpan.addEventListener('click', function() {
+    iconPopupContainer.style.display = "none";
+});
+
+window.onclick = function(event) {
+    if (event.target == iconPopupContainer) {
+        iconPopupContainer.style.display = "none";
+    }
+}

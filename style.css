@@ -66,6 +66,10 @@ body {
     display: none;
 }
 
+#iconEditor {
+    display: none;
+}
+
 #faq {
     display: none;
     width: 80%;
@@ -365,3 +369,107 @@ body {
     cursor: pointer;
 }
 /*update notes end*/
+
+/* canvas tutorial start */
+.iconPopupContainer {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.iconPopup {
+    background-color: #000000;
+    margin: auto;
+    margin-top: 5%;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: white;
+}
+
+#iconPopupClick:hover {
+    cursor: pointer;
+}
+/* canvas tutorial end */
+
+/* canvas for icon editor */
+
+#iconCanvas {
+    background-color: white;
+}
+
+#leftCanvas {
+
+}
+
+#rightCanvas {
+    width: 500px;
+    height: 500px;
+    border: 3px rgb(170, 100, 19) solid;
+    overflow: auto;
+    background-color: black;
+    border-radius: 2%;
+}
+
+.sameLineElement {
+    display: inline-block;
+    width: 50%;
+}
+
+.iconDisplayedInDiv {
+    width: 100px;
+    height: 100px;
+}
+
+#deleteIconButton {
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 100, 19);
+    width: 160px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+#deleteIconButton:hover {
+    background-color: rgb(180, 100, 163);
+}
+
+#toggleDrawing {
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 100, 19);
+    width: 160px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.drawingLabels {
+    
+}
+
+#drawingButtons {
+    background-color: rgb(255, 179, 91);
+    margin-left: 40%;
+    margin-right: 40%;
+    padding: 5px;
+}
+
+.sliderButtons {
+    background-color: rgb(170, 100, 19);
+}
+
+.filterButtonLabel {
+    color: white;
+}
+
+/* canvas for icon editor */
