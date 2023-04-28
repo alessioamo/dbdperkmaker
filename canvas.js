@@ -7,8 +7,8 @@ var canvas = new fabric.Canvas('iconCanvas');
 /* For images */
 
 //var folderName = "images/gameIcons/IconList/";
-var folderName = "images/gameIcons/IconList";
-//var folderName = "perkImages";
+//var folderName = "images/gameIcons/IconList";
+var folderName = "allIcons";
 var imageArray = [];
 console.log(folderName);
 // const xhr = new XMLHttpRequest();
