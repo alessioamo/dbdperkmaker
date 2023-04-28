@@ -46,6 +46,7 @@ fetch(folderName).then(response => response.text()).then(data => {
         console.log(link.innerText);
     });
   })
+  loadImagesForCanvas();
   .catch(error => console.error(error));
 
 // var imageArray = [
