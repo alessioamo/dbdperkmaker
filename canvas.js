@@ -6,11 +6,12 @@ var canvas = new fabric.Canvas('iconCanvas');
 
 /* For images */
 
-//var folderName = "images/gameIcons/IconList/";
-//var folderName = "images/gameIcons/IconList";
-var folderName = "allIcons";
-var imageArray = [];
-console.log(folderName);
+var folderName = "images/gameIcons/IconList/";
+//var imageArray = [];
+
+// for github pages
+
+// works on local host
 // const xhr = new XMLHttpRequest();
 // xhr.open('GET', folderName);
 // xhr.onload = function() {
@@ -37,24 +38,13 @@ console.log(folderName);
 // };
 // xhr.send();
 
-fetch(folderName).then(response => response.text()).then(data => {
-    console.log("1");
-    const parser = new DOMParser();
-    const html = parser.parseFromString(data, 'text/html');
-    const imageLinks = html.querySelectorAll('a[href$=".png"]');
-    imageLinks.forEach(link => {
-        imageArray.push(link.innerText);
-        console.log(link.innerText);
-    });
-  });
-
-// var imageArray = [
-//     "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
-//     "iconAddon_babyTeeth.png", "iconAddon_bloodiedBlackHood.png", "iconAddon_catFigurine.png", "iconAddon_dropOfPerfume.png", "iconAddon_forestStew.png",
-//     "iconPowers_bubbasChainsaw.png", "iconPowers_Tantrum.png",
-//     "iconFavors_azarovsKey.png", "iconFavors_blackSaltStatuette.png",
-//     "iconStatusEffects_bleeding.png", "iconStatusEffects_blessed.png"
-// ];
+var imageArray = [
+    "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
+    "iconAddon_babyTeeth.png", "iconAddon_bloodiedBlackHood.png", "iconAddon_catFigurine.png", "iconAddon_dropOfPerfume.png", "iconAddon_forestStew.png",
+    "iconPowers_bubbasChainsaw.png", "iconPowers_Tantrum.png",
+    "iconFavors_azarovsKey.png", "iconFavors_blackSaltStatuette.png",
+    "iconStatusEffects_bleeding.png", "iconStatusEffects_blessed.png"
+];
 // var folderName = "images/gameIcons/testIcons/";
 var imageArrayTitle = [];
 
@@ -79,6 +69,8 @@ function loadImagesForCanvas() {
         //create another array to hold title
     }
 }
+
+loadImagesForCanvas();
 
 function addIconToCanvas(iconName) {
     console.log(imageArray);
