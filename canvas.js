@@ -22,7 +22,7 @@ xhr.onload = function() {
         if (href && !href.startsWith('?')) {
             const fileName = decodeURIComponent(href.split('/').pop());
             imageArray.push(fileName);
-            //console.log(fileName);
+            console.log(fileName);
         }
     }
     imageArray.shift();
