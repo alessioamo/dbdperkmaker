@@ -36,18 +36,17 @@ console.log(folderName);
 // };
 // xhr.send();
 
-fetch(folderName)
-    .then(response => response.text())
-    .then(data => {
+fetch(folderName).then(response => response.text()).then(data => {
+    console.log("1");
     const parser = new DOMParser();
     const html = parser.parseFromString(data, 'text/html');
-    const imageLinks = html.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]');
+    const imageLinks = html.querySelectorAll('a[href$=".png"]');
     imageLinks.forEach(link => {
         imageArray.push(link.innerText);
-        console.log("pushing: " + link.innerText);
+        console.log(link.innerText);
     });
-    })
-    .catch(error => console.error(error));
+  })
+  .catch(error => console.error(error));
 
 // var imageArray = [
 //     "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
