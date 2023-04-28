@@ -45,9 +45,7 @@ fetch(folderName).then(response => response.text()).then(data => {
         imageArray.push(link.innerText);
         console.log(link.innerText);
     });
-  })
-  loadImagesForCanvas();
-  .catch(error => console.error(error));
+  });
 
 // var imageArray = [
 //     "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
