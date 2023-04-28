@@ -7,7 +7,7 @@ var canvas = new fabric.Canvas('iconCanvas');
 /* For images */
 
 var folderName = "images/gameIcons/IconList/";
-//var imageArray = [];
+var imageArray = [];
 
 // for github pages
 
@@ -38,13 +38,13 @@ var folderName = "images/gameIcons/IconList/";
 // };
 // xhr.send();
 
-var imageArray = [
-    "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
-    "iconAddon_babyTeeth.png", "iconAddon_bloodiedBlackHood.png", "iconAddon_catFigurine.png", "iconAddon_dropOfPerfume.png", "iconAddon_forestStew.png",
-    "iconPowers_bubbasChainsaw.png", "iconPowers_Tantrum.png",
-    "iconFavors_azarovsKey.png", "iconFavors_blackSaltStatuette.png",
-    "iconStatusEffects_bleeding.png", "iconStatusEffects_blessed.png"
-];
+// var imageArray = [
+//     "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
+//     "iconAddon_babyTeeth.png", "iconAddon_bloodiedBlackHood.png", "iconAddon_catFigurine.png", "iconAddon_dropOfPerfume.png", "iconAddon_forestStew.png",
+//     "iconPowers_bubbasChainsaw.png", "iconPowers_Tantrum.png",
+//     "iconFavors_azarovsKey.png", "iconFavors_blackSaltStatuette.png",
+//     "iconStatusEffects_bleeding.png", "iconStatusEffects_blessed.png"
+// ];
 // var folderName = "images/gameIcons/testIcons/";
 var imageArrayTitle = [];
 
