@@ -255,3 +255,20 @@ checkboxes.forEach(checkbox => {
 
 
 /* For Drawing */
+
+/* changing canvas background */
+
+function changeCanvasBackground(item) {
+    tempCanvas = document.getElementById("iconCanvas");
+    if (item == 0) {
+        tempCanvas.style.backgroundImage = "url('images/teachablePerk.png')";
+    }
+    else if (item == 1) {
+        tempCanvas.style.backgroundImage = "url('images/killerPower.png')";
+    }
+    else if (item == 2) {
+        tempCanvas.style.backgroundImage = "";
+    }
+}
+
+/* changing canvas background */

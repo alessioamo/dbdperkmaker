@@ -402,6 +402,7 @@ body {
 
 #iconCanvas {
     background-color: white;
+    background-size: 500px;
 }
 
 #leftCanvas {
@@ -439,7 +440,7 @@ body {
 }
 
 #deleteIconButton:hover {
-    background-color: rgb(180, 100, 163);
+    background-color: rgb(170, 155, 19);
 }
 
 #toggleDrawing {
@@ -470,6 +471,21 @@ body {
 
 .filterButtonLabel {
     color: white;
+}
+
+.changeCanvasButtons {
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 100, 19);
+    width: 160px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.changeCanvasButtons:hover {
+    background-color: rgb(170, 155, 19);
 }
 
 /* canvas for icon editor */
