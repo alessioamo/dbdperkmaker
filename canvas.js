@@ -7,34 +7,47 @@ var canvas = new fabric.Canvas('iconCanvas');
 /* For images */
 
 //var folderName = "images/gameIcons/IconList/";
-var folderName = "/images/gameIcons/IconList/";
+var folderName = "images/gameIcons/IconList/";
 var imageArray = [];
 console.log(folderName);
-const xhr = new XMLHttpRequest();
-xhr.open('GET', folderName);
-xhr.onload = function() {
-    const parser = new DOMParser();
-    const html = parser.parseFromString(xhr.responseText, 'text/html');
-    const links = html.getElementsByTagName('a');
-    for (let i = 0; i < links.length; i++) {
-        const link = links[i];
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('?')) {
-            const fileName = decodeURIComponent(href.split('/').pop());
-            imageArray.push(fileName);
-            console.log(fileName);
-        }
-    }
-    imageArray.shift();
-    imageArray.pop();
-    for (i=0; i<imageArray.length; i++) {
-        console.log(i + " " + imageArray[i]);
-    }
-    //console.log("array: " + imageArray);
+// const xhr = new XMLHttpRequest();
+// xhr.open('GET', folderName);
+// xhr.onload = function() {
+//     const parser = new DOMParser();
+//     const html = parser.parseFromString(xhr.responseText, 'text/html');
+//     const links = html.getElementsByTagName('a');
+//     for (let i = 0; i < links.length; i++) {
+//         const link = links[i];
+//         const href = link.getAttribute('href');
+//         if (href && !href.startsWith('?')) {
+//             const fileName = decodeURIComponent(href.split('/').pop());
+//             imageArray.push(fileName);
+//             console.log(fileName);
+//         }
+//     }
+//     imageArray.shift();
+//     imageArray.pop();
+//     for (i=0; i<imageArray.length; i++) {
+//         console.log(i + " " + imageArray[i]);
+//     }
+//     //console.log("array: " + imageArray);
 
-    loadImagesForCanvas();
-};
-xhr.send();
+//     loadImagesForCanvas();
+// };
+// xhr.send();
+
+fetch(folderName)
+    .then(response => response.text())
+    .then(data => {
+    const parser = new DOMParser();
+    const html = parser.parseFromString(data, 'text/html');
+    const imageLinks = html.querySelectorAll('a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]');
+    imageLinks.forEach(link => {
+        imageArray.push(link.innerText);
+        console.log("pushing: " + link.innerText);
+    });
+    })
+    .catch(error => console.error(error));
 
 // var imageArray = [
 //     "iconPerks_saboteur.png", "iconPerks_selfCare.png", "iconPerks_shadowborn.png", "iconPerks_slipperyMeat.png",
