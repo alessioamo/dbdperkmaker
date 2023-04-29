@@ -115,6 +115,7 @@ drawingButtons.style.display = 'none';
 canvas.freeDrawingBrush.width = 15;
 
 toggleDrawingButton.addEventListener("click", function() {
+    //canvas.freeDrawingBrush = fabric.PencilBrush(canvas);
     canvas.isDrawingMode = !canvas.isDrawingMode;
     if (canvas.isDrawingMode) {
         toggleDrawingButton.style.backgroundColor = "rgb(110, 63, 9)";
@@ -277,7 +278,27 @@ function changeCanvasBackground(item) {
 
 /* changing canvas background */
 
+/* Eraser */
 
-function tempAlert() {
-    alert("Coming Soon!");
-}
+var toggleEraserButton = document.getElementById("toggleEraser");
+var isErasing = false;
+
+var drawingTest = new fabric.PencilBrush(canvas);
+var eraserTest = new fabric.EraserBrush(canvas);
+
+toggleEraserButton.addEventListener("click", function() {
+    // if we are erasing (means were in draw mode) and we press the button, return to just drawing
+    if (isErasing && canvas.isDrawingMode) {
+        canvas.freeDrawingBrush = drawingTest;
+        canvas.freeDrawingBrush.width = drawingLineWidthSlider.value-1;
+        isErasing = false;
+    }
+    else {
+        canvas.freeDrawingBrush = eraserTest;
+        canvas.freeDrawingBrush.width = drawingLineWidthSlider.value-1;
+        isErasing = true;
+        isDrawingMode = true;
+    }
+});
+
+/* Eraser */
