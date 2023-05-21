@@ -1,13 +1,13 @@
-var images =[
-    "./images/background2.jpg"
-]
+// var images =[
+//     "./images/background2.jpg"
+// ]
 
-var imageHead = document.getElementById("body");
-var tempRandom = Math.floor(Math.random()*(images.length));
-imageHead.style.backgroundImage = "url(" + images[tempRandom] + ")";
-imageHead.style.backgroundRepeat = "no-repeat";
-imageHead.style.backgroundAttachment = "fixed";
-imageHead.style.backgroundSize = "cover";
+// var imageHead = document.getElementById("body");
+// var tempRandom = Math.floor(Math.random()*(images.length));
+// imageHead.style.backgroundImage = "url(" + images[tempRandom] + ")";
+// imageHead.style.backgroundRepeat = "no-repeat";
+// imageHead.style.backgroundAttachment = "fixed";
+// imageHead.style.backgroundSize = "cover";
 
 
 function switchPage(i) {
