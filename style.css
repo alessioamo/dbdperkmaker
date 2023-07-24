@@ -47,6 +47,12 @@ body {
     background-color: rgb(180, 100, 163);
 }
 
+.uploadedImage {
+    width: 80px;
+    height: 80px;
+    margin: 20px 0 0 20px;
+}
+
 #onePerk {
     display: none;
     /* background-color: rgb(0, 0, 0); */
@@ -475,6 +481,23 @@ body {
 
 .filterButtonLabel {
     color: white;
+}
+
+.backgroundDropdown {
+    color: black;
+    background-color: rgb(170, 100, 19);
+    /* font-size: 15px;
+    width: 160px; */
+    font-size: 20px;
+    width: 200px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.backgroundDropdown:hover {
+    background-color: rgb(170, 155, 19);
 }
 
 .changeCanvasButtons {

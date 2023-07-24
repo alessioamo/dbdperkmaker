@@ -262,18 +262,98 @@ checkboxes.forEach(checkbox => {
 /* For Drawing */
 
 /* changing canvas background */
+function handleBackgroundDropdownChange() {
+    console.log("A");
+    var dropdown = document.getElementById("backgroundDropdown");
+    var selectedIndex = dropdown.value;
+    console.log("value: " + selectedIndex);
+    changeCanvasBackground(selectedIndex);
+}
 
+function handleBackgroundDropdownChange(dar) {
+    console.log("T: " + dar.value);
+}
+
+var tempVariableForIconBackgroundLoading = true;
+// No background, purple perk, teachable, killer power, addon colors
 function changeCanvasBackground(item) {
+    // Temp fix to having the background image appear right away (it only appears after another button has been pressed)
+    if (tempVariableForIconBackgroundLoading) {
+        var button = document.getElementById("deleteIconButton");
+        button.click();
+        tempVariableForIconBackgroundLoading = false;
+    }
+
+    console.log("item: " + item);
     tempCanvas = document.getElementById("iconCanvas");
     if (item == 0) {
-        tempCanvas.style.backgroundImage = "url('images/teachablePerk.png')";
-    }
-    else if (item == 1) {
-        tempCanvas.style.backgroundImage = "url('images/killerPower.png')";
-    }
-    else if (item == 2) {
         tempCanvas.style.backgroundImage = "";
+    } else if (item == 1) {
+        tempCanvas.style.backgroundImage = "url('images/teachablePerk.png')";
+    } else if (item == 2) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/very rare.png')";
+    } else if (item == 3) {
+        tempCanvas.style.backgroundImage = "url('images/killerPower.png')";
+    } else if (item == 4) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/commonAddon.png')";
+    } else if (item == 5) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/uncommonAddon.png')";
+    } else if (item == 6) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/rareAddon.png')";
+    } else if (item == 7) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/veryRareAddon.png')";
+    } else if (item == 8) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/iridescentAddon.png')";
+    } else if (item == 9) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/eventAddon.png')";
+    } else {
+        console.log("Something went wrong.");
     }
+    // switch(parseInt(item.value)) {
+    //     case 0:
+    //         tempCanvas.style.backgroundImage = "";
+    //         break;
+    //     case 1:
+    //         tempCanvas.style.backgroundImage = "url('images/teachablePerk.png')";
+    //         console.log("AAAA");
+    //         break;
+    //     case 2:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/very rare.png')";
+    //         break;
+    //     case 3:
+    //         tempCanvas.style.backgroundImage = "url('images/killerPower.png')";
+    //         break;
+    //     case 4:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/commonAddon.png')";
+    //         break;
+    //     case 5:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/uncommonAddon.png')";
+    //         break;
+    //     case 6:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/rareAddon.png')";
+    //         break;
+    //     case 7:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/veryRareAddon.png')";
+    //         break;
+    //     case 8:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/iridescentAddon.png')";
+    //         break;
+    //     case 9:
+    //         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/eventAddon.png')";
+    //         break;
+    //     default:
+    //         console.log("Something went wrong.");
+    //         break;
+    // }
+    // if (item == 0) {
+    //     tempCanvas.style.backgroundImage = "url('images/teachablePerk.png')";
+    // }
+    // else if (item == 1) {
+    //     tempCanvas.style.backgroundImage = "url('images/killerPower.png')";
+    // }
+    // else if (item == 2) {
+    //     tempCanvas.style.backgroundImage = "";
+    // }
 }
 
 /* changing canvas background */

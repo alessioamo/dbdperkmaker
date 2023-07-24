@@ -338,9 +338,21 @@
                     <button id="deleteIconButton" onclick="sendIconForward()">Send Forwards</button>
                     <button id="deleteIconButton" onclick="deleteIconFunction()">Delete Selection</button>
                     <br>
-                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
+                    <select id="backgroundDropdown" class="backgroundDropdown" onchange="changeCanvasBackground(this.value)">
+                        <option value="0">No Background</option>
+                        <option value="1">Teachable Perk</option>
+                        <option value="2">Very Rare Perk</option>
+                        <option value="3">Killer Power</option>
+                        <option value="4">Brown Addon</option>
+                        <option value="5">Yellow Addon</option>
+                        <option value="6">Green Addon</option>
+                        <option value="7">Purple Addon</option>
+                        <option value="8">Iridescent Addon</option>
+                        <option value="9">Event Addon</option>
+                    </select>
+                    <!-- <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
                     <button class="changeCanvasButtons" onclick="changeCanvasBackground(1)">Power Background</button>
-                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(2)">No Background</button>
+                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(2)">No Background</button> -->
                 </div>
 
                 <br><br>
