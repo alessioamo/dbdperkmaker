@@ -72,6 +72,8 @@ function loadImagesForCanvas() {
 loadImagesForCanvas();
 
 function addIconToCanvas(iconName) {
+    tempCanvasBackgroundFix();
+
     console.log(imageArray);
     console.log("Clicked icon:", iconName);
 
@@ -275,14 +277,18 @@ function handleBackgroundDropdownChange(dar) {
 }
 
 var tempVariableForIconBackgroundLoading = true;
-// No background, purple perk, teachable, killer power, addon colors
-function changeCanvasBackground(item) {
-    // Temp fix to having the background image appear right away (it only appears after another button has been pressed)
+function tempCanvasBackgroundFix() {
+    // Temp fix to having the background image appear right away (it only appears after another button has been pressed and before an image has been added)
     if (tempVariableForIconBackgroundLoading) {
         var button = document.getElementById("deleteIconButton");
         button.click();
         tempVariableForIconBackgroundLoading = false;
     }
+}
+// No background, purple perk, teachable, killer power, addon colors
+function changeCanvasBackground(item) {
+    
+    tempCanvasBackgroundFix();
 
     console.log("item: " + item);
     tempCanvas = document.getElementById("iconCanvas");
