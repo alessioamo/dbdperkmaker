@@ -1,0 +1,56 @@
+VERSION 1.6
+- Added icons for End Transmission chapter, 7th Anniversary event, and Nicolas Cage chapter<br>
+- Improved and added new background options for the icon creator (very rare perk + all addon types)<br>
+- Pictures uploaded to the perk and killer power creator sections will now correctly autosize and center in the icon<br>
+- Updated various visual elements to better fit the overall theme of the website<br>
+
+Updated on 07-25-2023
+
+
+VERSION 1.5
+- Added better mobile functionality (larger buttons and text)<br>
+
+Updated on 05-20-2023
+
+
+VERSION 1.4
+- New Icon creator tab to create custom icons<br>
+- Icon creator supports drawing and you can add any icon from in game from the menu<br>
+- Fixed some bugs relating to the update notes page as well as the saving feature<br>
+- Updated socials sidebar<br>
+
+Updated on 04-27-2023
+
+
+VERSION 1.3
+- Added a save button to save your perk and killer creations as an image<br>
+- Updated the FAQ to remove out of date questions<br>
+- Updated some styling to aid the functionality of the saving feature<br>
+
+Updated on 04-15-2023
+
+
+VERSION 1.2
+- New and custom domain dbdperkmaker.ca<br>
+- Old link will automatically redirect to the new link<br>
+
+Updated on 04-05-2023
+
+
+VERSION 1.1
+- Fixed styling of background image to be more consistent<br>
+- Edited sidebar to include a new link and fixed issues with the sidebar<br>
+- Made buttons across all website to be more consistent with each other and have better styling<br>
+- Made FAQ section more consistent and fixed some bugs with it<br>
+- Made the overall styling of the perk layout more clean and more akin to how it is in game<br>
+- Added an update notes feature<br>
+- Fixed some minor bugs all around the site<br>
+
+Updated on 03-29-2023
+
+
+VERSION 1.0
+- Release of the DBD perk maker website
+- Create your own custom perks, survivors and killers with the avilable tools
+
+Updated on 02-17-2023
