@@ -131,6 +131,7 @@ function getSelectionText() {
 var loadPerkIcon = function(event) {
     var image = document.getElementById('output');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var loadPerk1Icon = function(event) {

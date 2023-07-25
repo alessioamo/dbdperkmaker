@@ -46,23 +46,32 @@
           
             <div id="selectionButtonsDiv">
                 <h1 class="welcomeMessage">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessage" id="welcomeMessageID">Version 1.5 (Click for updates)</p>
+                <p class="welcomeMessage" id="welcomeMessageID">Version 1.6 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span id="close" class="close">&times;</span>
                         <h2>New Changes</h2>
                         <p>
-                            - Added better mobile functionality (larger buttons and text)
+                            - Added icons for End Transmission chapter, 7th Anniversary event, and Nicolas Cage chapter<br>
+                            - Improved and added new background options for the icon creator (very rare perk + all addon types)<br>
+                            - Pictures uploaded to the perk and killer power creator sections will now correctly autosize and center in the icon<br>
+                            - Updated various visual elements to better fit the overall theme of the website<br>
+                            - Squashed some bugs<br>
                         </p>
                         <h2>Upcoming</h2>
                         <p>
-                            - More features to icon builder (upload your own image, more brush options, undo/redo, better UI)<br>
-                            - Feature to reset the image you have placed<br>
+                            - More features to icon builder (upload your own image, more brush options, undo/redo, better UI, more background options)<br>
+                            - Feature to reset the image you have uploaded in perk creator sections<br>
                             - Better overall mobile functionality<br>
                         </p>
                         <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 05-21-2023
+                            Updated on 07-25-2023
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.5 Changes</h2>
+                        <p>
+                            - Added better mobile functionality (larger buttons and text)<br>
                         </p>
                         <p>______________________________</p>
                         <h2>Version 1.4 Changes</h2>
@@ -338,9 +347,21 @@
                     <button id="deleteIconButton" onclick="sendIconForward()">Send Forwards</button>
                     <button id="deleteIconButton" onclick="deleteIconFunction()">Delete Selection</button>
                     <br>
-                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
+                    <select id="backgroundDropdown" class="backgroundDropdown" onchange="changeCanvasBackground(this.value)">
+                        <option value="0">No Background</option>
+                        <option value="1">Teachable Perk</option>
+                        <option value="2">Very Rare Perk</option>
+                        <option value="3">Killer Power</option>
+                        <option value="4">Brown Addon</option>
+                        <option value="5">Yellow Addon</option>
+                        <option value="6">Green Addon</option>
+                        <option value="7">Purple Addon</option>
+                        <option value="8">Iridescent Addon</option>
+                        <option value="9">Event Addon</option>
+                    </select>
+                    <!-- <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
                     <button class="changeCanvasButtons" onclick="changeCanvasBackground(1)">Power Background</button>
-                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(2)">No Background</button>
+                    <button class="changeCanvasButtons" onclick="changeCanvasBackground(2)">No Background</button> -->
                 </div>
 
                 <br><br>
