@@ -137,41 +137,49 @@ var loadPerkIcon = function(event) {
 var loadPerk1Icon = function(event) {
     var image = document.getElementById('output1');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var loadPerk2Icon = function(event) {
     var image = document.getElementById('output2');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var loadPerk3Icon = function(event) {
     var image = document.getElementById('output3');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var killerPowerIcon = function(event) {
     var image = document.getElementById('output4');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var fullKillerPowerIcon = function(event) {
     var image = document.getElementById('output5');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var fullKillerPerk1Icon = function(event) {
     var image = document.getElementById('output6');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var fullKillerPerk2Icon = function(event) {
     var image = document.getElementById('output7');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 var fullKillerPerk3Icon = function(event) {
     var image = document.getElementById('output8');
     image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
 };
 
 //for collpasable in FAQ
