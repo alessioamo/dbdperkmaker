@@ -74,6 +74,10 @@ body {
     display: none;
 }
 
+#createAddon {
+    display: none;
+}
+
 #lore {
     display: none;
 }
@@ -193,6 +197,20 @@ body {
     height:80px;
     width:470px;
     font-size: 30px;
+    color: white;
+    resize: none;
+    text-align: left;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-indent: 5px;
+    white-space: nowrap;
+}
+
+.createAddon {
+    background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
+    height:80px;
+    width:470px;
+    font-size: 28px;
     color: white;
     resize: none;
     text-align: left;
