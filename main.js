@@ -115,7 +115,7 @@ function blackBackgroundCheck() {
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
         document.getElementById("fullKiller").style.backgroundColor = "";
-        document.getElementById("createAddon").style.backgroundColor = "black";
+        document.getElementById("createAddon").style.backgroundColor = "";
         document.getElementById("lore").style.backgroundColor = "";
         checkbox.value = "no";
     }
