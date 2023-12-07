@@ -536,3 +536,7 @@ body {
 }
 
 /* canvas for icon editor */
+
+input[type="file"] + label::after {
+    content: none !important;
+  }
