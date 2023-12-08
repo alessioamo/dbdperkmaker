@@ -197,66 +197,42 @@ const filterOptions = [
 const checkboxes = document.querySelectorAll(".filterButton");
 
 checkboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", function() {
-        //update search results when checking
+    // Inside the event listener for checkboxes
+    checkbox.addEventListener("change", function () {
+        // update search results when checking
         document.getElementById("search").value = "";
         searchThroughIcons();
-        //if we check
-        if (this.checked) {
-            for (i = 0; i < filterOptions.length; i ++) {
-                if (filterOptions[i].title == checkbox.value) {
-                    filterOptions[i].isChecked = "true";
-                }
-            }
-            div.innerHTML = "";
 
-            for (i = 0; i < imageArray.length; i++) {
-                //check if the beginning of the name of the image is different than checkbox value AND that the filteroptions of that name is true
-                console.log("AAA" + filterOptions[filterOptions.findIndex(option => option.title === imageArray[i].slice(0, imageArray[i].indexOf("_")))].title);
-                if (filterOptions[filterOptions.findIndex(option => option.title === imageArray[i].slice(0, imageArray[i].indexOf("_")))].isChecked == "true") {
-                    const img = document.createElement("img");
-                    img.alt = imageArray[i];
-                    img.src = folderName + imageArray[i];
-                    var title = imageArray[i].replace(/[A-Z]/g, (match) => ` ${match.toLowerCase()}`);
-                    title = title.slice(title.indexOf("_") + 1, -4);
-                    img.title = title;
-                    img.classList.add("iconDisplayedInDiv");
-                    img.addEventListener("click", function() {
-                        addIconToCanvas(this.alt);
-                    })
-                    div.appendChild(img);
-                }
-            }
-            console.log(`${this.name} is checked`);
-        } 
-        //if we uncheck
-        else {
-            for (i = 0; i < filterOptions.length; i ++) {
-                if (filterOptions[i].title == checkbox.value) {
-                    filterOptions[i].isChecked = "false";
-                }
-            }
-            div.innerHTML = "";
+        const isChecked = this.checked;
+        const filterOption = filterOptions.find(option => option.title === checkbox.value);
 
-            for (i = 0; i < imageArray.length; i++) {
-                //check if the beginning of the name of the image is different than checkbox value AND that the filteroptions of that name is true
-                if (imageArray[i].slice(0, imageArray[i].indexOf("_")) != checkbox.value && filterOptions[filterOptions.findIndex(option => option.title === imageArray[i].slice(0, imageArray[i].indexOf("_")))].isChecked == "true") {
-                    console.log("is it checked " + filterOptions[0].isChecked);
-                    const img = document.createElement("img");
-                    img.alt = imageArray[i];
-                    img.src = folderName + imageArray[i];
-                    var title = imageArray[i].replace(/[A-Z]/g, (match) => ` ${match.toLowerCase()}`);
-                    title = title.slice(title.indexOf("_") + 1, -4);
-                    img.title = title;
-                    img.classList.add("iconDisplayedInDiv");
-                    img.addEventListener("click", function() {
-                        addIconToCanvas(this.alt);
-                    })
-                    div.appendChild(img);
-                }
+        // Update the isChecked property based on the checkbox state
+        filterOption.isChecked = isChecked ? "true" : "false";
+
+        // Clear the existing content in the div
+        div.innerHTML = "";
+
+        // Filter and display images based on the updated filterOptions
+        for (i = 0; i < imageArray.length; i++) {
+            const imageName = imageArray[i].slice(0, imageArray[i].indexOf("_"));
+            const isFilterChecked = filterOptions.find(option => option.title === imageName)?.isChecked === "true";
+
+            if (isFilterChecked) {
+                const img = document.createElement("img");
+                img.alt = imageArray[i];
+                img.src = folderName + imageArray[i];
+                var title = imageArray[i].replace(/[A-Z]/g, (match) => ` ${match.toLowerCase()}`);
+                title = title.slice(title.indexOf("_") + 1, -4);
+                img.title = title;
+                img.classList.add("iconDisplayedInDiv");
+                img.addEventListener("click", function () {
+                    addIconToCanvas(this.alt);
+                })
+                div.appendChild(img);
             }
-            console.log(`${this.name} is not checked`);
         }
+
+        console.log(`${checkbox.value} is ${isChecked ? "checked" : "unchecked"}`);
     });
 });
 
