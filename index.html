@@ -45,8 +45,9 @@
         <div class="vertical-center">
           
             <div id="selectionButtonsDiv">
-                <h1 class="welcomeMessage">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessage" id="welcomeMessageID">Version 1.7 (Click for updates)</p>
+                <!-- For Christmas, remove font size after -->
+                <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
+                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 1.7 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
@@ -142,7 +143,7 @@
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
                         <input style="color:transparent;" type="file" accept="image/*" onchange="loadPerkIcon(event)">
-                        <p><img class="over" id="output" width="120"/></p>
+                        <p><img onclick="removeUploadedImage('output')" class="over" id="output" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>

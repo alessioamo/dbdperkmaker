@@ -148,6 +148,15 @@ function getSelectionText() {
     console.log(text);
 }
 
+var removeUploadedImage = function(outputId) {
+    var result = window.confirm("Are you sure you want to remove your uploaded image?");
+    if (result) {
+        var image = document.getElementById(outputId);
+        image.src = "";
+        image.classList.remove('uploadedImage');
+    }
+};
+
 var loadPerkIcon = function(event) {
     var image = document.getElementById('output');
     image.src=URL.createObjectURL(event.target.files[0]);

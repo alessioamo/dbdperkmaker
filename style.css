@@ -3,9 +3,20 @@
     text-align: center;
 }
 
+@font-face {
+    font-family: 'ChristmasFont1';
+    src: url('fonts/Cartoon\ Blocks\ Christmas.otf') format('woff2');
+}
+@font-face {
+    font-family: 'ChristmasFont2';
+    src: url('fonts/holly_and_berries.ttf') format('woff2');
+}
+
 body {
     padding-top: 7%;
-    background-image: url("./images/background2.jpg");
+    /* for christmas, change background image */
+    /* background-image: url("./images/background2.jpg"); */
+    background-image: url("./images/christmasBackground2.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -19,7 +30,15 @@ body {
     text-align: left;
 }
 
-.welcomeMessage {
+.welcomeMessageTitle {
+    color: red;
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+    /* For christmas, remove font family and letter spacing after */
+    font-family: 'ChristmasFont2';
+    letter-spacing: 4px;
+}
+
+.welcomeMessageVersion {
     color: red;
     text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
 }
@@ -35,7 +54,9 @@ body {
 .selectionButtons {
     color: black;
     font-size: 15px;
-    background-color: rgb(170, 19, 137);
+    /* change color for christmas */
+    /* background-color: rgb(170, 19, 137); */
+    background-color: rgb(19, 170, 32);
     width: 100px;
     height: 40px;
     border: 2px solid rgb(0, 0, 0);
@@ -44,7 +65,9 @@ body {
 }
 
 .selectionButtons:hover {
-    background-color: rgb(180, 100, 163);
+    /* change color for christmas */
+    /* background-color: rgb(180, 100, 163); */
+    background-color: rgb(226, 0, 0);
 }
 
 .uploadedImage {
@@ -157,14 +180,18 @@ body {
     text-align: center;
     color: black;
     font-size: 15px;
-    background-color: rgb(170, 19, 137);
+    /* change color for christmas */
+    /* background-color: rgb(170, 19, 137); */
+    background-color: rgb(19, 170, 32);
     width: 100px;
     height: 40px;
     border-radius: 20%;
 }
 
 #homeButton:hover {
-    background-color: rgb(180, 100, 163);
+    /* change color for christmas */
+    /* background-color: rgb(180, 100, 163); */
+    background-color: rgb(226, 0, 0);
 }
 
 .perkTitle {
