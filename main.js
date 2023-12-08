@@ -100,7 +100,9 @@ function checkCharacterCount() {
 function blackBackgroundCheck() {
     checkbox = document.getElementById("blackBackgroundCheck");
     if(checkbox.value == "no"){
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
+        // change color for christmas
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)";
         document.getElementById("onePerk").style.backgroundColor = "black";
         document.getElementById("threePerks").style.backgroundColor = "black";
         document.getElementById("killerPower").style.backgroundColor = "black";
@@ -110,7 +112,9 @@ function blackBackgroundCheck() {
         checkbox.value = "yes";
     }
     else {
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
+        // change color for christmas
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)";
         document.getElementById("onePerk").style.backgroundColor = "";
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
