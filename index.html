@@ -29,6 +29,52 @@
 </head>
 <body id="body">
 
+    <!-- Christmas Lights -->
+    <ul class="lightrope">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+
     <div id="headerIcon">
         <button class="openbtn" onclick="openNav()">
             <img style="padding-top: 4px;" width="50px" height="50px"src="./images/banana.png">
@@ -45,30 +91,39 @@
         <div class="vertical-center">
           
             <div id="selectionButtonsDiv">
-                <h1 class="welcomeMessage">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessage" id="welcomeMessageID">Version 1.6 (Click for updates)</p>
+                <!-- For Christmas, remove font size after -->
+                <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
+                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 1.7 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span id="close" class="close">&times;</span>
                         <h2>New Changes</h2>
                         <p>
+                            - Merry Christmas! A Christmas theme has taken over the website!<br>
+                            - Images saved on every tab (including Icon Creator) have a transparent background automatically<br>
+                            - Added new Addon tab to create custom Addons, you can also change the addon type from the bottom bar!<br>
+                            - Can remove uploaded images by clicking on them<br>
+                            - Can change perk type between teachable (orange) and very rare (purple) from the bottom bar<br>
+                            - Added icons for Alien chapter, 2023 Halloween event, and Chucky chapter<br>
+                        </p>
+                        <h2>Upcoming</h2>
+                        <p>
+                            - More features to icon builder (upload your own image, more brush options, undo/redo, better UI, more background options)<br>
+                            - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
+                            - Better overall mobile functionality<br>
+                        </p>
+                        <p style="color: rgb(173, 173, 173);font-size:15px;">
+                            Updated on 12-08-2023
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.6 Changes</h2>
+                        <p>
                             - Added icons for End Transmission chapter, 7th Anniversary event, and Nicolas Cage chapter<br>
                             - Improved and added new background options for the icon creator (very rare perk + all addon types)<br>
                             - Pictures uploaded to the perk and killer power creator sections will now correctly autosize and center in the icon<br>
                             - Updated various visual elements to better fit the overall theme of the website<br>
                             - Squashed some bugs<br>
-                        </p>
-                        <h2>Upcoming</h2>
-                        <p>
-                            - More features to icon builder (upload your own image, more brush options, undo/redo, better UI, more background options)<br>
-                            - Make saved images automatically have a transparent background<br>
-                            - Feature to reset the image you have uploaded in perk creator sections<br>
-                            - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
-                            - Better overall mobile functionality<br>
-                        </p>
-                        <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 07-25-2023
                         </p>
                         <p>______________________________</p>
                         <h2>Version 1.5 Changes</h2>
@@ -114,14 +169,15 @@
                 <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
                 <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
                 <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
-                <button class="selectionButtons" onclick="switchPage(5)">Lore</button>
-                <button class="selectionButtons" onclick="switchPage(6)">Icon Creator</button>
+                <button class="selectionButtons" onclick="switchPage(5)">Addon</button>
+                <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
+                <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
                 <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
-                <button class="selectionButtons" onclick="switchPage(7)">FAQ</button>
+                <button class="selectionButtons" onclick="switchPage(8)">FAQ</button>
             </div>
         
             <div id="homeStuff">
-                <button class="selectionButtons" id="homeButton" onclick="switchPage(8)">Home</button>
+                <button class="selectionButtons" id="homeButton" onclick="switchPage(9)">Home</button>
                 <button class="selectionButtons" id="blackBackgroundCheck" onclick="blackBackgroundCheck()" value="no">Background</button>
                 <button class="selectionButtons" id="saveImageButton">Save</button>
             </div>
@@ -133,9 +189,9 @@
 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerkIcon(event)">
-                        <p><img class="over" id="output" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="loadPerkIcon(event)">
+                        <p><img onclick="removeUploadedImage('output')" class="over" id="output" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -149,9 +205,9 @@
                 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk1Icon(event)">
-                        <p><img class="over" id="output1" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="loadPerk1Icon(event)">
+                        <p><img onclick="removeUploadedImage('output1')" class="over" id="output1" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -159,9 +215,9 @@
 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk2Icon(event)">
-                        <p><img class="over" id="output2" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="loadPerk2Icon(event)">
+                        <p><img onclick="removeUploadedImage('output2')" class="over" id="output2" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -169,9 +225,9 @@
                 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="loadPerk3Icon(event)">
-                        <p><img class="over" id="output3" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="loadPerk3Icon(event)">
+                        <p><img onclick="removeUploadedImage('output3')" class="over" id="output3" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -185,8 +241,8 @@
 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:white;" type="file" accept="image/*" onchange="killerPowerIcon(event)">
-                        <p><img class="over" id="output4" width="120"/></p>
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="killerPowerIcon(event)">
+                        <p><img onclick="removeUploadedImage('output4')" class="over" id="output4" width="120"/></p>
                         <img class="under" width="120px" height="120px" src="./images/killerPower.png">
                     </div>
                     <div class="killerTitle" contenteditable="true"></div>
@@ -201,8 +257,8 @@
 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:white;" type="file" accept="image/*" onchange="fullKillerPowerIcon(event)">
-                        <p><img class="over" id="output5" width="120"/></p>
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="fullKillerPowerIcon(event)">
+                        <p><img onclick="removeUploadedImage('output5')" class="over" id="output5" width="120"/></p>
                         <img class="under" width="120px" height="120px" src="./images/killerPower.png">
                     </div>
                     <div class="killerTitle" contenteditable="true"></div>
@@ -211,9 +267,9 @@
                 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk1Icon(event)">
-                        <p><img class="over" id="output6" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="fullKillerPerk1Icon(event)">
+                        <p><img onclick="removeUploadedImage('output6')" class="over" id="output6" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -221,9 +277,9 @@
 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk2Icon(event)">
-                        <p><img class="over" id="output7" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="fullKillerPerk2Icon(event)">
+                        <p><img onclick="removeUploadedImage('output7')" class="over" id="output7" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
@@ -231,11 +287,27 @@
                 
                 <div style="display:inline-block">
                     <div style="padding-bottom: 140px; padding-right: 110px;">
-                        <input style="color:orange;" type="file" accept="image/*" onchange="fullKillerPerk3Icon(event)">
-                        <p><img class="over" id="output8" width="120"/></p>
-                        <img class="under" width="120px" height="120px" src="./images/teachablePerk.png">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="fullKillerPerk3Icon(event)">
+                        <p><img onclick="removeUploadedImage('output8')" class="over" id="output8" width="120"/></p>
+                        <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
                     <div class="perkTitle" contenteditable="true"></div>
+                    <div class="perkDescription" contenteditable="true"></div>
+                </div>
+                
+                <br><br>
+            </div>
+
+            <div id="createAddon">
+                <br>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="createAddonIcon(event)">
+                        <p><img onclick="removeUploadedImage('output9')" class="over" id="output9" width="120"/></p>
+                        <img id="createAddonIcon" class="under" width="120px" height="120px" src="./images/blankTemplates/Addons/commonAddon.png">
+                    </div>
+                    <div id="createAddonTitle" class="createAddon" contenteditable="true"></div>
                     <div class="perkDescription" contenteditable="true"></div>
                 </div>
                 
@@ -271,8 +343,8 @@
                             <span style="color:orange">Delete Selection:</span> Clicking this button while having an item selected within the left canvas box will remove the item from <br>
                             the left canvas box. Note that you can also select objects you have drawn.<br>
                             <span style="color:orange">Perk/Power/No Background:</span> Clicking these buttons will change the background of the left canvas box. When saving, the background <br>
-                            will be saved in the image also. This makes it easier for sizing concerns when using the perk/killer creator on this website. It also makes it easier to <br>
-                            get a transparent background (see extra notes below) and lets you save a nicer image yourself.<br>
+                            will be saved in the image also. This makes it easier for sizing concerns when using the perk/killer creator on this website. You can also use them as guidelines and <br>
+                            then remove them before saving. It also lets you save a nicer image yourself.<br>
                         </p>
                         <h3>Left Box</h3>
                         <p>
@@ -289,8 +361,6 @@
                         <h3>Extra Notes</h3>
                         <p>
                             - There is no undo/redo functionality yet so make sure to be careful with your drawings!<br>
-                            - When the image gets saved, it gets saved with the white background so you'll have to find an online tool to make it transparent for now. <br>
-                              I find this link to be the best one: <a href="https://www.remove.bg/" target="_blank">https://www.remove.bg/</a> <br>
                             - For the default color of the in game icons, you can use the dropper tool and press on any of the icons. <br>
                             - Finally, the size that the images get added to the canvas are a relatively good size that they will fit nicely within the perk creator (when you upload <br>
                               as an image). However, feel free to experiment with sizing until you find the best size!<br><br>
@@ -358,7 +428,7 @@
                         <option value="5">Yellow Addon</option>
                         <option value="6">Green Addon</option>
                         <option value="7">Purple Addon</option>
-                        <option value="8">Iridescent Addon</option>
+                        <option value="8">Ultra Rare Addon</option>
                         <option value="9">Event Addon</option>
                     </select>
                     <!-- <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
@@ -389,10 +459,7 @@
                     </div>
                     <button type="button" class="collapsibleQuestion">How do I remove an image I placed?</button>
                     <div class="answer">
-                        <p>At the moment, you can open these images in new tabs, save them to your device and upload them over the image you want to remove. You can 
-                            also refresh the page (REMEMBER THIS REMOVES ALL WRITTEN TEXT). The functionality is in the works for an easier way.</p>
-                        <img src="./images/teachablePerk.png">
-                        <img src="./images/killerPower.png">
+                        <p>You can simply click on the image you have uploaded to remove it.</p>
                     </div>
                     <button type="button" class="collapsibleQuestion">How do the text features work?</button>
                     <div class="answer">
@@ -435,6 +502,18 @@
                 <button class="editTextButtons" value="span-r" onclick="changeStyle(this)" style="background-color: red;">Red</button>
                 <button class="editTextButtons" value="span-g" onclick="changeStyle(this)" style="background-color: green;">Green</button>
                 <button class="editTextButtons" value="span-p" onclick="changeStyle(this)" style="background-color: purple;">Purple</button>
+                <select id="backgroundPerkDropdown" class="backgroundDropdown" onchange="changePerkBackground(this.value)">
+                    <option value="0">Teachable Perk</option>
+                    <option value="1">Very Rare Perk</option>
+                </select>
+                <select id="backgroundAddonDropdown" class="backgroundDropdown" onchange="changeAddonBackground(this.value)">
+                    <option value="0">Common Addon</option>
+                    <option value="1">Uncommon Addon</option>
+                    <option value="2">Rare Addon</option>
+                    <option value="3">Very Rare Addon</option>
+                    <option value="4">Ultra Rare Addon</option>
+                    <option value="5">Event Addon</option>
+                </select>
             </div>
 
         </div>

@@ -17,41 +17,59 @@ function switchPage(i) {
             document.getElementById("onePerk").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 2:
             document.getElementById("threePerks").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 3:
             document.getElementById("killerPower").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("backgroundPerkDropdown").style.display = "none";
+            document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 4:
             document.getElementById("fullKiller").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 5:
+            document.getElementById("createAddon").style.display = "block";
+            document.getElementById("editTextButtonsDiv").style.display = "block";
+            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("backgroundPerkDropdown").style.display = "none";
+            document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
+            break;
+        case 6:
             document.getElementById("lore").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "2%";
+            document.getElementById("backgroundPerkDropdown").style.display = "none";
+            document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
-        case 6:
+        case 7:
             document.getElementById("iconEditor").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             break;
-        case 7:
+        case 8:
             document.getElementById("faq").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             break;
-        case 8:
+        case 9:
             document.getElementById("selectionButtonsDiv").style.display = "block";
             document.getElementById("onePerk").style.display = "none";
             document.getElementById("threePerks").style.display = "none";
             document.getElementById("killerPower").style.display = "none";
             document.getElementById("fullKiller").style.display = "none";
+            document.getElementById("createAddon").style.display = "none";
             document.getElementById("lore").style.display = "none";
             document.getElementById("iconEditor").style.display = "none";
             document.getElementById("faq").style.display = "none";
@@ -60,7 +78,7 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "7%";
     }
 
-    if (i != 8) {
+    if (i != 9) {
         document.getElementById("homeStuff").style.display = "block";
     }
 }
@@ -82,20 +100,26 @@ function checkCharacterCount() {
 function blackBackgroundCheck() {
     checkbox = document.getElementById("blackBackgroundCheck");
     if(checkbox.value == "no"){
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
+        // change color for christmas
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)";
         document.getElementById("onePerk").style.backgroundColor = "black";
         document.getElementById("threePerks").style.backgroundColor = "black";
         document.getElementById("killerPower").style.backgroundColor = "black";
         document.getElementById("fullKiller").style.backgroundColor = "black";
+        document.getElementById("createAddon").style.backgroundColor = "black";
         document.getElementById("lore").style.backgroundColor = "black";
         checkbox.value = "yes";
     }
     else {
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
+        // change color for christmas
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)";
         document.getElementById("onePerk").style.backgroundColor = "";
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
         document.getElementById("fullKiller").style.backgroundColor = "";
+        document.getElementById("createAddon").style.backgroundColor = "";
         document.getElementById("lore").style.backgroundColor = "";
         checkbox.value = "no";
     }
@@ -127,6 +151,15 @@ function getSelectionText() {
     }
     console.log(text);
 }
+
+var removeUploadedImage = function(outputId) {
+    var result = window.confirm("Are you sure you want to remove your uploaded image?");
+    if (result) {
+        var image = document.getElementById(outputId);
+        image.src = "";
+        image.classList.remove('uploadedImage');
+    }
+};
 
 var loadPerkIcon = function(event) {
     var image = document.getElementById('output');
@@ -181,6 +214,59 @@ var fullKillerPerk3Icon = function(event) {
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
 };
+
+var createAddonIcon = function(event) {
+    var image = document.getElementById('output9');
+    image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
+}
+
+//for changing perk background
+function changePerkBackground(item) {
+    console.log("item: " + item);
+    var createPerkBackground = document.getElementsByClassName("perkTitle");
+    var createPerkIconBackground = document.getElementsByClassName("perkIcons");
+
+    for (var i = 0; i < createPerkBackground.length; i++) {
+        if (item == 0) {
+            createPerkBackground[i].style.backgroundImage = "url('images/orangeperkbackgroundteachable.png')";
+            createPerkIconBackground[i].src = "images/teachablePerk.png";
+        } else if (item == 1) {
+            createPerkBackground[i].style.backgroundImage = "url('images/backgroundVeryRarePerk.png')";
+            createPerkIconBackground[i].src = "images/very rare.png";
+        } else {
+            console.log("Something went wrong.");
+        }
+    }
+}
+
+//for changing addon background
+function changeAddonBackground(item) {
+
+    var createAddonBackground = document.getElementById("createAddonTitle");
+    var createAddonIconBackground = document.getElementById("createAddonIcon");
+    if (item == 0) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundCommonAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
+    } else if (item == 1) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundUncommonAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
+    } else if (item == 2) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundRareAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 3) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundVeryRareAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/veryRareAddon.png";
+    } else if (item == 4) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundIridescentAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/iridescentAddon.png";
+    } else if (item == 5) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundEventAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
+    } else {
+        console.log("Something went wrong.");
+    }
+}
 
 //for collpasable in FAQ
 var coll = document.getElementsByClassName("collapsibleQuestion");
