@@ -16,35 +16,35 @@ function switchPage(i) {
         case 1:
             document.getElementById("onePerk").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
-            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 2:
             document.getElementById("threePerks").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
-            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 3:
             document.getElementById("killerPower").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
-            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 4:
             document.getElementById("fullKiller").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
-            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             break;
         case 5:
             document.getElementById("createAddon").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
-            document.getElementById("body").style.paddingTop = "4%";
+            document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
             break;
@@ -101,8 +101,8 @@ function blackBackgroundCheck() {
     checkbox = document.getElementById("blackBackgroundCheck");
     if(checkbox.value == "no"){
         // change color for christmas
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "black";
         document.getElementById("threePerks").style.backgroundColor = "black";
         document.getElementById("killerPower").style.backgroundColor = "black";
@@ -113,8 +113,8 @@ function blackBackgroundCheck() {
     }
     else {
         // change color for christmas
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)";
+        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
+        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "";
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
