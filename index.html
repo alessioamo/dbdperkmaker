@@ -182,7 +182,7 @@
                 <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
                 <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
                 <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
-                <button class="selectionButtons" onclick="switchPage(5)">Addon</button>
+                <button class="selectionButtons" onclick="switchPage(5)">Addon/Item</button>
                 <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
                 <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
                 <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
@@ -391,6 +391,8 @@
                         <input type="checkbox" class="filterButton" value="iconAddon" checked>
                         <label class="filterButtonLabel">| Offerings</label>
                         <input type="checkbox" class="filterButton" value="iconFavors" checked>
+                        <label class="filterButtonLabel">| Items</label>
+                        <input type="checkbox" class="filterButton" value="iconItems" checked>
                         <label class="filterButtonLabel">| Perks</label>
                         <input type="checkbox" class="filterButton" value="iconPerks" checked>
                         <label class="filterButtonLabel">| Powers</label>
@@ -527,6 +529,18 @@
                     <option value="4">Ultra Rare Addon</option>
                     <option value="5">Event Addon</option>
                 </select>
+
+                <select id="backgroundItemDropdown" class="backgroundDropdown" onchange="changeItemBackground(this.value)">
+                    <option value="0">Common Item</option>
+                    <option value="1">Uncommon Item</option>
+                    <option value="2">Rare Item</option>
+                    <option value="3">Very Rare Item</option>
+                    <option value="4">Ultra Rare Item</option>
+                    <option value="5">Event Item</option>
+                    <option value="6">Limited Item</option>
+                </select>
+
+                <button id="swapAddonItemButton" class="selectionButtons" onclick="swapAddonItemTab()">To Item</button>
             </div>
 
         </div>
