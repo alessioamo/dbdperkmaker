@@ -36,6 +36,7 @@ body {
     text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
     /* For christmas, remove font family and letter spacing that follows this comment */
     /* font-family: 'ChristmasFont2';
+    font-size: 60px;
     letter-spacing: 4px; */
 }
 

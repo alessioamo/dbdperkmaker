@@ -94,7 +94,7 @@
             <div id="selectionButtonsDiv">
                 <!-- For Christmas, remove h1 with font size = 60px -->
                 <!-- <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1> -->
-                <h1 class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
+                <h1 id="welcomeMessageTitleId" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
                 <p class="welcomeMessageVersion" id="welcomeMessageID">Version 1.8 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
@@ -187,11 +187,13 @@
                 <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
                 <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
                 <button class="selectionButtons" onclick="switchPage(8)">FAQ</button>
+                <button onclick="setTheme('christmas')">Test</button>
+                <button onclick="setTheme('default')">Test</button>
             </div>
         
             <div id="homeStuff">
                 <button class="selectionButtons" id="homeButton" onclick="switchPage(9)">Home</button>
-                <button class="selectionButtons" id="blackBackgroundCheck" onclick="blackBackgroundCheck()" value="no">Background</button>
+                <button class="selectionButtons" id="blackBackgroundCheckButton" onclick="blackBackgroundCheck()" value="no">Background</button>
                 <button class="selectionButtons" id="saveImageButton">Save</button>
             </div>
 
@@ -549,4 +551,5 @@
     <script src="main.js"></script>
     <script src="saveImage.js"></script>
     <script src="canvas.js"></script>
+    <script src="changeTheme.js"></script>
 </html>

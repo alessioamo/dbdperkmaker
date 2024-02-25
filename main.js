@@ -104,11 +104,14 @@ function checkCharacterCount() {
 }
 
 function blackBackgroundCheck() {
-    checkbox = document.getElementById("blackBackgroundCheck");
+    checkbox = document.getElementById("blackBackgroundCheckButton");
+    const selectedTheme = themes[getCurrentTheme()];
+    
     if(checkbox.value == "no"){
         // change color for christmas
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)"; // Christmas color
+        //document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(122, 58, 108)";
+        checkbox.style.backgroundColor = selectedTheme.blackBackgroundCheckButton.checkedColor;
+        // document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(226, 0, 0)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "black";
         document.getElementById("threePerks").style.backgroundColor = "black";
         document.getElementById("killerPower").style.backgroundColor = "black";
@@ -119,8 +122,9 @@ function blackBackgroundCheck() {
     }
     else {
         // change color for christmas
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)"; // Christmas color
+        //document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(170, 19, 137)";
+        checkbox.style.backgroundColor = selectedTheme.blackBackgroundCheckButton.uncheckedColor;
+        // document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(19, 170, 32)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "";
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
