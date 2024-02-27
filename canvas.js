@@ -71,6 +71,8 @@ function loadImagesForCanvas() {
 
 loadImagesForCanvas();
 
+let imageCounter = 0;
+
 function addIconToCanvas(iconName) {
     tempCanvasBackgroundFix();
 
@@ -78,9 +80,17 @@ function addIconToCanvas(iconName) {
     console.log("Clicked icon:", iconName);
 
     var imageSRC = folderName + iconName;
+    
+    // Generate a unique ID for the image
+    const uniqueID = 'image_' + imageCounter++;
+
     fabric.Image.fromURL(imageSRC, function(img) {
         img.scaleToWidth(400);
         img.scaleToHeight(400);
+        
+        // Set a custom property to store the unique ID
+        img.set('customID', uniqueID);
+
         canvas.add(img);
     });
 }
@@ -103,6 +113,13 @@ function deleteIconFunction() {
     }
     canvas.remove(object);
 }
+
+// Event listener for delete icon function
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Delete' || event.key === 'Backspace') {
+        deleteIconFunction();
+    }
+});
 
 /* For Images */
 
@@ -365,3 +382,187 @@ toggleEraserButton.addEventListener("click", function() {
 });
 
 /* Eraser */
+
+/* Undo and Redo */
+
+// Notes:
+// -undoing an element until it deletes, wont be able to redo it back
+// -cant undo erasing yet
+
+// movements is undo stack
+let movements = [];
+let redoStack = [];
+let objectIdCounter = 0;
+
+function setupCanvasEvents() {
+    let initialPosition = null; // Variable to store initial position during mouse down
+
+    canvas.on('mouse:down', function(event) {
+        if (!canvas.isDrawingMode && event.target) {
+            const object = event.target;
+            initialPosition = {
+                x: object.left,
+                y: object.top,
+                angle: object.angle,
+                scale: {
+                    x: object.scaleX,
+                    y: object.scaleY
+                }
+            };
+            const customID = object.get('customID');
+            console.log('Clicked Position:', initialPosition);
+            console.log('Object ID:', customID);
+        }
+    });
+
+    canvas.on('mouse:up', function(event) {
+        if (!canvas.isDrawingMode && event.target) {
+            const object = event.target;
+            const finalPosition = {
+                x: object.left,
+                y: object.top,
+                angle: object.angle,
+                scale: {
+                    x: object.scaleX,
+                    y: object.scaleY
+                }
+            };
+            const customID = object.get('customID');
+            console.log('Released Position:', finalPosition);
+            console.log('Object ID:', customID);
+            
+            // Store the movement event
+            movements.push({
+                id: customID,
+                initialPosition: initialPosition,
+                finalPosition: finalPosition
+            });
+
+            // Reset initial position for the next movement
+            initialPosition = null;
+            redoStack = [];
+        }
+    });
+
+    canvas.on('object:added', function(event) {
+        const object = event.target;
+        let customID = object.get('customID');
+        const startingPosition = {
+            x: object.left,
+            y: object.top,
+            angle: object.angle,
+            scale: {
+                x: object.scaleX,
+                y: object.scaleY
+            }
+        };
+
+        if (!customID) {
+            // If the object doesn't have a customID (e.g., drawing), assign a new ID
+            customID = 'drawing_' + objectIdCounter++;
+            object.set('customID', customID);
+        }
+
+        console.log('Added Object ID:', customID);
+        console.log('Starting Position:', startingPosition);
+
+        // Push the added object to movements array with initial position as null
+        movements.push({
+            id: customID,
+            initialPosition: null,
+            finalPosition: startingPosition
+        });
+    });
+}
+
+// Call the function to set up canvas events
+setupCanvasEvents();
+
+function logMovements() {
+    console.log("Movements:");
+    movements.forEach(function(movement) {
+        console.log("Element ID:", movement.id);
+        console.log("Initial Position:", movement.initialPosition);
+        console.log("Final Position:", movement.finalPosition);
+        console.log("------");
+    });
+}
+
+function undo() {
+    if (movements.length > 0) {
+        const lastMovement = movements.pop();
+        const object = canvas.getObjectById(lastMovement.id);
+        if (object) {
+            if (lastMovement.initialPosition) {
+                // Translation movement
+                object.set({
+                    left: lastMovement.initialPosition.x,
+                    top: lastMovement.initialPosition.y,
+                    scaleX: lastMovement.initialPosition.scale.x,
+                    scaleY: lastMovement.initialPosition.scale.y
+                });
+                if (lastMovement.initialPosition.angle !== undefined) {
+                    // Rotation movement
+                    object.angle = lastMovement.initialPosition.angle;
+                }
+                canvas.renderAll();
+            } else {
+                canvas.remove(object);
+            }
+            redoStack.push({ movement: lastMovement });
+        }
+    }
+}
+
+function redo() {
+    if (redoStack.length > 0) {
+        const redoAction = redoStack.pop();
+        const movement = redoAction.movement;
+        const targetObject = canvas.getObjectById(movement.id);
+        if (targetObject) {
+            if (movement.initialPosition) {
+                // Translation movement
+                targetObject.set({
+                    left: movement.finalPosition.x,
+                    top: movement.finalPosition.y,
+                    scaleX: movement.finalPosition.scale.x,
+                    scaleY: movement.finalPosition.scale.y
+                });
+                if (movement.finalPosition.angle !== undefined) {
+                    // Rotation movement
+                    targetObject.angle = movement.finalPosition.angle;
+                }
+            } else {
+                // Add the object if it was removed
+                canvas.add(targetObject);
+            }
+            movements.push(movement);
+            canvas.renderAll();
+        }
+    }
+}
+
+
+fabric.Canvas.prototype.getObjectById = function(id) {
+    const objects = this.getObjects();
+    for (let i = 0; i < objects.length; i++) {
+        if (objects[i].get('customID') === id) {
+            return objects[i];
+        }
+    }
+    return null;
+};
+
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'z') {
+        undo();
+    }
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'y') {
+        redo();
+    }
+});
+
+/* Undo and Redo */

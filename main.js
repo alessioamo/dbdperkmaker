@@ -302,7 +302,7 @@ function changeItemBackground(item) {
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
     } else if (item == 6) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/limitedAddon.png";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
     }
     else {
         console.log("Something went wrong.");
