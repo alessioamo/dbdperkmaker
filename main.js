@@ -20,6 +20,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 2:
             document.getElementById("threePerks").style.display = "block";
@@ -28,6 +29,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 3:
             document.getElementById("killerPower").style.display = "block";
@@ -36,6 +38,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 4:
             document.getElementById("fullKiller").style.display = "block";
@@ -44,6 +47,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 5:
             document.getElementById("createAddon").style.display = "block";
@@ -52,6 +56,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "inline-block";
             break;
         case 6:
             document.getElementById("lore").style.display = "block";
@@ -60,6 +65,7 @@ function switchPage(i) {
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 7:
             document.getElementById("iconEditor").style.display = "block";
