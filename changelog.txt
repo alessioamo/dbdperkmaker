@@ -1,3 +1,34 @@
+VERSION 2.0
+- Happy Birthday to dbdperkmaker.ca! This update officially marks the first of many years of updates for this website! The Entity has decided to celebrate!
+- Added item creation option to the Addon tab (all rarities are available including limited items)
+- Added item icons to icon creator and refined searching functionality
+- Added undo/redo functionality to the icon creator (ctrl+z and ctrl+y)
+- Added new chapter icons for The Unknown and Sable Ward
+- Added option to change the website theme in the side panel
+
+Updated on 03-03-2024
+
+
+VERSION 1.8
+- Oh no, the Holidays are over! The Entity has returned the website to its natural theme
+- Added icons for Alan Wake chapter (includes Billy's rework icons as well)
+- Fixed some padding and spacing issues on each page
+- Fixed styling on titles of pages to be consistent
+
+Updated on 01-15-2024
+
+
+VERSION 1.7
+- Merry Christmas! A Christmas theme has taken over the website!
+- Images saved on every tab (including Icon Creator) have a transparent background automatically
+- Added new Addon tab to create custom Addons, you can also change the addon type from the bottom bar!
+- Can remove uploaded images by clicking on them
+- Can change perk type between teachable (orange) and very rare (purple) from the bottom bar
+- Added icons for Alien chapter, 2023 Halloween event, and Chucky chapter
+
+Updated on 12-08-2023
+
+
 VERSION 1.6
 - Added icons for End Transmission chapter, 7th Anniversary event, and Nicolas Cage chapter
 - Improved and added new background options for the icon creator (very rare perk + all addon types)

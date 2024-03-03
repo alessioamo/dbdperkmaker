@@ -19,6 +19,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 2:
             document.getElementById("threePerks").style.display = "block";
@@ -26,6 +28,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 3:
             document.getElementById("killerPower").style.display = "block";
@@ -33,6 +37,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 4:
             document.getElementById("fullKiller").style.display = "block";
@@ -40,6 +46,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 5:
             document.getElementById("createAddon").style.display = "block";
@@ -47,6 +55,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "inline-block";
             break;
         case 6:
             document.getElementById("lore").style.display = "block";
@@ -54,6 +64,8 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "2%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
             document.getElementById("backgroundAddonDropdown").style.display = "none";
+            document.getElementById("backgroundItemDropdown").style.display = "none";
+            document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 7:
             document.getElementById("iconEditor").style.display = "block";
@@ -98,11 +110,14 @@ function checkCharacterCount() {
 }
 
 function blackBackgroundCheck() {
-    checkbox = document.getElementById("blackBackgroundCheck");
+    checkbox = document.getElementById("blackBackgroundCheckButton");
+    const selectedTheme = themes[getCurrentTheme()];
+    
     if(checkbox.value == "no"){
         // change color for christmas
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(122, 58, 108)";
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(226, 0, 0)"; // Christmas color
+        //document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(122, 58, 108)";
+        checkbox.style.backgroundColor = selectedTheme.blackBackgroundCheckButton.checkedColor;
+        // document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(226, 0, 0)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "black";
         document.getElementById("threePerks").style.backgroundColor = "black";
         document.getElementById("killerPower").style.backgroundColor = "black";
@@ -113,8 +128,9 @@ function blackBackgroundCheck() {
     }
     else {
         // change color for christmas
-        document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(170, 19, 137)";
-        // document.getElementById("blackBackgroundCheck").style.backgroundColor = "rgb(19, 170, 32)"; // Christmas color
+        //document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(170, 19, 137)";
+        checkbox.style.backgroundColor = selectedTheme.blackBackgroundCheckButton.uncheckedColor;
+        // document.getElementById("blackBackgroundCheckButton").style.backgroundColor = "rgb(19, 170, 32)"; // Christmas color
         document.getElementById("onePerk").style.backgroundColor = "";
         document.getElementById("threePerks").style.backgroundColor = "";
         document.getElementById("killerPower").style.backgroundColor = "";
@@ -265,6 +281,56 @@ function changeAddonBackground(item) {
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
     } else {
         console.log("Something went wrong.");
+    }
+}
+
+function changeItemBackground(item) {
+    
+    var createAddonBackground = document.getElementById("createAddonTitle");
+    var createAddonIconBackground = document.getElementById("createAddonIcon");
+    if (item == 0) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundCommonItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
+    } else if (item == 1) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
+    } else if (item == 2) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 3) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundVeryRareItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/veryRareAddon.png";
+    } else if (item == 4) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundIridescentItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/iridescentAddon.png";
+    } else if (item == 5) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundEventItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
+    } else if (item == 6) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
+    }
+    else {
+        console.log("Something went wrong.");
+    }
+}
+
+function swapAddonItemTab() {
+    var toSwap = document.getElementById("swapAddonItemButton");
+    var itemDropdown = document.getElementById("backgroundItemDropdown");
+    var addonDropdown = document.getElementById("backgroundAddonDropdown");
+    
+    if (toSwap.innerHTML == "To Item") {
+        itemDropdown.style.display = "inline-block";
+        addonDropdown.style.display = "none";
+        toSwap.innerHTML = "To Addon";
+        changeItemBackground(itemDropdown.value);
+    }
+    else {
+        itemDropdown.style.display = "none";
+        addonDropdown.style.display = "inline-block";
+        toSwap.innerHTML = "To Item";
+        changeAddonBackground(addonDropdown.value);
     }
 }
 

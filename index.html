@@ -23,6 +23,7 @@
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleMobile.css">
+    <link rel="stylesheet" href="styleAnimations.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="fabric.min.js"></script>
@@ -31,7 +32,7 @@
 
     <!-- For Christmas, remove the following -->
     <!-- Christmas Lights -->
-    <!-- <ul class="lightrope">
+    <ul style="display:none;" id="hangingLights" class="lightrope">
         <li></li>
         <li></li>
         <li></li>
@@ -74,7 +75,20 @@
         <li></li>
         <li></li>
         <li></li>
-      </ul> -->
+    </ul>
+
+    <div style="display:none;" id="flyingBalloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
 
     <div id="headerIcon">
         <button class="openbtn" onclick="openNav()">
@@ -86,6 +100,14 @@
         <a href="https://twitter.com/BHammer33" target="_blank"><img width="20px" height="20px" src="./images/twitter.png"> Twitter</a>
         <a href="https://www.reddit.com/user/BananaHammer33/" target="_blank"><img width="20px" height="20px" src="./images/reddit.png"> Reddit</a>
         <a href="https://www.paypal.com/donate/?business=UH7CRFN72Y384&no_recurring=0&item_name=I+try+to+spend+as+much+time+as+I+can+on+my+side+projects+and+this+helps+me+pursue+my+passions+and+put+more+towards+them&currency_code=CAD" target="_blank"><img width="20px" height="20px" src="./images/paypal.png"> Donate</a>
+
+        <div>
+            <select id="sidebarDropdownOptions" class="sidebarDropdown" onchange="setTheme(this.value)">
+                <option value="default">Default</option>
+                <option value="christmas">Christmas</option>
+                <option value="birthday">Birthday</option>
+            </select>
+        </div>
     </div>
 
     <div class="container">
@@ -94,30 +116,39 @@
             <div id="selectionButtonsDiv">
                 <!-- For Christmas, remove h1 with font size = 60px -->
                 <!-- <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1> -->
-                <h1 class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 1.8 (Click for updates)</p>
+                <h1 id="welcomeMessageTitleId" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
+                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 2.0 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span id="close" class="close">&times;</span>
                         <h2>New Changes</h2>
                         <p>
-                            - Oh no, the Holidays are over! The Entity has returned the website to its natural theme <br>
-                            - Added icons for Alan Wake chapter (includes Billy's rework icons as well) <br>
-                            - Fixed some padding and spacing issues on each page <br>
-                            - Fixed styling on titles of pages to be consistent <br>
+                            - Happy Birthday to dbdperkmaker.ca! This update officially marks the first of many years of updates for this website! The Entity has decided to celebrate!<br>
+                            - Added item creation option to the Addon tab (all rarities are available including limited items)<br>
+                            - Added item icons to icon creator and refined searching functionality<br>
+                            - Added undo/redo functionality to the icon creator (ctrl+z and ctrl+y)<br>
+                            - Added new chapter icons for The Unknown and Sable Ward<br>
+                            - Added option to change the website theme in the side panel<br>
                         </p>
                         <h2>Upcoming</h2>
                         <p>
-                            - Anniversary theme to celebrate the creation of this website! (And maybe an event!) <br>
-                            - Feature to toggle various themes (Including holiday themes and custom themes) <br>
-                            - More features to icon builder (upload your own image, more brush options, undo/redo, better UI, more background options)<br>
+                            - Minigame to improve your Dead By Daylight knowledge and to pass time while in queue<br>
+                            - More features to icon builder (upload your own image, more brush options, better UI, more background options)<br>
                             - Ability to save current progress (for example on page refresh, etc) <br>
                             - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
                             - Better overall mobile functionality<br>
                         </p>
                         <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 01-15-2024
+                            Updated on 03-03-2024
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.8 Changes</h2>
+                        <p>
+                            - Oh no, the Holidays are over! The Entity has returned the website to its natural theme <br>
+                            - Added icons for Alan Wake chapter (includes Billy's rework icons as well) <br>
+                            - Fixed some padding and spacing issues on each page <br>
+                            - Fixed styling on titles of pages to be consistent <br>
                         </p>
                         <p>______________________________</p>
                         <h2>Version 1.7 Changes</h2>
@@ -182,7 +213,7 @@
                 <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
                 <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
                 <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
-                <button class="selectionButtons" onclick="switchPage(5)">Addon</button>
+                <button class="selectionButtons" onclick="switchPage(5)">Addon/Item</button>
                 <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
                 <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
                 <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
@@ -191,8 +222,9 @@
         
             <div id="homeStuff">
                 <button class="selectionButtons" id="homeButton" onclick="switchPage(9)">Home</button>
-                <button class="selectionButtons" id="blackBackgroundCheck" onclick="blackBackgroundCheck()" value="no">Background</button>
+                <button class="selectionButtons" id="blackBackgroundCheckButton" onclick="blackBackgroundCheck()" value="no">Background</button>
                 <button class="selectionButtons" id="saveImageButton">Save</button>
+                <!-- <button onclick="logMovements()">Log</button> -->
             </div>
 
             <br>
@@ -391,6 +423,8 @@
                         <input type="checkbox" class="filterButton" value="iconAddon" checked>
                         <label class="filterButtonLabel">| Offerings</label>
                         <input type="checkbox" class="filterButton" value="iconFavors" checked>
+                        <label class="filterButtonLabel">| Items</label>
+                        <input type="checkbox" class="filterButton" value="iconItems" checked>
                         <label class="filterButtonLabel">| Perks</label>
                         <input type="checkbox" class="filterButton" value="iconPerks" checked>
                         <label class="filterButtonLabel">| Powers</label>
@@ -406,7 +440,9 @@
                 </div>
                 <div id="underIcons">
                     <br>
+                    <button class="undoRedo" onclick="undo()">Undo</button>
                     <button id="toggleDrawing">Turn On Drawing</button>
+                    <button class="undoRedo" onclick="redo()">Redo</button>
                     <br>
                     <div id="drawingButtons">
                         <!-- <label for="drawingModeOptions">Mode:</label>
@@ -527,6 +563,18 @@
                     <option value="4">Ultra Rare Addon</option>
                     <option value="5">Event Addon</option>
                 </select>
+
+                <select id="backgroundItemDropdown" class="backgroundDropdown" onchange="changeItemBackground(this.value)">
+                    <option value="0">Common Item</option>
+                    <option value="1">Uncommon Item</option>
+                    <option value="2">Rare Item</option>
+                    <option value="3">Very Rare Item</option>
+                    <option value="4">Ultra Rare Item</option>
+                    <option value="5">Event Item</option>
+                    <option value="6">Limited Item</option>
+                </select>
+
+                <button id="swapAddonItemButton" class="selectionButtons" onclick="swapAddonItemTab()">To Item</button>
             </div>
 
         </div>
@@ -535,4 +583,5 @@
     <script src="main.js"></script>
     <script src="saveImage.js"></script>
     <script src="canvas.js"></script>
+    <script src="changeTheme.js"></script>
 </html>
