@@ -116,7 +116,7 @@ function deleteIconFunction() {
 
 // Event listener for delete icon function
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Delete' || event.key === 'Backspace') {
+    if (document.getElementById("iconEditor").style.display == "block" && (event.key === 'Delete' || event.key === 'Backspace')) {
         deleteIconFunction();
     }
 });
