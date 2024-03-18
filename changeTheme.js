@@ -236,4 +236,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-setTheme('birthday');
+//setTheme('default');
