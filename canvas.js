@@ -411,6 +411,7 @@ function setupCanvasEvents() {
                 }
             };
             const customID = object.get('customID');
+
             console.log('Clicked Position:', initialPosition);
             console.log('Object ID:', customID);
         }
@@ -567,3 +568,43 @@ document.addEventListener('keydown', function(event) {
 });
 
 /* Undo and Redo */
+
+/* Upload Image */
+const imageLoader = document.getElementById('iconCanvasImageLoader');
+const ctx = canvas.getContext('2d');
+
+imageLoader.addEventListener('change', handleImageUpload);
+
+function handleImageUpload(event) {
+    tempCanvasBackgroundFix();
+
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const imgElement = new Image();
+            imgElement.src = e.target.result;
+            imgElement.onload = function() {
+                const uniqueID = 'image_' + imageCounter++;
+                
+                const img = new fabric.Image(imgElement, {
+                    scaleX: 400 / imgElement.width,
+                    scaleY: 400 / imgElement.height,
+                });
+
+                img.set('customID', uniqueID);
+
+                canvas.add(img);
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+}
+/* Upload Image */
+
+/* Unselect highlighted image */
+function deselectImage() {
+    canvas.discardActiveObject();
+    canvas.renderAll();
+}
+/* Unselect highlighted image */

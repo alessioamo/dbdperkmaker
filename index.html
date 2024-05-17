@@ -125,13 +125,16 @@
                         <h2>New Changes</h2>
                         <p>
                             - Added icons for new Dungeons and Dragons chapter<br>
+                            - You can now upload your own images to the icon creator<br>
+                            - Button to unselect selected image in icon creator<br>
                             - The Entity has returned the website back to its default theme (you can still select themes in the sidebar)<br>
                             - Squashed some bugs relating to the icon creator<br>
+                            - Improved styling of pages and made buttons more consistent<br>
                         </p>
                         <h2>Upcoming</h2>
                         <p>
                             - Minigame to improve your Dead By Daylight knowledge and to pass time while in queue<br>
-                            - More features to icon builder (upload your own image, more brush options, better UI, more background options)<br>
+                            - More features to icon builder (more brush options, better UI, more background options)<br>
                             - Ability to save current progress (for example on page refresh, etc) <br>
                             - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
                             - Better overall mobile functionality<br>
@@ -446,6 +449,9 @@
                     </div>
                 </div>
                 <div id="underIcons">
+                    <label class="iconCanvasUploadLabel" for="iconCanvasImageLoader">Upload Image</label>
+                    <input type="file" id="iconCanvasImageLoader" class="iconCanvasImageUploadClass" name="iconCanvasImageLoader" accept="image/*"/>
+                    <button class="deselectImage" onclick="deselectImage()">Unselect Image</button>
                     <br>
                     <button class="undoRedo" onclick="undo()">Undo</button>
                     <button id="toggleDrawing">Turn On Drawing</button>

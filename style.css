@@ -522,6 +522,10 @@ body {
     cursor: pointer;
 }
 
+#toggleDrawing:hover {
+    background-color: rgb(170, 155, 19);
+}
+
 .undoRedo {
     color: black;
     font-size: 15px;
@@ -531,6 +535,10 @@ body {
     border: 2px solid rgb(0, 0, 0);
     border-radius: 20%;
     cursor: pointer;
+}
+
+.undoRedo:hover {
+    background-color: rgb(170, 155, 19);
 }
 
 .drawingLabels {
@@ -613,3 +621,44 @@ input[type="file"] + label::after {
 }
 
 /* sidebar dropdown */
+
+/* Upload image to canvas button */
+.iconCanvasImageUploadClass {
+    display: none;
+}
+
+/* Style the custom upload button */
+.iconCanvasUploadLabel {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: rgb(170, 100, 19);
+    color: black;
+    font-size: 15px;
+    border: none;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.iconCanvasUploadLabel:hover {
+    background-color: rgb(170, 155, 19);
+}
+/* Upload image to canvas button */
+
+/* Deselect image */
+.deselectImage {
+    color: black;
+    font-size: 15px;
+    background-color: rgb(170, 100, 19);
+    width: 160px;
+    height: 40px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.deselectImage:hover {
+    background-color: rgb(170, 155, 19);
+}
+/* Deselect image */
