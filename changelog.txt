@@ -1,3 +1,15 @@
+Version 2.2
+
+VERSION 2.1
+- Added icons for new Dungeons and Dragons chapter
+- You can now upload your own images to the icon creator
+- Button to unselect selected image in icon creator
+- The Entity has returned the website back to its default theme (you can still select themes in the sidebar)
+- Squashed some bugs relating to the icon creator
+- Improved styling of pages and made buttons more consistent
+
+Updated on 05-17-2024
+
 VERSION 2.0
 - Happy Birthday to dbdperkmaker.ca! This update officially marks the first of many years of updates for this website! The Entity has decided to celebrate!
 - Added item creation option to the Addon tab (all rarities are available including limited items)
