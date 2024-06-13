@@ -13,6 +13,15 @@ const themes = {
             fontSize: '32px',
             letterSpacing: 'inherit',
         },
+        welcomeMessageVersion: {
+            color: 'red'
+        },
+        iconPopupClick: {
+            color: 'red'
+        },
+        faqTitle: {
+            color: 'red'
+        },
         homeButton: {
             textAlign: 'center',
             color: 'black',
@@ -52,6 +61,15 @@ const themes = {
             fontFamily: 'ChristmasFont2',
             fontSize: '60px',
             letterSpacing: '4px'
+        },
+        welcomeMessageVersion: {
+            color: 'red'
+        },
+        iconPopupClick: {
+            color: 'red'
+        },
+        faqTitle: {
+            color: 'red'
         },
         homeButton: {
             textAlign: 'center',
@@ -93,6 +111,15 @@ const themes = {
             fontSize: '32px',
             letterSpacing: 'inherit',
         },
+        welcomeMessageVersion: {
+            color: 'red'
+        },
+        iconPopupClick: {
+            color: 'red'
+        },
+        faqTitle: {
+            color: 'red'
+        },
         homeButton: {
             textAlign: 'center',
             color: 'black',
@@ -124,6 +151,55 @@ const themes = {
         specialEffects: {
             id: 'flyingBalloons'
         }
+    },
+    anniversary8: {
+        title: {
+            color: 'rgb(134, 151, 229)',
+            textShadow: '0 0 20px rgba(134, 151, 229, 0.8), 0 0 30px rgba(134, 151, 229, 0.6), 0 0 40px rgba(134, 151, 229, 0.4), 0 0 50px rgba(134, 151, 229, 0.2);',
+            fontFamily: 'inherit',
+            fontSize: '32px',
+            letterSpacing: 'inherit',
+        },
+        welcomeMessageVersion: {
+            color: 'rgb(134, 151, 229)'
+        },
+        iconPopupClick: {
+            color: 'rgb(134, 151, 229)'
+        },
+        faqTitle: {
+            color: 'rgb(134, 151, 229)'
+        },
+        homeButton: {
+            textAlign: 'center',
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(186, 154, 92)',
+            width: '100px',
+            height: '40px',
+            borderRadius: '20%',
+            hoverColor: 'rgb(186, 132, 62)'
+        },
+        blackBackgroundCheckButton: {
+            checkedColor: 'rgb(186, 145, 89)',
+            uncheckedColor: 'rgb(186, 154, 92)'
+        },
+        body: {
+            backgroundImage: "url('./images/anniversaryBackground.png')"
+        },
+        selectionButtons: {
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(186, 154, 92)',
+            width: '100px',
+            height: '40px',
+            border: '2px solid rgb(0, 0, 0)',
+            borderRadius: '20%',
+            cursor: 'pointer',
+            hoverColor: 'rgb(186, 132, 62)'
+        },
+        specialEffects: {
+            id: 'flyingBalloons'
+        }
     }
 };
 
@@ -151,6 +227,9 @@ function setTheme(theme) {
 // Apply theme properties
 function applyTheme(theme) {
     const welcomeMessage = document.getElementById('welcomeMessageTitleId');
+    const welcomeMessageVersion = document.getElementById('welcomeMessageID');
+    const iconPopupClick = document.getElementById('iconPopupClick');
+    const faqTitle = document.getElementById('faqTitle');
     const homeButton = document.getElementById('homeButton');
     const blackBackgroundCheckButton = document.getElementById('blackBackgroundCheckButton');
     const selectionButtons = document.querySelectorAll('.selectionButtons');
@@ -163,6 +242,15 @@ function applyTheme(theme) {
     welcomeMessage.style.fontFamily = theme.title.fontFamily;
     welcomeMessage.style.fontSize = theme.title.fontSize;
     welcomeMessage.style.letterSpacing = theme.title.letterSpacing;
+
+    // Apply version styles
+    welcomeMessageVersion.style.color = theme.welcomeMessageVersion.color;
+
+    // Apply icon popup click
+    iconPopupClick.style.color = theme.iconPopupClick.color;
+
+    // Apply faq title
+    faqTitle.style.color = theme.faqTitle.color;
 
     // Apply homeButton styles
     homeButton.style.textAlign = theme.homeButton.textAlign;
@@ -236,4 +324,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-//setTheme('default');
+setTheme('anniversary8');
