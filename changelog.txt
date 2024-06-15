@@ -1,4 +1,13 @@
 Version 2.2
+- Happy 8th Anniversary to Dead By Daylight! The Entity, and Tryks, are ready for celebrations and have re-themed the website!
+- Added new icons for the 8th anniversary
+- Added new background options in the icon creator
+- Updated tooltips for icon editor
+- Removed duplicates and squashed bugs relating to the icon editor
+- Updated the support me option, no donations are necessary but your support helps keep this project alive and allows it to evolve :)
+- Updated the FAQ
+
+Updated on 06-16-2024
 
 VERSION 2.1
 - Added icons for new Dungeons and Dragons chapter

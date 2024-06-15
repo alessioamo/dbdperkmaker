@@ -307,6 +307,8 @@ function changeCanvasBackground(item) {
         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/iridescentAddon.png')";
     } else if (item == 9) {
         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/eventAddon.png')";
+    } else if (item == 10) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/limitedItem.png')";
     } else {
         console.log("Something went wrong.");
     }
