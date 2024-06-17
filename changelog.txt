@@ -7,7 +7,7 @@ Version 2.2
 - Updated the support me option, no donations are necessary but your support helps keep this project alive and allows it to evolve :)
 - Updated the FAQ
 
-Updated on 06-16-2024
+Updated on 06-17-2024
 
 VERSION 2.1
 - Added icons for new Dungeons and Dragons chapter
