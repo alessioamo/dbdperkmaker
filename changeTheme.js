@@ -324,4 +324,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-setTheme('anniversary8');
+// setTheme('anniversary8');

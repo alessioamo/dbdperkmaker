@@ -422,3 +422,21 @@ window.onclick = function(event) {
         iconPopupContainer.style.display = "none";
     }
 }
+
+/* Left align descriptions on skip line */
+
+document.querySelectorAll('.perkDescription, .loreDescription').forEach(function(div) {
+    div.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            document.execCommand('insertLineBreak');
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) {
+                const range = selection.getRangeAt(0);
+                range.collapse(false);
+            }
+        }
+    });
+});
+
+/* Left align descriptions on skip line */
