@@ -239,15 +239,17 @@
                 <button class="selectionButtons" onclick="switchPage(5)">Addon/Item</button>
                 <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
                 <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
+                <button class="selectionButtons" onclick="switchPage(9)">Profile</button>
                 <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
                 <button class="selectionButtons" onclick="switchPage(8)">FAQ</button>
             </div>
         
             <div id="homeStuff">
-                <button class="selectionButtons" id="homeButton" onclick="switchPage(9)">Home</button>
+                <button class="selectionButtons" id="homeButton" onclick="switchPage(0)">Home</button>
                 <button class="selectionButtons" id="blackBackgroundCheckButton" onclick="blackBackgroundCheck()" value="no">Background</button>
                 <button class="selectionButtons" id="saveImageButton">Save</button>
-                <button class="selectionButtons" id="">Profile</button>
+                <button class="selectionButtons" id="toProfile" onclick="confirmConceptName()">To Profile</button>
+                <button onclick="loadConcept()">Test</button>
                 <!-- <button onclick="logMovements()">Log</button> -->
             </div>
 
@@ -262,8 +264,8 @@
                         <p><img onclick="removeUploadedImage('output')" class="over" id="output" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle onePerkTitle" contenteditable="true"></div>
+                    <div class="perkDescription onePerkDescription" contenteditable="true"></div>
                 </div>
 
                 <br><br>
@@ -278,8 +280,8 @@
                         <p><img onclick="removeUploadedImage('output1')" class="over" id="output1" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle threePerksTitle" contenteditable="true"></div>
+                    <div class="perkDescription threePerksDescription" contenteditable="true"></div>
                 </div>
 
                 <div style="display:inline-block">
@@ -288,8 +290,8 @@
                         <p><img onclick="removeUploadedImage('output2')" class="over" id="output2" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle threePerksTitle" contenteditable="true"></div>
+                    <div class="perkDescription threePerksDescription" contenteditable="true"></div>
                 </div>
                 
                 <div style="display:inline-block">
@@ -298,8 +300,8 @@
                         <p><img onclick="removeUploadedImage('output3')" class="over" id="output3" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle threePerksTitle" contenteditable="true"></div>
+                    <div class="perkDescription threePerksDescription" contenteditable="true"></div>
                 </div>
                 
                 <br><br>
@@ -314,8 +316,8 @@
                         <p><img onclick="removeUploadedImage('output4')" class="over" id="output4" width="120"/></p>
                         <img class="under" width="120px" height="120px" src="./images/killerPower.png">
                     </div>
-                    <div class="killerTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="killerTitle killerPowerTitle" contenteditable="true"></div>
+                    <div class="perkDescription killerPowerDescription" contenteditable="true"></div>
                 </div>
 
                 <br><br>
@@ -330,8 +332,8 @@
                         <p><img onclick="removeUploadedImage('output5')" class="over" id="output5" width="120"/></p>
                         <img class="under" width="120px" height="120px" src="./images/killerPower.png">
                     </div>
-                    <div class="killerTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="killerTitle fullKillerTitle" contenteditable="true"></div>
+                    <div class="perkDescription fullKillerDescription" contenteditable="true"></div>
                 </div>
                 
                 <div style="display:inline-block">
@@ -340,8 +342,8 @@
                         <p><img onclick="removeUploadedImage('output6')" class="over" id="output6" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle fullKillerTitle" contenteditable="true"></div>
+                    <div class="perkDescription fullKillerDescription" contenteditable="true"></div>
                 </div>
 
                 <div style="display:inline-block">
@@ -350,8 +352,8 @@
                         <p><img onclick="removeUploadedImage('output7')" class="over" id="output7" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle fullKillerTitle" contenteditable="true"></div>
+                    <div class="perkDescription fullKillerDescription" contenteditable="true"></div>
                 </div>
                 
                 <div style="display:inline-block">
@@ -360,8 +362,8 @@
                         <p><img onclick="removeUploadedImage('output8')" class="over" id="output8" width="120"/></p>
                         <img class="under perkIcons" width="120px" height="120px" src="./images/teachablePerk.png">
                     </div>
-                    <div class="perkTitle" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div class="perkTitle fullKillerTitle" contenteditable="true"></div>
+                    <div class="perkDescription fullKillerDescription" contenteditable="true"></div>
                 </div>
                 
                 <br><br>
@@ -376,8 +378,8 @@
                         <p><img onclick="removeUploadedImage('output9')" class="over" id="output9" width="120"/></p>
                         <img id="createAddonIcon" class="under" width="120px" height="120px" src="./images/blankTemplates/Addons/commonAddon.png">
                     </div>
-                    <div id="createAddonTitle" class="createAddon" contenteditable="true"></div>
-                    <div class="perkDescription" contenteditable="true"></div>
+                    <div id="createAddonTitle" class="createAddon createAddonTitle" contenteditable="true"></div>
+                    <div class="perkDescription createAddonDescription" contenteditable="true"></div>
                 </div>
                 
                 <br><br>
@@ -516,6 +518,44 @@
                 </div>
 
                 <br><br>
+            </div>
+
+            <div id="profile">
+                <ul class="profileList">
+                    <!-- <li class="profileItem" onclick="loadConcept()">Item 1
+                        <div class="buttonGroupProfile">
+                            <span>Created</span>
+                            <button class="share-button" onclick="confirmShare(event)">
+                                <img src="images/shareIcon.png" alt="Share">
+                            </button>
+                            <button class="trash-button" onclick="confirmDelete(event)">
+                                <img src="images/trashIcon.png" alt="Trash">
+                            </button>
+                        </div>
+                    </li>
+                    <li class="profileItem" onclick="loadConcept()">Item 2
+                        <div class="buttonGroupProfile">
+                            <span>Created</span>
+                            <button class="share-button" onclick="confirmShare(event)">
+                                <img src="images/shareIcon.png" alt="Share">
+                            </button>
+                            <button class="trash-button" onclick="confirmDelete(event)">
+                                <img src="images/trashIcon.png" alt="Trash">
+                            </button>
+                        </div>
+                    </li>
+                    <li class="profileItem" onclick="loadConcept()">Item 3
+                        <div class="buttonGroupProfile">
+                            <span>Created</span>
+                            <button class="share-button" onclick="confirmShare(event)">
+                                <img src="images/shareIcon.png" alt="Share">
+                            </button>
+                            <button class="trash-button" onclick="confirmDelete(event)">
+                                <img src="images/trashIcon.png" alt="Trash">
+                            </button>
+                        </div>
+                    </li> -->
+                </ul>
             </div>
 
             <div id="faq">

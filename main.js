@@ -8,11 +8,31 @@
 // imageHead.style.backgroundRepeat = "no-repeat";
 // imageHead.style.backgroundAttachment = "fixed";
 // imageHead.style.backgroundSize = "cover";
+let currentPage;
+let listOfPages = ["Home", "One Perk", "Three Perks", "Killer Power", "Full Killer", "Addon/Item", "Lore", "iconEditor" , "faq", "profile"];
 
+function getCurrentPage() {
+    return currentPage;
+}
 
 function switchPage(i) {
     document.getElementById("selectionButtonsDiv").style.display = "none";
     switch (i) {
+        case 0:
+            document.getElementById("selectionButtonsDiv").style.display = "block";
+            document.getElementById("onePerk").style.display = "none";
+            document.getElementById("threePerks").style.display = "none";
+            document.getElementById("killerPower").style.display = "none";
+            document.getElementById("fullKiller").style.display = "none";
+            document.getElementById("createAddon").style.display = "none";
+            document.getElementById("lore").style.display = "none";
+            document.getElementById("iconEditor").style.display = "none";
+            document.getElementById("profile").style.display = "none";
+            document.getElementById("faq").style.display = "none";
+            document.getElementById("homeStuff").style.display = "none";
+            document.getElementById("editTextButtonsDiv").style.display = "none";
+            document.getElementById("body").style.paddingTop = "7%";
+            break;
         case 1:
             document.getElementById("onePerk").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
@@ -76,24 +96,46 @@ function switchPage(i) {
             document.getElementById("body").style.paddingTop = "3%";
             break;
         case 9:
-            document.getElementById("selectionButtonsDiv").style.display = "block";
-            document.getElementById("onePerk").style.display = "none";
-            document.getElementById("threePerks").style.display = "none";
-            document.getElementById("killerPower").style.display = "none";
-            document.getElementById("fullKiller").style.display = "none";
-            document.getElementById("createAddon").style.display = "none";
-            document.getElementById("lore").style.display = "none";
-            document.getElementById("iconEditor").style.display = "none";
-            document.getElementById("faq").style.display = "none";
-            document.getElementById("homeStuff").style.display = "none";
-            document.getElementById("editTextButtonsDiv").style.display = "none";
-            document.getElementById("body").style.paddingTop = "7%";
+            document.getElementById("profile").style.display = "block";
+            document.getElementById("body").style.paddingTop = "3%";
     }
 
-    if (i != 9) {
+    currentPage = listOfPages[i];
+
+    if (i != 0) {
         document.getElementById("homeStuff").style.display = "block";
     }
 }
+
+// let savedConcepts = [
+//     // {
+//     //     name: "",
+//     //     type: "",
+//     //     dateCreated: "",
+//     //     data: ""
+//     // }
+// ];
+
+let savedConcepts = [
+    {
+        name: "test",
+        type: "One Perk",
+        dateCreated: "2024-07-03",
+        data: "3ddd"
+    },
+    {
+        name: "test2",
+        type: "Three Perks",
+        dateCreated: "2",
+        data: "3"
+    },
+    {
+        name: "test3",
+        type: "One Perk",
+        dateCreated: "2",
+        data: "3"
+    }
+];
 
 function checkCharacterCount() {
     numberOfCharacters = 0;
@@ -440,3 +482,160 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(function
 });
 
 /* Left align descriptions on skip line */
+
+/* Profile Stuff */
+
+function confirmConceptName() {
+    let title = prompt("Type the name of your concept.");
+    if (title != null) {
+        addConceptToProfile(title);
+    }
+    else {
+        alert("Cancelled concept save.");
+    }
+}
+
+function addConceptToProfile(savedName) {
+    // TODO - check if name exists, replace if it does
+    let page = getCurrentPage();
+
+    let today = new Date();
+    let todayDate = today.toISOString().slice(0, 10);
+
+    let dataStored = [];
+    let editableTitleDivs;
+    let editableDescriptionDivs;
+
+    if (page == "One Perk") {
+        editableTitleDivs = document.querySelectorAll('.onePerkTitle');
+        editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
+        
+    } else if (page == "Three Perks") {
+        editableTitleDivs = document.querySelectorAll('.threePerksTitle');
+        editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
+
+    } else if (page == "Killer Power") {
+        editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
+        editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
+
+    } else if (page == "Full Killer") {
+        editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
+        editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
+
+    } else if (page = "Addon/Item") {
+        editableTitleDivs = document.querySelectorAll('.createAddonTitle');
+        editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
+
+    } else if (page == "Lore") {
+        editableTitleDivs = document.querySelectorAll('.loreTitle');
+        editableDescriptionDivs = document.querySelectorAll('.loreDescription');
+    }
+
+    editableTitleDivs.forEach((titleDiv, index) => {
+        const titleText = titleDiv.innerHTML.trim().toUpperCase();
+        const descriptionText = editableDescriptionDivs[index].innerHTML.trim();
+        console.log("aa " + descriptionText);
+        // console.log(`Title ${index + 1}: ${titleText}`);
+        // console.log(`Description ${index + 1}: ${descriptionText}`);
+
+        dataStored.push({ titleText, descriptionText });
+    });
+
+    // console.log("data: " + JSON.stringify(dataStored));
+    
+    let newConcept = {
+        name: savedName,
+        type: page,
+        dateCreated: todayDate,
+        data: dataStored
+    };
+
+    savedConcepts.push(newConcept);
+
+    loadProfile();
+
+    // console.log("Test: " + JSON.stringify(savedConcepts[0].data[0].titleText));
+}
+
+function loadConcept(index) {
+    let concept = savedConcepts[index];
+
+    let pageIndex = listOfPages.indexOf(concept.type);
+    switchPage(0);
+    switchPage(pageIndex);
+
+    let editableTitleDivs;
+    let editableDescriptionDivs;
+
+    if (concept.type == "One Perk") {
+        editableTitleDivs = document.querySelectorAll('.onePerkTitle');
+        editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
+        
+    } else if (concept.type == "Three Perks") {
+        editableTitleDivs = document.querySelectorAll('.threePerksTitle');
+        editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
+
+    } else if (concept.type == "Killer Power") {
+        editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
+        editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
+
+    } else if (concept.type == "Full Killer") {
+        editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
+        editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
+
+    } else if (concept.type = "Addon/Item") {
+        editableTitleDivs = document.querySelectorAll('.createAddonTitle');
+        editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
+
+    } else if (concept.type == "Lore") {
+        editableTitleDivs = document.querySelectorAll('.loreTitle');
+        editableDescriptionDivs = document.querySelectorAll('.loreDescription');
+    }
+
+    editableTitleDivs.forEach((titleDiv, index) => {
+        titleDiv.innerHTML = concept.data[index].titleText;
+        editableDescriptionDivs[index].innerHTML = concept.data[index].descriptionText;
+    });
+}
+
+function confirmShare(event) {
+    event.stopPropagation();
+    // TODO - add copy url/data code
+    alert("Code has been copied");
+}
+
+function confirmDelete(event) {
+    event.stopPropagation();
+    if (confirm("Are you sure you want to delete this?")) {
+        event.target.closest('.profileItem').remove();
+    }
+}
+
+function loadProfile() {
+    const profileList = document.querySelector('.profileList');
+
+    profileList.innerHTML = "";
+
+    savedConcepts.forEach((concept, index) => {
+        const listItem = document.createElement('li');
+        listItem.className = 'profileItem';
+        listItem.setAttribute('onclick', `loadConcept(${index})`);
+        listItem.innerHTML = `
+            ${concept.name + " - " + concept.type}
+            <div class="buttonGroupProfile">
+                <span>Created on ${concept.dateCreated}</span>
+                <button class="share-button" onclick="confirmShare(event)">
+                    <img src="images/shareIcon.png" alt="Share">
+                </button>
+                <button class="trash-button" onclick="confirmDelete(event)">
+                    <img src="images/trashIcon.png" alt="Trash">
+                </button>
+            </div>
+        `;
+        profileList.appendChild(listItem);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', loadProfile);
+
+/* Profile Stuff */

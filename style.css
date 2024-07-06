@@ -662,3 +662,53 @@ input[type="file"] + label::after {
     background-color: rgb(170, 155, 19);
 }
 /* Deselect image */
+
+/* Profile Stuff */
+
+#profile {
+    display: none;
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profileList {
+    list-style-type: none; /* Removes default bullets */
+    padding: 0;
+}
+.profileItem {
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; /* Makes the list item look clickable */
+}
+.profileItem:hover {
+    background-color: #e0e0e0; /* Darker background on hover */
+}
+.buttonGroupProfile {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.buttonGroupProfile button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+.buttonGroupProfile button img {
+    width: 20px;
+    height: 20px;
+}
+.buttonGroupProfile button:hover {
+    transform: scale(1.2); /* Scale up to 120% on hover */
+}
+
+/* Profile Stuff */
