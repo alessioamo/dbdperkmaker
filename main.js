@@ -117,25 +117,52 @@ function switchPage(i) {
 // ];
 
 let savedConcepts = [
-    {
-        name: "test",
-        type: "One Perk",
-        dateCreated: "2024-07-03",
-        data: "3ddd"
-    },
-    {
-        name: "test2",
-        type: "Three Perks",
-        dateCreated: "2",
-        data: "3"
-    },
-    {
-        name: "test3",
-        type: "One Perk",
-        dateCreated: "2",
-        data: "3"
-    }
+    // {
+    //     name: "test",
+    //     type: "One Perk",
+    //     dateCreated: "2024-07-03",
+    //     data: "3ddd"
+    // },
+    // {
+    //     name: "test2",
+    //     type: "Three Perks",
+    //     dateCreated: "2",
+    //     data: "3"
+    // },
+    // {
+    //     name: "test3",
+    //     type: "One Perk",
+    //     dateCreated: "2",
+    //     data: "3"
+    // }
 ];
+
+/* Save and Load */
+
+// function handleSaveShortcut(event) {
+//     if ((event.ctrlKey || event.metaKey) && event.key === 's') {
+//         event.preventDefault();
+//         saveProfileConcepts();
+//         console.log('Saved to local storage');
+//     }
+// }
+
+// document.addEventListener('keydown', handleSaveShortcut);
+
+function saveProfileConcepts() {
+    localStorage.setItem('savedConcepts', JSON.stringify(savedConcepts));
+}
+
+function loadProfileConcepts() {
+    var concepts = JSON.parse(localStorage.getItem('savedConcepts'));
+    return concepts;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    savedConcepts = loadProfileConcepts();
+});
+
+/* Save and Load */
 
 function checkCharacterCount() {
     numberOfCharacters = 0;
@@ -486,9 +513,29 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(function
 /* Profile Stuff */
 
 function confirmConceptName() {
+    let doesTitleExist = false;
+    let currentConceptPage = getCurrentPage();
     let title = prompt("Type the name of your concept.");
     if (title != null) {
-        addConceptToProfile(title);
+        for (let i = 0; i < savedConcepts.length; i++) {
+            if (savedConcepts[i].name == title && savedConcepts[i].type == currentConceptPage) {
+                doesTitleExist = true;
+
+                let text = "A concept with the same name already exists, proceeding will overwrite the existing concept.";
+                if (confirm(text)) {
+                    savedConcepts.splice(i, 1);
+                    alert("You overwrited the concept \'" + title + "\'.");
+                    addConceptToProfile(title);
+                }
+                else {
+                    alert("You cancelled the saving of the concept.")
+                }
+                return;
+            }
+        }
+        if (!doesTitleExist) {
+            addConceptToProfile(title);
+        }
     }
     else {
         alert("Cancelled concept save.");
@@ -496,7 +543,6 @@ function confirmConceptName() {
 }
 
 function addConceptToProfile(savedName) {
-    // TODO - check if name exists, replace if it does
     let page = getCurrentPage();
 
     let today = new Date();
@@ -522,7 +568,7 @@ function addConceptToProfile(savedName) {
         editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
         editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
 
-    } else if (page = "Addon/Item") {
+    } else if (page == "Addon/Item") {
         editableTitleDivs = document.querySelectorAll('.createAddonTitle');
         editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
 
@@ -534,7 +580,6 @@ function addConceptToProfile(savedName) {
     editableTitleDivs.forEach((titleDiv, index) => {
         const titleText = titleDiv.innerHTML.trim().toUpperCase();
         const descriptionText = editableDescriptionDivs[index].innerHTML.trim();
-        console.log("aa " + descriptionText);
         // console.log(`Title ${index + 1}: ${titleText}`);
         // console.log(`Description ${index + 1}: ${descriptionText}`);
 
@@ -554,48 +599,56 @@ function addConceptToProfile(savedName) {
 
     loadProfile();
 
+    saveProfileConcepts();
+
     // console.log("Test: " + JSON.stringify(savedConcepts[0].data[0].titleText));
 }
 
 function loadConcept(index) {
-    let concept = savedConcepts[index];
+    let text = "Loading this concept will remove any concepts currently being worked on on that page. Do you wish to proceed?";
+    if (confirm(text)) {
+        let concept = savedConcepts[index];
 
-    let pageIndex = listOfPages.indexOf(concept.type);
-    switchPage(0);
-    switchPage(pageIndex);
+        let pageIndex = listOfPages.indexOf(concept.type);
+        switchPage(0);
+        switchPage(pageIndex);
 
-    let editableTitleDivs;
-    let editableDescriptionDivs;
+        let editableTitleDivs;
+        let editableDescriptionDivs;
 
-    if (concept.type == "One Perk") {
-        editableTitleDivs = document.querySelectorAll('.onePerkTitle');
-        editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
-        
-    } else if (concept.type == "Three Perks") {
-        editableTitleDivs = document.querySelectorAll('.threePerksTitle');
-        editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
+        if (concept.type == "One Perk") {
+            editableTitleDivs = document.querySelectorAll('.onePerkTitle');
+            editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
+            
+        } else if (concept.type == "Three Perks") {
+            editableTitleDivs = document.querySelectorAll('.threePerksTitle');
+            editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
 
-    } else if (concept.type == "Killer Power") {
-        editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
-        editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
+        } else if (concept.type == "Killer Power") {
+            editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
+            editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
 
-    } else if (concept.type == "Full Killer") {
-        editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
-        editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
+        } else if (concept.type == "Full Killer") {
+            editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
+            editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
 
-    } else if (concept.type = "Addon/Item") {
-        editableTitleDivs = document.querySelectorAll('.createAddonTitle');
-        editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
+        } else if (concept.type = "Addon/Item") {
+            editableTitleDivs = document.querySelectorAll('.createAddonTitle');
+            editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
 
-    } else if (concept.type == "Lore") {
-        editableTitleDivs = document.querySelectorAll('.loreTitle');
-        editableDescriptionDivs = document.querySelectorAll('.loreDescription');
+        } else if (concept.type == "Lore") {
+            editableTitleDivs = document.querySelectorAll('.loreTitle');
+            editableDescriptionDivs = document.querySelectorAll('.loreDescription');
+        }
+
+        editableTitleDivs.forEach((titleDiv, index) => {
+            titleDiv.innerHTML = concept.data[index].titleText;
+            editableDescriptionDivs[index].innerHTML = concept.data[index].descriptionText;
+        });
     }
-
-    editableTitleDivs.forEach((titleDiv, index) => {
-        titleDiv.innerHTML = concept.data[index].titleText;
-        editableDescriptionDivs[index].innerHTML = concept.data[index].descriptionText;
-    });
+    else {
+        alert("You cancelled.")
+    }
 }
 
 function confirmShare(event) {
@@ -604,11 +657,15 @@ function confirmShare(event) {
     alert("Code has been copied");
 }
 
-function confirmDelete(event) {
+function confirmDelete(event, index) {
     event.stopPropagation();
     if (confirm("Are you sure you want to delete this?")) {
         event.target.closest('.profileItem').remove();
+        savedConcepts.splice(index, 1);
     }
+
+    saveProfileConcepts();
+    loadProfile();
 }
 
 function loadProfile() {
@@ -616,24 +673,38 @@ function loadProfile() {
 
     profileList.innerHTML = "";
 
-    savedConcepts.forEach((concept, index) => {
+    // Reverse array to display most recent first
+    const reversedConcepts = savedConcepts.slice().reverse();
+
+    if (reversedConcepts.length > 0) {
+        reversedConcepts.forEach((concept, index) => {
+            const originalIndex = savedConcepts.length - index - 1;
+            const listItem = document.createElement('li');
+            listItem.className = 'profileItem';
+            listItem.setAttribute('onclick', `loadConcept(${originalIndex})`);
+            listItem.innerHTML = `
+                ${concept.name + " - " + concept.type}
+                <div class="buttonGroupProfile">
+                    <span>Created on ${concept.dateCreated}</span>
+                    <button class="share-button" onclick="confirmShare(event)">
+                        <img src="images/shareIcon.png" alt="Share">
+                    </button>
+                    <button class="trash-button" onclick="confirmDelete(event, ${originalIndex})">
+                        <img src="images/trashIcon.png" alt="Trash">
+                    </button>
+                </div>
+            `;
+            profileList.appendChild(listItem);
+        });
+    }
+    else {
         const listItem = document.createElement('li');
         listItem.className = 'profileItem';
-        listItem.setAttribute('onclick', `loadConcept(${index})`);
         listItem.innerHTML = `
-            ${concept.name + " - " + concept.type}
-            <div class="buttonGroupProfile">
-                <span>Created on ${concept.dateCreated}</span>
-                <button class="share-button" onclick="confirmShare(event)">
-                    <img src="images/shareIcon.png" alt="Share">
-                </button>
-                <button class="trash-button" onclick="confirmDelete(event)">
-                    <img src="images/trashIcon.png" alt="Trash">
-                </button>
-            </div>
+            No saved concepts.
         `;
         profileList.appendChild(listItem);
-    });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', loadProfile);
