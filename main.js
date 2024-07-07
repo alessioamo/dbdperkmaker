@@ -11,6 +11,9 @@
 let currentPage;
 let listOfPages = ["Home", "One Perk", "Three Perks", "Killer Power", "Full Killer", "Addon/Item", "Lore", "iconEditor" , "faq", "profile"];
 
+const numberOfImageUploads = 10;
+let uploadedImages = new Array(numberOfImageUploads);
+
 function getCurrentPage() {
     return currentPage;
 }
@@ -250,60 +253,90 @@ var loadPerkIcon = function(event) {
     var image = document.getElementById('output');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 0);
 };
 
 var loadPerk1Icon = function(event) {
     var image = document.getElementById('output1');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 1);
 };
 
 var loadPerk2Icon = function(event) {
     var image = document.getElementById('output2');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 2);
 };
 
 var loadPerk3Icon = function(event) {
     var image = document.getElementById('output3');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 3);
 };
 
 var killerPowerIcon = function(event) {
     var image = document.getElementById('output4');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 4);
 };
 
 var fullKillerPowerIcon = function(event) {
     var image = document.getElementById('output5');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 5);
 };
 
 var fullKillerPerk1Icon = function(event) {
     var image = document.getElementById('output6');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 6);
 };
 
 var fullKillerPerk2Icon = function(event) {
     var image = document.getElementById('output7');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 7);
 };
 
 var fullKillerPerk3Icon = function(event) {
     var image = document.getElementById('output8');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 8);
 };
 
 var createAddonIcon = function(event) {
     var image = document.getElementById('output9');
     image.src=URL.createObjectURL(event.target.files[0]);
     image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 9);
+}
+
+function pushImageToArray(file, index) {
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            uploadedImages[index] = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 }
 
 //for changing perk background
@@ -551,26 +584,37 @@ function addConceptToProfile(savedName) {
     let dataStored = [];
     let editableTitleDivs;
     let editableDescriptionDivs;
+    let outputId = [];
 
     if (page == "One Perk") {
         editableTitleDivs = document.querySelectorAll('.onePerkTitle');
         editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
+        outputId.push(document.getElementById("output"));
         
     } else if (page == "Three Perks") {
         editableTitleDivs = document.querySelectorAll('.threePerksTitle');
         editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
+        outputId.push(document.getElementById("output1"));
+        outputId.push(document.getElementById("output2"));
+        outputId.push(document.getElementById("output3"));
 
     } else if (page == "Killer Power") {
         editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
         editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
+        outputId.push(document.getElementById("output4"));
 
     } else if (page == "Full Killer") {
         editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
         editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
+        outputId.push(document.getElementById("output5"));
+        outputId.push(document.getElementById("output6"));
+        outputId.push(document.getElementById("output7"));
+        outputId.push(document.getElementById("output8"));
 
     } else if (page == "Addon/Item") {
         editableTitleDivs = document.querySelectorAll('.createAddonTitle');
         editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
+        outputId.push(document.getElementById("output9"));
 
     } else if (page == "Lore") {
         editableTitleDivs = document.querySelectorAll('.loreTitle');
@@ -580,10 +624,26 @@ function addConceptToProfile(savedName) {
     editableTitleDivs.forEach((titleDiv, index) => {
         const titleText = titleDiv.innerHTML.trim().toUpperCase();
         const descriptionText = editableDescriptionDivs[index].innerHTML.trim();
+        let imageSrc;
+
+        if (page != "Lore") {
+            let elementId = outputId[index].id;
+            let lastChar = elementId.charAt(elementId.length - 1);
+            console.log("test: " + elementId + " " + lastChar);
+            if (lastChar == "t") {
+                lastChar = "0";
+            }
+            let newIndex = parseInt(lastChar);
+            imageSrc = uploadedImages[newIndex];
+            console.log(" dd " + imageSrc);
+        }
+        else {
+            imageSrc = "";
+        }
         // console.log(`Title ${index + 1}: ${titleText}`);
         // console.log(`Description ${index + 1}: ${descriptionText}`);
 
-        dataStored.push({ titleText, descriptionText });
+        dataStored.push({ titleText, descriptionText, imageSrc });
     });
 
     // console.log("data: " + JSON.stringify(dataStored));
@@ -615,26 +675,37 @@ function loadConcept(index) {
 
         let editableTitleDivs;
         let editableDescriptionDivs;
+        let outputId = [];
 
         if (concept.type == "One Perk") {
             editableTitleDivs = document.querySelectorAll('.onePerkTitle');
             editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
+            outputId.push(document.getElementById("output"));
             
         } else if (concept.type == "Three Perks") {
             editableTitleDivs = document.querySelectorAll('.threePerksTitle');
             editableDescriptionDivs = document.querySelectorAll('.threePerksDescription');
+            outputId.push(document.getElementById("output1"));
+            outputId.push(document.getElementById("output2"));
+            outputId.push(document.getElementById("output3"));
 
         } else if (concept.type == "Killer Power") {
             editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
             editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
+            outputId.push(document.getElementById("output4"));
 
         } else if (concept.type == "Full Killer") {
             editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
             editableDescriptionDivs = document.querySelectorAll('.fullKillerDescription');
+            outputId.push(document.getElementById("output5"));
+            outputId.push(document.getElementById("output6"));
+            outputId.push(document.getElementById("output7"));
+            outputId.push(document.getElementById("output8"));
 
         } else if (concept.type = "Addon/Item") {
             editableTitleDivs = document.querySelectorAll('.createAddonTitle');
             editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
+            outputId.push(document.getElementById("output9"));
 
         } else if (concept.type == "Lore") {
             editableTitleDivs = document.querySelectorAll('.loreTitle');
@@ -644,7 +715,21 @@ function loadConcept(index) {
         editableTitleDivs.forEach((titleDiv, index) => {
             titleDiv.innerHTML = concept.data[index].titleText;
             editableDescriptionDivs[index].innerHTML = concept.data[index].descriptionText;
+            
+            if (concept.type != "Lore") {
+                outputId[index].src = concept.data[index].imageSrc;
+
+                // let elementId = outputId[index].id;
+                // let lastChar = elementId.charAt(elementId.length - 1);
+                // console.log("load: " + elementId + " " + lastChar);
+                // if (lastChar == "t") {
+                //     lastChar = "0";
+                // }
+                // let newIndex = parseInt(lastChar);
+                // outputId[index].src = concept.data[newIndex].imageSrc; // TODO - second index cant be just index cause thats for outputId.push, gotta do the index from uploadedImages
+            }
         });
+
     }
     else {
         alert("You cancelled.")
@@ -708,5 +793,9 @@ function loadProfile() {
 }
 
 document.addEventListener('DOMContentLoaded', loadProfile);
+
+function logConcepts() {
+    console.log(JSON.stringify(uploadedImages));
+}
 
 /* Profile Stuff */
