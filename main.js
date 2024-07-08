@@ -146,6 +146,7 @@ let savedConcepts = [
     //     data: "3"
     // }
 ];
+let firstTimeVisit;
 
 /* Save and Load */
 
@@ -161,6 +162,7 @@ let savedConcepts = [
 
 function saveProfileConcepts() {
     localStorage.setItem('savedConcepts', JSON.stringify(savedConcepts));
+    localStorage.setItem('firstTimeVisit', JSON.stringify(firstTimeVisit));
 }
 
 function loadProfileConcepts() {
@@ -170,7 +172,22 @@ function loadProfileConcepts() {
 
 document.addEventListener('DOMContentLoaded', function() {
     savedConcepts = loadProfileConcepts();
+    // console.log("1 " + firstTimeVisit);
+    firstTimeVisit = localStorage.getItem('firstTimeVisit');
+    if (firstTimeVisit) {
+        document.getElementById("firstTimePopup").style.display = "none";
+    }
+    else {
+        document.getElementById("firstTimePopup").style.display = "flex";
+    }
+    // console.log("2 " + firstTimeVisit);
 });
+
+function deleteFirstTimeVisit() {
+    localStorage.removeItem('firstTimeVisit');
+}
+
+// deleteFirstTimeVisit();
 
 /* Save and Load */
 
@@ -223,7 +240,6 @@ function blackBackgroundCheck() {
 //from this link https://stackoverflow.com/questions/50286692/changing-a-small-amount-of-text-in-a-textarea-to-bold
 function changeStyle(style) {
     var sel = window.getSelection(); // Gets selection
-    console.log("R = " + sel.rangeCount);
     if (sel.rangeCount) {
       // Creates a new element, and insert the selected text with the chosen style
       var e = document.createElement('span');
@@ -532,6 +548,30 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+//first time load popup
+var firstTimePopup = document.getElementById("firstTimePopup");
+var span = document.getElementById("closeFirstTime");
+
+span.addEventListener('click', function() {
+    firstTimePopup.style.display = "none";
+    firstTimeVisit = false;
+    saveProfileConcepts();
+});
+
+window.onclick = function(event) {
+    if (event.target == popupContainer) {
+        firstTimePopup.style.display = "none";
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        firstTimePopup.style.display = "none";
+        firstTimeVisit = false;
+        saveProfileConcepts();
+    }
+});
+
 //how to use icon editor
 var iconModal = document.getElementById("iconPopupContainer");
 var iconBtn = document.getElementById("iconPopupClick");
@@ -574,36 +614,41 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(function
 function confirmConceptName() {
     let doesTitleExist = false;
     let currentConceptPage = getCurrentPage();
+    
+    if (currentConceptPage != "Home" && currentConceptPage != "iconEditor" && currentConceptPage != "faq" && currentConceptPage != "profile") {
+        let title = prompt("Type the name of your concept.");
+        if (title != null) {
+            for (let i = 0; i < savedConcepts.length; i++) {
+                let boolForAddonItem = false;
+                if (savedConcepts[i].type.slice(0, -1) == "Addon" || savedConcepts[i].type.slice(0, -1) == "Item") {
+                    boolForAddonItem = true;
+                }
+                
+                if (savedConcepts[i].name == title && (savedConcepts[i].type == currentConceptPage || boolForAddonItem)) {
+                    doesTitleExist = true;
 
-    let title = prompt("Type the name of your concept.");
-    if (title != null) {
-        for (let i = 0; i < savedConcepts.length; i++) {
-            let boolForAddonItem = false;
-            if (savedConcepts[i].type.slice(0, -1) == "Addon" || savedConcepts[i].type.slice(0, -1) == "Item") {
-                boolForAddonItem = true;
+                    let text = "A concept with the same name already exists, proceeding will overwrite the existing concept.";
+                    if (confirm(text)) {
+                        savedConcepts.splice(i, 1);
+                        alert("You overwrited the concept \'" + title + "\'.");
+                        addConceptToProfile(title);
+                    }
+                    else {
+                        alert("You cancelled the saving of the concept.")
+                    }
+                    return;
+                }
             }
-            
-            if (savedConcepts[i].name == title && (savedConcepts[i].type == currentConceptPage || boolForAddonItem)) {
-                doesTitleExist = true;
-
-                let text = "A concept with the same name already exists, proceeding will overwrite the existing concept.";
-                if (confirm(text)) {
-                    savedConcepts.splice(i, 1);
-                    alert("You overwrited the concept \'" + title + "\'.");
-                    addConceptToProfile(title);
-                }
-                else {
-                    alert("You cancelled the saving of the concept.")
-                }
-                return;
+            if (!doesTitleExist) {
+                addConceptToProfile(title);
             }
         }
-        if (!doesTitleExist) {
-            addConceptToProfile(title);
+        else {
+            alert("Cancelled concept save.");
         }
     }
     else {
-        alert("Cancelled concept save.");
+        alert("You cannot save a concept on this page.")
     }
 }
 
@@ -661,7 +706,6 @@ function addConceptToProfile(savedName) {
         if (page != "Lore") {
             let elementId = outputId[index].id;
             let lastChar = elementId.charAt(elementId.length - 1);
-            console.log("test: " + elementId + " " + lastChar);
             if (lastChar == "t") {
                 lastChar = "0";
             }
@@ -860,6 +904,9 @@ function logConcepts() {
     console.log(JSON.stringify(savedConcepts));
 }
 
+function showAboutProfile() {
+    document.getElementById("firstTimePopup").style.display = "flex";
+}
 /* Profile Stuff */
 
 /* Copy */
@@ -888,9 +935,6 @@ function importConcept() {
 
     if (parsedConcept != null) {
         if (isValidConcept(parsedConcept)) {
-            // if (parsedConcept.type.slice(0, -1) == "Addon" || parsedConcept.type.slice(0, -1) == "Item") {
-            //     console.error("WOOT");
-            // }
             savedConcepts.push(parsedConcept);
             saveProfileConcepts();
             loadProfile();

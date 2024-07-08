@@ -1,3 +1,14 @@
+Version 2.3
+- The Celebration has concluded and Tryks has returned to their home!
+- New Profile tab that allows you to save and share concepts. Once done editing your concept, simple press "To Profile" to save it!
+- Text will now automatically align to the left in text boxes when skipping a line
+- Added icons from the new Tomb Raider chapter
+- Added a one time popup for important changes about updates
+- Updated FAQ
+- Squashed some bugs!
+
+Updated on 07-09-2024
+
 Version 2.2
 - Happy 8th Anniversary to Dead By Daylight! The Entity, and Tryks, are ready for celebrations and have re-themed the website!
 - Added new icons for the 8th anniversary

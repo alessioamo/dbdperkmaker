@@ -113,17 +113,59 @@
 
     <div class="container">
         <div class="vertical-center">
+
+            <div id="firstTimePopup" class="firstTimePopupContainer">
+                <div class="firstTimePopupContent">
+                    <span id="closeFirstTime" class="close">&times;</span>
+                    <p>
+                        Welcome to DBD Perk Maker! This new update brings the new Profile tab that allows you to save and re-visit your concepts, <br>
+                        even after closing or refreshing the page! When creating a concept, you can press the <span class="purpleText">To Profile</span> button to save the concept. <br>
+                        You will be prompted to enter a name for it (note that you must have a unique name for each category meaning you can have "Spirit"<br>
+                        as a name for a One Perk, and Three Perks creation, but can't have it be for two One Perk creations). If you give a pre-existing title,<br>
+                        you will be asked if you want to overwrite the existing concept. Note that everything will save in the concept including images,<br>
+                        colored text, and even the rarity of the addon/item! You can delete old concepts you don't want with the trash icon and also share<br>
+                        them with the share button. This will automatically copy a long word that you can then share with your friends and import using<br>
+                        the <span class="purpleText">Import</span> button!<br><br>
+                        Note that this feature uses your brower's storage which means that if you were to clear your history or use a different browser,<br>
+                        you won't see the same concepts. Also, using private browsers such as Incognito mode will also not work as they don't save storage.<br><br>
+                        Enjoy this new feature and I can't wait to see all your new and creative concepts!
+                    </p>
+                </div>
+            </div>
           
             <div id="selectionButtonsDiv">
                 <!-- For Christmas, remove h1 with font size = 60px -->
                 <!-- <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1> -->
                 <h1 id="welcomeMessageTitleId" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 2.2 (Click for updates)</p>
+                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 2.3 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span id="close" class="close">&times;</span>
                         <h2>New Changes</h2>
+                        <p>
+                            - The Celebration has concluded and Tryks has returned to their home!<br>
+                            - New Profile tab that allows you to save and share concepts. Once done editing your concept, simple press "To Profile" to save it!<br>
+                            - Text will now automatically align to the left in text boxes when skipping a line<br>
+                            - Added icons from the new Tomb Raider chapter<br>
+                            - Added a one time popup for important changes about updates<br>
+                            - Updated FAQ<br>
+                            - Squashed some bugs!<br>
+                        </p>
+                        <h2>Upcoming</h2>
+                        <p>
+                            - Improvements to Profile tab including exporting and importing multiple concepts, sorting options, folders, and more!<br>
+                            - Minigame to improve your Dead By Daylight knowledge and to pass time while in queue<br>
+                            - More features to icon builder (more brush options, better UI)<br>
+                            - Optimization for website and image load times<br>
+                            - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
+                            - Better overall mobile functionality<br>
+                        </p>
+                        <p style="color: rgb(173, 173, 173);font-size:15px;">
+                            Updated on 07-09-2024
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 2.2 Changes</h2>
                         <p>
                             - Happy 8th Anniversary to Dead By Daylight! The Entity, and Tryks, are ready for celebrations and have re-themed the website!<br>
                             - Added new icons for the 8th anniversary<br>
@@ -132,18 +174,6 @@
                             - Removed duplicates and squashed bugs relating to the icon editor<br>
                             - Updated the support me option, no donations are necessary but your support helps keep this project alive and allows it to evolve :)<br>
                             - Updated the FAQ<br>
-                        </p>
-                        <h2>Upcoming</h2>
-                        <p>
-                            - Minigame to improve your Dead By Daylight knowledge and to pass time while in queue<br>
-                            - More features to icon builder (more brush options, better UI)<br>
-                            - Optimization for website and image load times<br>
-                            - Ability to save current progress (for example on page refresh, etc) <br>
-                            - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
-                            - Better overall mobile functionality<br>
-                        </p>
-                        <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 06-17-2024
                         </p>
                         <p>______________________________</p>
                         <h2>Version 2.1 Changes</h2>
@@ -249,7 +279,6 @@
                 <button class="selectionButtons" id="blackBackgroundCheckButton" onclick="blackBackgroundCheck()" value="no">Background</button>
                 <button class="selectionButtons" id="saveImageButton">Save</button>
                 <button class="selectionButtons" id="toProfile" onclick="confirmConceptName()">To Profile</button>
-                <button onclick="logConcepts()">Log</button>
             </div>
 
             <br>
@@ -556,6 +585,7 @@
                     </li> -->
                 </ul>
                 <button class="selectionButtons" onclick="importConcept()">Import</button>
+                <button class="selectionButtons" onclick="showAboutProfile()">About</button>
             </div>
 
             <div id="faq">
@@ -568,9 +598,10 @@
                     </div>
                     <button type="button" class="collapsibleQuestion">Can I save my progress on a concept and come back to it later?</button>
                     <div class="answer">
-                        <p>At the moment, if the page was to be reloaded in any way (refresh, close then open, etc.) anything written will disappear. I am 
-                        planning on adding a feature that will automatically store anything written in your local cookies of your browser so if something did happen to 
-                        your browser, you would not lose progress.</p>
+                        <p>Yes you can! Using the <span class="purpleText">To Profile</span> button, you can save concepts to your profile. You can view all 
+                        your concepts by clicking on the <span class="purpleText">Profile</span> button from the home menu. Note that this feature uses your 
+                        brower's storage which means that if you were to clear your history or use a different browser, you won't see the same concepts. 
+                        Also, using private browsers such as Incognito mode will also not work as they don't save storage.</p>
                     </div>
                     <button type="button" class="collapsibleQuestion">Do my images get saved in some sort of database?</button>
                     <div class="answer">
@@ -586,7 +617,7 @@
                     </div>
                     <button type="button" class="collapsibleQuestion">What's coming next?</button>
                     <div class="answer">
-                        <p>A local save to save your current progress, DBD related minigames to play during queue times, better mobile functionality, better visuals overall, and more!</p>
+                        <p>DBD related minigames to play during queue times, better mobile functionality, improvements to existing pages, better visuals overall, and more!</p>
                     </div>
                     <button type="button" class="collapsibleQuestion">How often do you plan on updating the website?</button>
                     <div class="answer">
