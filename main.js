@@ -736,10 +736,9 @@ function loadConcept(index) {
     }
 }
 
-function confirmShare(event) {
+function confirmShare(event, index) {
     event.stopPropagation();
-    // TODO - add copy url/data code
-    alert("Code has been copied");
+    copyConceptCode(index);
 }
 
 function confirmDelete(event, index) {
@@ -771,7 +770,7 @@ function loadProfile() {
                 ${concept.name + " - " + concept.type}
                 <div class="buttonGroupProfile">
                     <span>Created on ${concept.dateCreated}</span>
-                    <button class="share-button" onclick="confirmShare(event)">
+                    <button class="share-button" onclick="confirmShare(event, ${originalIndex})">
                         <img src="images/shareIcon.png" alt="Share">
                     </button>
                     <button class="trash-button" onclick="confirmDelete(event, ${originalIndex})">
@@ -795,7 +794,61 @@ function loadProfile() {
 document.addEventListener('DOMContentLoaded', loadProfile);
 
 function logConcepts() {
-    console.log(JSON.stringify(uploadedImages));
+    console.log(JSON.stringify(savedConcepts));
 }
 
 /* Profile Stuff */
+
+/* Copy */
+
+function copyConceptCode(index) {
+
+    let conceptInfo = JSON.stringify(savedConcepts[index]);
+
+    navigator.clipboard.writeText(conceptInfo)
+        .then(() => {
+            alert("Concept has been copied");
+        })
+        .catch(err => {
+            console.error('Could not copy text: ', err);
+            alert('Failed to copy the concept.');
+        });
+}
+
+/* Copy */
+
+/* Import Concept */
+
+function importConcept() {
+    let concept = prompt("Paste your concept code.");
+    parsedConcept = JSON.parse(concept);
+
+    if (parsedConcept != null) {
+        if (isValidConcept(parsedConcept)) {
+            savedConcepts.push(parsedConcept);
+            saveProfileConcepts();
+            loadProfile();
+        }
+        else {
+            alert("Invalid concept format.");
+        }
+    }
+}
+
+function isValidConcept(concept) {
+    const expectedKeys = ['name', 'type', 'dateCreated', 'data'];
+
+    for (let key of expectedKeys) {
+        if (!(key in concept)) {
+            return false;
+        }
+    }
+
+    if (!Array.isArray(concept.data)) {
+        return false;
+    }
+
+    return true;
+}
+
+/* Import Concept */
