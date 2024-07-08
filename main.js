@@ -77,8 +77,15 @@ function switchPage(i) {
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             document.getElementById("backgroundPerkDropdown").style.display = "none";
-            document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
-            document.getElementById("backgroundItemDropdown").style.display = "none";
+            if (document.getElementById("swapAddonItemButton").textContent == "To Item") {
+                document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
+                document.getElementById("backgroundItemDropdown").style.display = "none";
+            }
+            else {
+                document.getElementById("backgroundAddonDropdown").style.display = "none";
+                document.getElementById("backgroundItemDropdown").style.display = "inline-block";
+            }
+            
             document.getElementById("swapAddonItemButton").style.display = "inline-block";
             break;
         case 6:
@@ -436,6 +443,25 @@ function swapAddonItemTab() {
     }
 }
 
+function swapAddonItemTabProfile(swapTo) {
+    var toSwap = document.getElementById("swapAddonItemButton");
+    var itemDropdown = document.getElementById("backgroundItemDropdown");
+    var addonDropdown = document.getElementById("backgroundAddonDropdown");
+    
+    if (swapTo == "Addon") {
+        itemDropdown.style.display = "none";
+        addonDropdown.style.display = "inline-block";
+        toSwap.innerHTML = "To Item";
+        changeAddonBackground(addonDropdown.value);
+    }
+    else {
+        itemDropdown.style.display = "inline-block";
+        addonDropdown.style.display = "none";
+        toSwap.innerHTML = "To Addon";
+        changeItemBackground(itemDropdown.value);
+    }
+}
+
 //for collpasable in FAQ
 var coll = document.getElementsByClassName("collapsibleQuestion");
 var i;
@@ -635,7 +661,6 @@ function addConceptToProfile(savedName) {
             }
             let newIndex = parseInt(lastChar);
             imageSrc = uploadedImages[newIndex];
-            console.log(" dd " + imageSrc);
         }
         else {
             imageSrc = "";
@@ -647,10 +672,20 @@ function addConceptToProfile(savedName) {
     });
 
     // console.log("data: " + JSON.stringify(dataStored));
+
+    let addonOrItem;
+    let rarity;
+
+    if (page == "Addon/Item") {
+        let button = document.getElementById("swapAddonItemButton");
+        addonOrItem = (button.textContent == "To Item") ? "Addon" : "Item";
+        rarity = (addonOrItem == "Addon") ? document.getElementById("backgroundAddonDropdown").value : document.getElementById("backgroundItemDropdown").value;
+        addonOrItem += rarity;
+    }
     
     let newConcept = {
         name: savedName,
-        type: page,
+        type: addonOrItem,
         dateCreated: todayDate,
         data: dataStored
     };
@@ -668,10 +703,32 @@ function loadConcept(index) {
     let text = "Loading this concept will remove any concepts currently being worked on on that page. Do you wish to proceed?";
     if (confirm(text)) {
         let concept = savedConcepts[index];
+        let addonOrItem;
+        let rarity;
+        let fullConceptType = concept.type;
+
+        // Have to do the slice to remove last character as it represents the rarity (is a number)
+        let slicedConcept = concept.type.slice(0, -1);
+
+        if (slicedConcept == "Addon" || slicedConcept == "Item") {
+            rarity = fullConceptType.charAt(fullConceptType.length - 1);
+        
+            addonOrItem = (slicedConcept == "Addon") ? "Addon" : "Item";
+
+            document.getElementById("background" + addonOrItem + "Dropdown").value = rarity;
+            swapAddonItemTabProfile(slicedConcept);
+
+            concept.type = "Addon/Item";
+        }
 
         let pageIndex = listOfPages.indexOf(concept.type);
         switchPage(0);
         switchPage(pageIndex);
+
+        // We do this after switching page because switching will default to showing the addon dropdown -> dont need it after fixing switchpage()
+        // if (concept.type == "Addon/Item") {
+        //     swapAddonItemTabProfile(slicedConcept);
+        // }
 
         let editableTitleDivs;
         let editableDescriptionDivs;
@@ -702,7 +759,7 @@ function loadConcept(index) {
             outputId.push(document.getElementById("output7"));
             outputId.push(document.getElementById("output8"));
 
-        } else if (concept.type = "Addon/Item") {
+        } else if (concept.type == "Addon/Item") {
             editableTitleDivs = document.querySelectorAll('.createAddonTitle');
             editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
             outputId.push(document.getElementById("output9"));
@@ -767,7 +824,7 @@ function loadProfile() {
             listItem.className = 'profileItem';
             listItem.setAttribute('onclick', `loadConcept(${originalIndex})`);
             listItem.innerHTML = `
-                ${concept.name + " - " + concept.type}
+                ${concept.name + " - " + concept.type.slice(0, -1)}
                 <div class="buttonGroupProfile">
                     <span>Created on ${concept.dateCreated}</span>
                     <button class="share-button" onclick="confirmShare(event, ${originalIndex})">
@@ -825,6 +882,9 @@ function importConcept() {
 
     if (parsedConcept != null) {
         if (isValidConcept(parsedConcept)) {
+            // if (parsedConcept.type.slice(0, -1) == "Addon" || parsedConcept.type.slice(0, -1) == "Item") {
+            //     console.error("WOOT");
+            // }
             savedConcepts.push(parsedConcept);
             saveProfileConcepts();
             loadProfile();
