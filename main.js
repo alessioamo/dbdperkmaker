@@ -574,10 +574,16 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(function
 function confirmConceptName() {
     let doesTitleExist = false;
     let currentConceptPage = getCurrentPage();
+
     let title = prompt("Type the name of your concept.");
     if (title != null) {
         for (let i = 0; i < savedConcepts.length; i++) {
-            if (savedConcepts[i].name == title && savedConcepts[i].type == currentConceptPage) {
+            let boolForAddonItem = false;
+            if (savedConcepts[i].type.slice(0, -1) == "Addon" || savedConcepts[i].type.slice(0, -1) == "Item") {
+                boolForAddonItem = true;
+            }
+            
+            if (savedConcepts[i].name == title && (savedConcepts[i].type == currentConceptPage || boolForAddonItem)) {
                 doesTitleExist = true;
 
                 let text = "A concept with the same name already exists, proceeding will overwrite the existing concept.";
