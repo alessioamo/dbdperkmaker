@@ -837,13 +837,13 @@ function loadConcept(index) {
             editableDescriptionDivs[index].innerHTML = concept.data[index].descriptionText;
             
             if (concept.type != "Lore") {
-                outputId[index].src = concept.data[index].imageSrc;
+                let conceptImageSrc = concept.data[index].imageSrc
+                outputId[index].src = conceptImageSrc;
 
-                console.log("1 " + concept.data[index].imageSrc);
+                // We must push the images from the loaded concept to the uploadedImages array so that if a new concept gets saved, the images get saved with it
+                uploadedImages[index+baseIndex] = conceptImageSrc;
 
-                // TODO - we must push the images from the loaded concept to the UploadedImages array so that if a new concept gets saved, the images get saved with it
-                uploadedImages[index+baseIndex] = concept.data[index].imageSrc;
-
+                // TODO - small bug where loading a concept with no image will show a no image icon (but it doesn't show up in image save)
 
                 // let elementId = outputId[index].id;
                 // let lastChar = elementId.charAt(elementId.length - 1);
