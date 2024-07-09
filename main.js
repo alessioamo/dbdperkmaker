@@ -787,11 +787,13 @@ function loadConcept(index) {
         let editableTitleDivs;
         let editableDescriptionDivs;
         let outputId = [];
+        let baseIndex;  // This variable is used when loading concepts, to save the images from the loaded concepts to the uploadedImages array so they can get saved if a new concept is saved
 
         if (concept.type == "One Perk") {
             editableTitleDivs = document.querySelectorAll('.onePerkTitle');
             editableDescriptionDivs = document.querySelectorAll('.onePerkDescription');
             outputId.push(document.getElementById("output"));
+            baseIndex = 0;
             
         } else if (concept.type == "Three Perks") {
             editableTitleDivs = document.querySelectorAll('.threePerksTitle');
@@ -799,11 +801,13 @@ function loadConcept(index) {
             outputId.push(document.getElementById("output1"));
             outputId.push(document.getElementById("output2"));
             outputId.push(document.getElementById("output3"));
+            baseIndex = 1;
 
         } else if (concept.type == "Killer Power") {
             editableTitleDivs = document.querySelectorAll('.killerPowerTitle');
             editableDescriptionDivs = document.querySelectorAll('.killerPowerDescription');
             outputId.push(document.getElementById("output4"));
+            baseIndex = 4;
 
         } else if (concept.type == "Full Killer") {
             editableTitleDivs = document.querySelectorAll('.fullKillerTitle');
@@ -812,11 +816,13 @@ function loadConcept(index) {
             outputId.push(document.getElementById("output6"));
             outputId.push(document.getElementById("output7"));
             outputId.push(document.getElementById("output8"));
+            baseIndex = 5;
 
         } else if (concept.type == "Addon/Item") {
             editableTitleDivs = document.querySelectorAll('.createAddonTitle');
             editableDescriptionDivs = document.querySelectorAll('.createAddonDescription');
             outputId.push(document.getElementById("output9"));
+            baseIndex = 9;
 
         } else if (concept.type == "Lore") {
             editableTitleDivs = document.querySelectorAll('.loreTitle');
@@ -829,6 +835,12 @@ function loadConcept(index) {
             
             if (concept.type != "Lore") {
                 outputId[index].src = concept.data[index].imageSrc;
+
+                console.log("1 " + concept.data[index].imageSrc);
+
+                // TODO - we must push the images from the loaded concept to the UploadedImages array so that if a new concept gets saved, the images get saved with it
+                uploadedImages[index+baseIndex] = concept.data[index].imageSrc;
+
 
                 // let elementId = outputId[index].id;
                 // let lastChar = elementId.charAt(elementId.length - 1);
