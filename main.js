@@ -167,6 +167,9 @@ function saveProfileConcepts() {
 
 function loadProfileConcepts() {
     var concepts = JSON.parse(localStorage.getItem('savedConcepts'));
+    if (concepts == null) {
+        concepts = [];
+    }
     return concepts;
 }
 
@@ -731,11 +734,12 @@ function addConceptToProfile(savedName) {
         addonOrItem = (button.textContent == "To Item") ? "Addon" : "Item";
         rarity = (addonOrItem == "Addon") ? document.getElementById("backgroundAddonDropdown").value : document.getElementById("backgroundItemDropdown").value;
         addonOrItem += rarity;
+        page = addonOrItem;
     }
     
     let newConcept = {
         name: savedName,
-        type: addonOrItem,
+        type: page,
         dateCreated: todayDate,
         data: dataStored
     };
@@ -873,8 +877,40 @@ function loadProfile() {
             const listItem = document.createElement('li');
             listItem.className = 'profileItem';
             listItem.setAttribute('onclick', `loadConcept(${originalIndex})`);
+            
+            let typeOfConcept = concept.type;
+            let conceptRarity;
+
+            if (typeOfConcept.slice(0, -1) == "Addon" || typeOfConcept.slice(0, -1) == "Item") {
+                conceptRarity = parseInt(typeOfConcept.charAt(typeOfConcept.length - 1));
+                typeOfConcept = typeOfConcept.slice(0, -1);
+                switch (conceptRarity) {
+                    case 0:
+                        typeOfConcept = "Uncommon " + typeOfConcept;
+                        break;
+                    case 1:
+                        typeOfConcept = "Common " + typeOfConcept;
+                        break;
+                    case 2:
+                        typeOfConcept = "Rare " + typeOfConcept;
+                        break;
+                    case 3:
+                        typeOfConcept = "Very Rare " + typeOfConcept;
+                        break;
+                    case 4:
+                        typeOfConcept = "Ultra Rare " + typeOfConcept;
+                        break;
+                    case 5:
+                        typeOfConcept = "Event " + typeOfConcept;
+                        break;
+                    case 6:
+                        typeOfConcept = "Limited " + typeOfConcept;
+                        break;
+                }
+            }
+
             listItem.innerHTML = `
-                ${concept.name + " - " + concept.type.slice(0, -1)}
+                ${concept.name + " - " + typeOfConcept}
                 <div class="buttonGroupProfile">
                     <span>Created on ${concept.dateCreated}</span>
                     <button class="share-button" onclick="confirmShare(event, ${originalIndex})">
