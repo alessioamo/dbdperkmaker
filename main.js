@@ -557,12 +557,16 @@ document.addEventListener('keydown', function(event) {
 //first time load popup
 var firstTimePopup = document.getElementById("firstTimePopup");
 var span = document.getElementById("closeFirstTime");
+var span2 = document.getElementById("closeFirstTime2");
 
-span.addEventListener('click', function() {
+function handleFirstTimeClose() {
     firstTimePopup.style.display = "none";
     firstTimeVisit = false;
     saveProfileConcepts();
-});
+}
+
+span.addEventListener('click', handleFirstTimeClose);
+span2.addEventListener('click', handleFirstTimeClose);
 
 window.onclick = function(event) {
     if (event.target == popupContainer) {
