@@ -272,6 +272,9 @@ var removeUploadedImage = function(outputId) {
         var image = document.getElementById(outputId);
         image.src = "";
         image.classList.remove('uploadedImage');
+
+        let index = outputId.charAt(outputId.length - 1);
+        uploadedImages[index] = undefined;
     }
 };
 
