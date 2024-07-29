@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- TODO -->
+    <!-- Google tag (gtag.js) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC2S8Y07CL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-JC2S8Y07CL');
+    </script> -->
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Dead By Daylight Minigames - Play DBD Themed Minigames!">
+    <meta name="keywords" content="dead, by, daylight, perk, maker, dbd, perk, maker, custom, killer, create, your, own, perks, and, for, dbd, website, mini, game, games,
+                                    minigame, minigames, mini game, mini games, skillcheck, skill, check, skill check, generator, gen, practice, match, matching, card, card match,
+                                    card matching">
+    <!-- TODO -->
+    <!-- <meta name="google-site-verification" content="ZtOjahicVipHoKgJhMaIdM04zh6kZ5zPpnNhP_9i3o8" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Dead By Daylight Minigames</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleMobile.css">
+    <link rel="stylesheet" href="styleAnimations.css">
+</head>
+<body id="body">
+    <div id="headerIcon">
+        <button class="openbtn" onclick="openNav()">
+            <img style="padding-top: 4px;" width="50px" height="50px"src="./images/banana.png">
+        </button>
+    </div>
+    <div id="sidebarLinks" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="https://twitter.com/BHammer33" target="_blank"><img width="20px" height="20px" src="./images/twitter.png"> Twitter</a>
+        <a href="https://www.reddit.com/user/BananaHammer33/" target="_blank"><img width="20px" height="20px" src="./images/reddit.png"> Reddit</a>
+        <a href="https://ko-fi.com/bananahammer33" target="_blank"><img width="20px" height="20px" src="./images/kofi.png"> Support Me</a>
+
+        <!-- <div>
+            <select id="sidebarDropdownOptions" class="sidebarDropdown" onchange="setTheme(this.value)">
+                <option value="default">Default</option>
+                <option value="christmas">Christmas</option>
+                <option value="birthday">Birthday</option>
+                <option value="anniversary8">8th Anniversary</option>
+            </select>
+        </div> -->
+    </div>
+
+    <div class="container">
+        <div class="vertical-center">
+
+            <!-- <div id="firstTimePopup" class="firstTimePopupContainer">
+                <div class="firstTimePopupContent">
+                    <span id="closeFirstTime" class="close">&times;</span>
+                    <p>
+                        
+                    </p>
+                    <span id="closeFirstTime2" class="close">&times;</span>
+                </div>
+            </div> -->
+          
+            <div id="selectionButtonsDiv">
+                <h1 id="welcomeMessageTitleId" class="welcomeMessageTitle specialWelcomeMessageTitle">Welcome to DBD Minigames!</h1>
+                <p class="welcomeMessageVersion specialWelcomeMessageVersion" id="welcomeMessageID">Version 2.3 (Click for updates)</p>
+
+                <div id="popupContainer" class="popupContainer">
+                    <div class="updateNotes">
+                        <span id="close" class="close">&times;</span>
+                        <h2>New Changes</h2>
+                        <p>
+                            - The Celebration has concluded and Tryks has returned to their home!<br>
+                            - New Profile tab that allows you to save and share concepts. Once done editing your concept, simple press "To Profile" to save it!<br>
+                            - Text will now automatically align to the left in text boxes when skipping a line<br>
+                            - Added icons from the new Tomb Raider chapter<br>
+                            - Added a one time popup for important changes about updates<br>
+                            - Updated FAQ<br>
+                            - Squashed some bugs!<br>
+                        </p>
+                        <h2>Upcoming</h2>
+                        <p>
+                            - Improvements to Profile tab including exporting and importing multiple concepts, sorting options, folders, and more!<br>
+                            - Minigame to improve your Dead By Daylight knowledge and to pass time while in queue<br>
+                            - More features to icon builder (more brush options, better UI)<br>
+                            - Optimization for website and image load times<br>
+                            - Feature to display survivor and killer entire loadout, lore, power description on one page (like how it is in game)<br>
+                            - Better overall mobile functionality<br>
+                        </p>
+                        <p style="color: rgb(173, 173, 173);font-size:15px;">
+                            Updated on 07-09-2024
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 2.2 Changes</h2>
+                        <p>
+                            - Happy 8th Anniversary to Dead By Daylight! The Entity, and Tryks, are ready for celebrations and have re-themed the website!<br>
+                            - Added new icons for the 8th anniversary<br>
+                            - Added new background options in the icon creator<br>
+                            - Updated tooltips for icon editor<br>
+                            - Removed duplicates and squashed bugs relating to the icon editor<br>
+                            - Updated the support me option, no donations are necessary but your support helps keep this project alive and allows it to evolve :)<br>
+                            - Updated the FAQ<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 2.1 Changes</h2>
+                        <p>
+                            - Added icons for new Dungeons and Dragons chapter<br>
+                            - You can now upload your own images to the icon creator<br>
+                            - Button to unselect selected image in icon creator<br>
+                            - The Entity has returned the website back to its default theme (you can still select themes in the sidebar)<br>
+                            - Squashed some bugs relating to the icon creator<br>
+                            - Improved styling of pages and made buttons more consistent<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 2.0 Changes</h2>
+                        <p>
+                            - Happy Birthday to dbdperkmaker.ca! This update officially marks the first of many years of updates for this website! The Entity has decided to celebrate!<br>
+                            - Added item creation option to the Addon tab (all rarities are available including limited items)<br>
+                            - Added item icons to icon creator and refined searching functionality<br>
+                            - Added undo/redo functionality to the icon creator (ctrl+z and ctrl+y)<br>
+                            - Added new chapter icons for The Unknown and Sable Ward<br>
+                            - Added option to change the website theme in the side panel<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.8 Changes</h2>
+                        <p>
+                            - Oh no, the Holidays are over! The Entity has returned the website to its natural theme <br>
+                            - Added icons for Alan Wake chapter (includes Billy's rework icons as well) <br>
+                            - Fixed some padding and spacing issues on each page <br>
+                            - Fixed styling on titles of pages to be consistent <br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.7 Changes</h2>
+                        <p>
+                            - Merry Christmas! A Christmas theme has taken over the website!<br>
+                            - Images saved on every tab (including Icon Creator) have a transparent background automatically<br>
+                            - Added new Addon tab to create custom Addons, you can also change the addon type from the bottom bar!<br>
+                            - Can remove uploaded images by clicking on them<br>
+                            - Can change perk type between teachable (orange) and very rare (purple) from the bottom bar<br>
+                            - Added icons for Alien chapter, 2023 Halloween event, and Chucky chapter<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.6 Changes</h2>
+                        <p>
+                            - Added icons for End Transmission chapter, 7th Anniversary event, and Nicolas Cage chapter<br>
+                            - Improved and added new background options for the icon creator (very rare perk + all addon types)<br>
+                            - Pictures uploaded to the perk and killer power creator sections will now correctly autosize and center in the icon<br>
+                            - Updated various visual elements to better fit the overall theme of the website<br>
+                            - Squashed some bugs<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.5 Changes</h2>
+                        <p>
+                            - Added better mobile functionality (larger buttons and text)<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.4 Changes</h2>
+                        <p>
+                            - New Icon creator tab to create custom icons<br>
+                            - Icon creator supports drawing and you can add any icon from in game from the menu<br>
+                            - Fixed some bugs relating to the update notes page as well as the saving feature<br>
+                            - Updated socials sidebar<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.3 Changes</h2>
+                        <p>
+                            - Added a save button to save your perk and killer creations as an image<br>
+                            - Updated the FAQ to remove out of date questions<br>
+                            - Updated some styling to aid the functionality of the saving feature<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.2 Changes</h2>
+                        <p>
+                            - New and custom domain dbdperkmaker.ca<br>
+                            - Old link will automatically redirect to the new link<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2>Version 1.1 Changes</h2>
+                        <p>
+                            - Fixed styling of background image to be more consistent<br>
+                            - Edited sidebar to include a new link and fixed issues with the sidebar<br>
+                            - Made buttons across all website to be more consistent with each other and have better styling<br>
+                            - Made FAQ section more consistent and fixed some bugs with it<br>
+                            - Made the overall styling of the perk layout more clean and more akin to how it is in game<br>
+                            - Added an update notes feature<br>
+                            - Fixed some minor bugs all around the site<br>
+                        </p>
+                    </div>
+                </div>
+        
+                <button class="selectionButtons specialSelectionButtons" onclick="switchMinigame(2)">Skillcheck</button>
+                <button class="selectionButtons specialSelectionButtons" onclick="switchMinigame(3)">Trivia</button>
+                <button class="selectionButtons specialSelectionButtons" onclick="switchMinigame(4)">Matching</button>
+                <button class="selectionButtons returnToPerkSelectionButtons" onclick="switchMinigame(1)">Perk Maker</button>
+            </div>
+        
+            <div id="homeStuff">
+                <button class="selectionButtons specialSelectionButtons" id="homeButton" onclick="switchMinigame(0)">Home</button>
+            </div>
+
+            <br>
+
+            <div id="skillcheck" class="displayNone">
+                <br>
+
+                <div style="display:inline-block">
+                    <p>skill</p>
+                </div>
+            </div>
+
+            <div id="trivia" class="displayNone">
+                <br>
+
+                <div style="display:inline-block">
+                    <p>trivia</p>
+                </div>
+            </div>
+
+            <div id="matching" class="displayNone">
+                <br>
+
+                <div style="display:inline-block">
+                    <p>match</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- <script src="main.js"></script> -->
+    <script src="minigames.js"></script>
+</body>
+</html>

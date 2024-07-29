@@ -50,6 +50,10 @@ const themes = {
             cursor: 'pointer',
             hoverColor: 'rgb(180, 100, 163)'
         },
+        specialSelectionButtons: {
+            backgroundColor: 'rgb(19, 160, 170)',
+            hoverColor: 'background-color: rgb(100, 180, 180)'
+        },
         specialEffects: {
             id: ''
         }
@@ -98,6 +102,10 @@ const themes = {
             borderRadius: '20%',
             cursor: 'pointer',
             hoverColor: 'rgb(226, 0, 0)'
+        },
+        specialSelectionButtons: {
+            backgroundColor: 'rgb(19, 160, 170)',
+            hoverColor: 'background-color: rgb(100, 180, 180)'
         },
         specialEffects: {
             id: 'hangingLights'
@@ -148,6 +156,10 @@ const themes = {
             cursor: 'pointer',
             hoverColor: 'rgb(180, 100, 163)'
         },
+        specialSelectionButtons: {
+            backgroundColor: 'rgb(19, 160, 170)',
+            hoverColor: 'background-color: rgb(100, 180, 180)'
+        },
         specialEffects: {
             id: 'flyingBalloons'
         }
@@ -197,6 +209,10 @@ const themes = {
             cursor: 'pointer',
             hoverColor: 'rgb(186, 132, 62)'
         },
+        specialSelectionButtons: {
+            backgroundColor: 'rgb(19, 160, 170)',
+            hoverColor: 'background-color: rgb(100, 180, 180)'
+        },
         specialEffects: {
             id: 'flyingBalloons'
         }
@@ -233,6 +249,7 @@ function applyTheme(theme) {
     const homeButton = document.getElementById('homeButton');
     const blackBackgroundCheckButton = document.getElementById('blackBackgroundCheckButton');
     const selectionButtons = document.querySelectorAll('.selectionButtons');
+    const specialSelectionButtons = document.querySelectorAll('.specialSelectionButtons');
     const body = document.body;
     const specialEffectId = theme.specialEffects.id;
 
@@ -286,6 +303,17 @@ function applyTheme(theme) {
         };
         button.onmouseout = function () {
             button.style.backgroundColor = theme.selectionButtons.backgroundColor;
+        };
+    });
+
+    specialSelectionButtons.forEach(button => {
+        button.style.backgroundColor = theme.specialSelectionButtons.backgroundColor;
+
+        button.onmouseover = function () {
+            button.style.backgroundColor = theme.specialSelectionButtons.hoverColor;
+        };
+        button.onmouseout = function () {
+            button.style.backgroundColor = theme.specialSelectionButtons.backgroundColor;
         };
     });
 

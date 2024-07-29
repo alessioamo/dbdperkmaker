@@ -108,11 +108,15 @@ function switchPage(i) {
         case 9:
             document.getElementById("profile").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+            break;
+        case 10:
+            document.getElementById("homeStuff").style.display = "none";
+            window.location.href = 'minigames.html';
     }
 
     currentPage = listOfPages[i];
 
-    if (i != 0) {
+    if (i != 0 && i != 10) {
         document.getElementById("homeStuff").style.display = "block";
     }
 }

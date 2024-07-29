@@ -45,6 +45,16 @@ body {
     text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
 }
 
+.specialWelcomeMessageTitle {
+    color: rgb(19, 160, 170);
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+}
+
+.specialWelcomeMessageVersion {
+    color: rgb(19, 160, 170);
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+}
+
 .welcomeMessage {
     color: red;
     text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
@@ -79,6 +89,22 @@ body {
     /* background-color: rgb(226, 0, 0); */
 }
 
+.specialSelectionButtons {
+    background-color: rgb(19, 160, 170);
+}
+
+.specialSelectionButtons:hover {
+    background-color: rgb(100, 180, 180);
+}
+
+.returnToPerkSelectionButtons {
+    background-color: rgb(201, 25, 25);
+}
+
+.returnToPerkSelectionButtons:hover {
+    background-color: rgb(180, 100, 100);
+}
+
 .uploadedImage {
     /* width: 80px;
     height: 80px;
@@ -87,39 +113,11 @@ body {
     height: 120px;
 }
 
-#onePerk {
-    display: none;
-    /* background-color: rgb(0, 0, 0); */
-}
-
-#threePerks {
-    display: none;
-    /* background-color: rgb(0, 0, 0); */
-}
-
-#killerPower {
-    display: none;
-    /* background-color: rgb(0, 0, 0); */
-}
-
-#fullKiller {
-    display: none;
-}
-
-#createAddon {
-    display: none;
-}
-
-#lore {
-    display: none;
-}
-
-#iconEditor {
+.displayNone {
     display: none;
 }
 
 #faq {
-    display: none;
     width: 80%;
     margin: auto;
     /* background-image: url("./images/fog-background.png"); */
@@ -190,7 +188,7 @@ body {
     color: black;
     font-size: 15px;
     /* change color for christmas */
-    background-color: rgb(170, 19, 137);
+    /* background-color: rgb(170, 19, 137); */
     /* Christmas color follows this comment */
     /* background-color: rgb(19, 170, 32); */
     width: 100px;
@@ -200,7 +198,7 @@ body {
 
 #homeButton:hover {
     /* change color for christmas */
-    background-color: rgb(180, 100, 163);
+    /* background-color: rgb(180, 100, 163); */
     /* Christmas color follows this comment */
     /* background-color: rgb(226, 0, 0); */
 }
