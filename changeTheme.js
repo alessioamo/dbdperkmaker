@@ -1,4 +1,4 @@
-const specialEffectsArray = ['hangingLights', 'flyingBalloons'];
+const specialEffectsArray = ['hangingLights', 'flyingBalloons', 'hangingSpiders'];
 
 const themes = {
     default: {
@@ -200,6 +200,55 @@ const themes = {
         specialEffects: {
             id: 'flyingBalloons'
         }
+    },
+    halloween: {
+        title: {
+            color: 'red',
+            textShadow: '0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black',
+            fontFamily: 'HalloweenFont',
+            fontSize: '45px',
+            letterSpacing: '4px'
+        },
+        welcomeMessageVersion: {
+            color: 'red'
+        },
+        iconPopupClick: {
+            color: 'red'
+        },
+        faqTitle: {
+            color: 'red'
+        },
+        homeButton: {
+            textAlign: 'center',
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(255, 102, 0)',
+            width: '100px',
+            height: '40px',
+            borderRadius: '20%',
+            hoverColor: 'rgb(102, 0, 235)'
+        },
+        blackBackgroundCheckButton: {
+            checkedColor: 'rgb(102, 0, 235)',
+            uncheckedColor: 'rgb(255, 102, 0)'
+        },
+        body: {
+            backgroundImage: "url('./images/halloweenBackground.jpg')"
+        },
+        selectionButtons: {
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(255, 102, 0)',
+            width: '100px',
+            height: '40px',
+            border: '2px solid rgb(0, 0, 0)',
+            borderRadius: '20%',
+            cursor: 'pointer',
+            hoverColor: 'rgb(102, 0, 235)'
+        },
+        specialEffects: {
+            id: 'hangingSpiders'
+        }
     }
 };
 
@@ -324,4 +373,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-// setTheme('anniversary8');
+setTheme('halloween');

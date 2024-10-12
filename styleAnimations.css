@@ -242,3 +242,290 @@
 }
 
 /* Balloons */
+
+/* Halloween Spiders */
+[class*="spider"] {
+    position: absolute;
+    height: 40px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 40px 0 0 0;
+    background: #110D04;
+}
+
+[class*="spider"] * {
+    position: absolute;
+    content: "";
+}
+
+[class*="spider"]:before {
+    width: 1px;
+    background: #AAAAAA;
+    left: 50%;
+    top: -320px;
+    height: 320px;
+}
+
+.eye {
+    top: 16px;
+    height: 12px;
+    width: 10px;
+    background: #FF0000;
+    border-radius: 50%;
+}
+
+.eye:after {
+    top: 6px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: black;
+}
+
+.eye.left {
+    left: 14px;
+}
+
+.eye.left:after {
+    right: 3px;
+}
+
+.eye.right {
+    right: 14px;
+}
+
+.eye.right:after {
+    left: 3px;
+}
+
+.leg {
+    top: 6px;
+    height: 12px;
+    width: 14px;
+    border-top: 2px solid #110D04;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    z-index: -1;
+}
+
+.leg.left {
+    left: -8px;
+    transform-origin: top right;
+    transform: rotate(36deg) skewX(-20deg);
+    border-left: 2px solid #110D04;
+    border-radius: 60% 0 0 0;
+    animation: legs-wriggle-left 1s 0s infinite;
+}
+
+.leg.right {
+    right: -8px;
+    transform-origin: top left;
+    transform: rotate(-36deg) skewX(20deg);
+    border-right: 2px solid #110D04;
+    border-radius: 0 60% 0 0;
+    animation: legs-wriggle-right 1s 0.2s infinite;
+}
+
+.leg:nth-of-type(2) {
+    top: 14px;
+    left: -11px;
+    animation: legs-wriggle-left 1s 0.8s infinite;
+}
+
+.leg:nth-of-type(3) {
+    top: 22px;
+    left: -12px;
+    animation: legs-wriggle-left 1s 0.2s infinite;
+}
+
+.leg:nth-of-type(4) {
+    top: 31px;
+    left: -10px;
+    animation: legs-wriggle-left 1s 0.4s infinite;
+}
+
+.leg:nth-of-type(6) {
+    top: 14px;
+    right: -11px;
+    animation: legs-wriggle-right 1s 0.4s infinite;
+}
+
+.leg:nth-of-type(7) {
+    top: 22px;
+    right: -12px;
+    animation: legs-wriggle-right 1s 0.7s infinite;
+}
+
+.leg:nth-of-type(8) {
+    top: 31px;
+    right: -10px;
+    animation: legs-wriggle-right 1s 0.3s infinite;
+}
+
+.spider_0 {
+    left: 5%;
+    animation: spider-move-0 5s infinite;
+    transform: translateY(-90px);
+}
+
+.spider_1 {
+    left: 20%;
+    animation: spider-move-1 5s infinite;
+    transform: translateY(-90px);
+}
+
+.spider_2 {
+    left: 35%;
+    animation: spider-move-2 5s infinite;
+    transform: translateY(-90px);
+}
+
+.spider_3 {
+    right: 35%;
+    margin-top: 160px;
+    animation: spider-move-3 5s infinite;
+    transform: translateY(-90px);
+}
+
+.spider_4 {
+    right: 20%;
+    margin-top: 50px;
+    animation: spider-move-4 5s infinite;
+    transform: translateY(-90px);
+}
+
+.spider_5 {
+    right: 5%;
+    margin-top: 210px;
+    animation: spider-move-5 5s infinite;
+    transform: translateY(-90px);
+}
+
+.titleFlicker {
+    left: 6%;
+    bottom: 12%;
+    font-family: 'Eater', cursive;
+    font-size: 8.5vw;
+    color: #111111;
+    animation: flicker 4s 0s infinite;
+}
+
+.web-right {
+    position: absolute;
+    height: 200px;
+    width: auto;
+    right: -10px;
+    top: -10px;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.web-left {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    transform: rotate(-90deg);
+    z-index: -1;
+    opacity: 0.2;
+}
+
+@keyframes flicker {
+    0%, 6%, 12% {
+        text-shadow: none;
+        color: #111111;
+    }
+    3%, 9% {
+        text-shadow: 0 0 8px rgba(250, 103, 1, 0.6);
+        color: #fa6701;
+    }
+    60% {
+        text-shadow: 0 0 8px rgba(250, 103, 1, 0.6),
+                     0 0 16px rgba(250, 103, 1, 0.4), 
+                     0 0 20px rgba(255, 0, 84, 0.2), 
+                     0 0 22px rgba(255, 0, 84, 0.1);
+        color: #fa6701;
+    }
+    100% {
+        text-shadow: 0 0 8px rgba(250, 103, 1, 0.6),
+                     0 0 16px rgba(250, 103, 1, 0.4), 
+                     0 0 20px rgba(255, 0, 84, 0.2), 
+                     0 0 22px rgba(255, 0, 84, 0.1);
+        color: #fa6701;
+    }
+}
+
+@keyframes legs-wriggle-left {
+    0%, 100% {
+        transform: rotate(36deg) skewX(-20deg);
+    }
+    25%, 75% {
+        transform: rotate(15deg) skewX(-20deg);
+    }
+    50% {
+        transform: rotate(45deg) skewX(-20deg);
+    }
+}
+
+@keyframes legs-wriggle-right {
+    0%, 100% {
+        transform: rotate(-36deg) skewX(20deg);
+    }
+    25%, 75% {
+        transform: rotate(-15deg) skewX(20deg);
+    }
+    50% {
+        transform: rotate(-45deg) skewX(20deg);
+    }
+}
+
+/* Keyframe animations for spiders based on random heights and movements */
+@keyframes spider-move-0 {
+    0%, 100% {
+        margin-top: 40px; /* Example height */
+    }
+    30% {
+        margin-top: calc(40px + 30px); /* Example movement */
+    }
+}
+@keyframes spider-move-1 {
+    0%, 100% {
+        margin-top: 45px; /* Example height */
+    }
+    20% {
+        margin-top: calc(45px + 20px); /* Example movement */
+    }
+}
+@keyframes spider-move-2 {
+    0%, 100% {
+        margin-top: 55px; /* Example height */
+    }
+    35% {
+        margin-top: calc(55px + 25px); /* Example movement */
+    }
+}
+@keyframes spider-move-3 {
+    0%, 100% {
+        margin-top: 60px; /* Example height */
+    }
+    25% {
+        margin-top: calc(60px + 40px); /* Example movement */
+    }
+}
+@keyframes spider-move-4 {
+    0%, 100% {
+        margin-top: 70px; /* Example height */
+    }
+    15% {
+        margin-top: calc(70px + 30px); /* Example movement */
+    }
+}
+@keyframes spider-move-5 {
+    0%, 100% {
+        margin-top: 80px; /* Example height */
+    }
+    10% {
+        margin-top: calc(80px + 20px); /* Example movement */
+    }
+}
+/* Halloween Spiders */

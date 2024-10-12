@@ -11,6 +11,10 @@
     font-family: 'ChristmasFont2';
     src: url('fonts/holly_and_berries.ttf') format('woff2');
 }
+@font-face {
+    font-family: 'HalloweenFont';
+    src: url('fonts/Scary Halloween Font.ttf') format('woff2');
+}
 
 body {
     padding-top: 7%;
