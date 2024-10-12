@@ -1017,3 +1017,44 @@ function isValidConcept(concept) {
 }
 
 /* Import Concept */
+
+/* Spider click */
+function removeSpider(element) {
+    const currentTop = element.getBoundingClientRect().top; // Distance from the top of the viewport
+    const elementHeight = element.offsetHeight; // Height of the element
+
+    // Set the ending position to the bottom of the screen
+    const endPosition = window.innerHeight - elementHeight - 150;
+    console.log(endPosition);
+
+    const randomMin = 720;
+    const randomMax = 1440;
+
+    // Generate a random rotation angle between 90 and 720 degrees
+    const randomAngle = Math.floor(Math.random() * (randomMax - randomMin + 1)) + randomMin;
+
+    // Randomize the direction (1 for clockwise, -1 for counterclockwise)
+    const direction = Math.random() < 0.5 ? 1 : -1;
+
+    // Calculate the final rotation value
+    const finalRotation = direction * randomAngle;
+
+    // Create a keyframe animation dynamically
+    const animation = element.animate([
+        { top: `${currentTop}px`, transform: `rotate(0deg)` },
+        { top: `${endPosition}px`, transform: `rotate(${finalRotation}deg)` }
+    ], {
+        duration: 2000,
+        easing: 'ease-in-out',
+        fill: 'forwards'
+    });
+
+    // Apply styles to the element after animation
+    animation.onfinish = () => {
+        element.style.top = `${endPosition}px`;
+        element.style.transform = `rotate(${finalRotation}deg)`;
+        element.remove();
+    };
+    //element.remove();
+}
+/* Spider click */

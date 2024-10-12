@@ -528,4 +528,19 @@
         margin-top: calc(80px + 20px); /* Example movement */
     }
 }
+
+@keyframes fallRotate {
+    0% {
+        top: 0;
+        transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+        top: calc(100vh - 100px);
+        transform: translateX(-50%) rotate(90deg);
+    }
+}
+
+.fall-rotate {
+    animation: fallRotate 1s ease forwards;
+}
 /* Halloween Spiders */
