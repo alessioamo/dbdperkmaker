@@ -1025,6 +1025,49 @@ function importConcept() {
     }
 }
 
+const exportDelimeter = '|~'
+
+function exportAllConcepts() {
+    let exportString = "";
+    for (i = 0; i < savedConcepts.length; i++) {
+        exportString += JSON.stringify(savedConcepts[i]) + exportDelimeter;
+    }
+
+    // -2 for the delimeter length
+    exportString = exportString.slice(0, -2);
+
+    navigator.clipboard.writeText(exportString)
+        .then(() => {
+            alert("Concept has been copied");
+        })
+        .catch(err => {
+            console.error('Could not copy text: ', err);
+            alert('Failed to copy the concept.');
+        });
+}
+
+function importAllConcepts() {
+    let concept = prompt("Paste your concept code.");
+
+    let retrievedConcepts = concept.split(exportDelimeter).map(item => JSON.parse(item));
+
+    for (i = 0; i < retrievedConcepts.length; i++) {
+        
+        let parsedConcept = retrievedConcepts[i];
+
+        if (parsedConcept != null) {
+            if (isValidConcept(parsedConcept)) {
+                savedConcepts.push(parsedConcept);
+                saveProfileConcepts();
+                loadProfile();
+            }
+            else {
+                alert("Invalid concept format.");
+            }
+        }
+    }
+}
+
 function isValidConcept(concept) {
     const expectedKeys = ['name', 'type', 'dateCreated', 'data'];
 
