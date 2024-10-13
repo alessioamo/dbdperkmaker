@@ -665,8 +665,33 @@ function confirmConceptName() {
 function addConceptToProfile(savedName) {
     let page = getCurrentPage();
 
+    // let today = new Date();
+    // let todayDate = today.toISOString().slice(0, 10);
+    
     let today = new Date();
-    let todayDate = today.toISOString().slice(0, 10);
+
+    // Get the date in yyyy-mm-dd format
+    let todayDateOnly = today.toISOString().slice(0, 10);
+
+    // Get the time in EST
+    let options = {
+        timeZone: 'America/New_York',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+
+    let formatter = new Intl.DateTimeFormat('en-US', options);
+    let timeParts = formatter.formatToParts(today);
+
+    // Extract the hour, minute, and second
+    let hour = timeParts.find(part => part.type === 'hour').value;
+    let minute = timeParts.find(part => part.type === 'minute').value;
+    let second = timeParts.find(part => part.type === 'second').value;
+
+    // Concatenate date and time
+    let todayDate = `${todayDateOnly} ${hour}:${minute}:${second}`;
 
     let dataStored = [];
     let editableTitleDivs;
@@ -1058,3 +1083,10 @@ function removeSpider(element) {
     //element.remove();
 }
 /* Spider click */
+
+/* Loading Logo */
+window.onload = function() {
+    // Hide the loading screen
+    document.getElementById('loading-screen').style.display = 'none';
+};
+/* Loading Logo */

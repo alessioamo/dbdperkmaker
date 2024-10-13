@@ -55,6 +55,9 @@ function loadImagesForCanvas() {
         const img = document.createElement("img");
         img.alt = imageArray[i];
         img.src = folderName + imageArray[i];
+
+        img.loading = "lazy";
+
         var title = imageArray[i].replace(/[A-Z]/g, (match) => ` ${match.toLowerCase()}`);
         title = title.slice(title.indexOf("_") + 1, -4);
         img.title = title;
