@@ -225,14 +225,20 @@ body {
 
 .perkDescription {
     background-color: rgb(48, 48, 48);
-    height:400px;
-    width:470px;
+    min-height: 400px;
+    height: auto; /* Allow height to adjust based on content */
+    width: 470px;
     font-size: 18px;
     color: white;
     resize: none;
     text-align: left;
     overflow: hidden;
+    display: flex;
+    flex-direction: column; /* This ensures content grows top-down */
+    justify-content: flex-start; /* Align content to the top */
+    box-sizing: border-box; /* Ensure padding (if any) is included in height/width */
 }
+
 
 .killerTitle {
     background-image: url("./images/killerPowerBackgroundTeachable.png");
@@ -278,7 +284,9 @@ body {
 
 .loreDescription {
     background-color: rgb(48, 48, 48);
-    height:650px;
+    min-height: 650px;
+    height: auto;
+    /* height:650px; */
     width:800px;
     font-size: 18px;
     color: white;

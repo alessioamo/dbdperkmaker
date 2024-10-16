@@ -98,6 +98,9 @@ function switchPage(i) {
             document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 7:
+            // Temp fix to load icons that didnt load properly
+            searchThroughIcons();
+
             document.getElementById("iconEditor").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             break;
