@@ -18,8 +18,40 @@ function getCurrentPage() {
     return currentPage;
 }
 
+function hideNavButton() {
+    if (window.innerWidth <= 500) {
+        document.getElementById("headerIcon").style.display = "none";
+    }
+}
+
+function showNavButton() {
+    document.getElementById("headerIcon").style.display = "block";
+}
+
+function checkViewportWidth() {
+    if (window.innerWidth <= 500 && document.getElementById("selectionButtonsDiv").style.display == "none") {
+        document.getElementById("headerIcon").style.display = "none";
+        switchPage(currentPageIndex);
+    } else {
+        document.getElementById("headerIcon").style.display = "block";
+    }
+}
+
+window.addEventListener('resize', checkViewportWidth);
+
+let currentPageIndex = 0;
+
 function switchPage(i) {
+    currentPageIndex = i;
     document.getElementById("selectionButtonsDiv").style.display = "none";
+
+    if (i == 0) {
+        showNavButton();
+    }
+    else {
+        hideNavButton();
+    }
+
     switch (i) {
         case 0:
             document.getElementById("selectionButtonsDiv").style.display = "block";
@@ -40,7 +72,13 @@ function switchPage(i) {
             document.getElementById("onePerk").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+            
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+            
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -49,7 +87,13 @@ function switchPage(i) {
             document.getElementById("threePerks").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -58,7 +102,9 @@ function switchPage(i) {
             document.getElementById("killerPower").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -67,7 +113,13 @@ function switchPage(i) {
             document.getElementById("fullKiller").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -76,14 +128,22 @@ function switchPage(i) {
             document.getElementById("createAddon").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             if (document.getElementById("swapAddonItemButton").textContent == "To Item") {
                 document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
+                if (window.innerWidth <= 500) {
+                    document.getElementById("backgroundAddonDropdown").style.display = "block";
+                }
                 document.getElementById("backgroundItemDropdown").style.display = "none";
             }
             else {
                 document.getElementById("backgroundAddonDropdown").style.display = "none";
                 document.getElementById("backgroundItemDropdown").style.display = "inline-block";
+                if (window.innerWidth <= 500) {
+                    document.getElementById("backgroundItemDropdown").style.display = "block";
+                }
             }
             
             document.getElementById("swapAddonItemButton").style.display = "inline-block";
@@ -92,7 +152,9 @@ function switchPage(i) {
             document.getElementById("lore").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "2%";
+            
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";

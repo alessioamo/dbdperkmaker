@@ -159,7 +159,7 @@
     .perkTitle {
         background-image: url("./images/orangeperkbackgroundteachable.png");
         height:80px;
-        width:470px;
+        width:95vw;
         font-size: 28px;
         color: white;
         resize: none;
@@ -172,8 +172,9 @@
 
     .perkDescription {
         background-color: rgb(48, 48, 48);
-        height:400px;
-        width:470px;
+        min-height: 400px;
+        height: auto; /* Allow height to adjust based on content */
+        width: 95vw;
         font-size: 18px;
         color: white;
         resize: none;
@@ -184,7 +185,7 @@
     .killerTitle {
         background-image: url("./images/killerPowerBackgroundTeachable.png");
         height:80px;
-        width:470px;
+        width: 95vw;
         font-size: 30px;
         color: white;
         resize: none;
@@ -198,7 +199,7 @@
     .loreTitle {
         background-image: url("./images/loreBackground.png");
         height:80px;
-        width:800px;
+        width: 95vw;
         font-size: 30px;
         color: white;
         resize: none;
@@ -211,8 +212,9 @@
 
     .loreDescription {
         background-color: rgb(48, 48, 48);
-        height:650px;
-        width:800px;
+        min-height: 650px;
+        height: auto;
+        width: 95vw;
         font-size: 18px;
         color: white;
         resize: none;
@@ -494,4 +496,71 @@
     }
 
     /* canvas for icon editor */
+
+    /* Dropdown */
+
+    .backgroundDropdown {
+        color: black;
+        background-color: rgb(170, 100, 19);
+        font-size: 20px;
+        width: 200px;
+        height: 40px;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 20%;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .backgroundDropdown:hover {
+        background-color: rgb(170, 155, 19);
+    }
+
+    /* Dropdown */
+
+    /* Profile Stuff */
+
+    #profile {
+        display: none;
+        width: 99vw;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .buttonGroupProfile {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    .buttonGroupProfile button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out; /* Smooth transition */
+    }
+    .buttonGroupProfile button img {
+        width: 20px;
+        height: 20px;
+    }
+    .buttonGroupProfile button:hover {
+        transform: scale(1.2); /* Scale up to 120% on hover */
+    }
+
+    /* Profile Stuff */
+    
+    .createAddon {
+        background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
+        height:80px;
+        width: 95vw;
+        font-size: 28px;
+        color: white;
+        resize: none;
+        text-align: left;
+        text-transform: uppercase;
+        overflow: hidden;
+        text-indent: 5px;
+        white-space: nowrap;
+    }
 }

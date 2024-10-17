@@ -258,6 +258,10 @@
     content: "";
 }
 
+[class*="spider"]:hover {
+    cursor: pointer;
+}
+
 [class*="spider"]:before {
     width: 1px;
     background: #AAAAAA;
