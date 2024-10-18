@@ -19,9 +19,9 @@ function getCurrentPage() {
 }
 
 function hideNavButton() {
-    if (window.innerWidth <= 500) {
+    // if (window.innerWidth <= 500) {
         document.getElementById("headerIcon").style.display = "none";
-    }
+    // }
 }
 
 function showNavButton() {
