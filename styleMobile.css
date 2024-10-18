@@ -384,7 +384,7 @@
         z-index: 1;
         left: 0;
         top: 0;
-        width: 100%;
+        width: 80%;
         height: 100%;
         overflow: auto;
         background-color: rgba(0,0,0,0.4);
@@ -397,6 +397,7 @@
         padding: 20px;
         border: 1px solid #888;
         width: 80%;
+        height: auto;
         color: white;
     }
 
@@ -412,10 +413,25 @@
         background-size: 500px;
     }
 
-    #leftCanvas {
-
+    .wrapper {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements horizontally */
     }
-
+    
+    #leftCanvas {
+        display: flex; /* Use flex to center the canvas */
+        justify-content: center; /* Center the canvas horizontally */
+        margin-bottom: 20px; /* Space between canvases */
+        width: 100%; /* Set width to 100% to use the full width */
+    }
+    
+    #iconCanvas {
+        background-color: white;
+        width: 500px; /* Fixed width for the canvas */
+        height: 500px; /* Fixed height for the canvas */
+    }
+    
     #rightCanvas {
         width: 500px;
         height: 500px;
@@ -424,29 +440,44 @@
         background-color: black;
         border-radius: 2%;
     }
-
-    .sameLineElement {
-        display: inline-block;
-        width: 50%;
-    }
-
+    
     .iconDisplayedInDiv {
         width: 100px;
         height: 100px;
     }
-
-    #deleteIconButton {
+    
+    .sameLineElement {
+        display: block; /* Keep them as block for stacking */
+        width: 100%; /* Full width for the sameLineElement */
+    }
+    
+    .undoRedo {
         color: black;
         font-size: 15px;
         background-color: rgb(170, 100, 19);
         width: 160px;
-        height: 100px;
+        height: 80px;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 20%;
+        cursor: pointer;
+    }
+    
+    .undoRedo:hover {
+        background-color: rgb(170, 155, 19);
+    }
+
+    .deleteIconButton {
+        color: black;
+        font-size: 15px;
+        background-color: rgb(170, 100, 19);
+        width: 160px;
+        height: 80px;
         border: 2px solid rgb(0, 0, 0);
         border-radius: 20%;
         cursor: pointer;
     }
 
-    #deleteIconButton:hover {
+    .deleteIconButton:hover {
         background-color: rgb(170, 155, 19);
     }
 
@@ -455,7 +486,7 @@
         font-size: 15px;
         background-color: rgb(170, 100, 19);
         width: 160px;
-        height: 100px;
+        height: 80px;
         border: 2px solid rgb(0, 0, 0);
         border-radius: 20%;
         cursor: pointer;
@@ -467,9 +498,10 @@
 
     #drawingButtons {
         background-color: rgb(255, 179, 91);
-        margin-left: 40%;
+        /* margin-left: 40%; */
         margin-right: 40%;
         padding: 5px;
+        width: 95vw;
     }
 
     .sliderButtons {
@@ -563,4 +595,12 @@
         text-indent: 5px;
         white-space: nowrap;
     }
+
+    /* spiders */
+
+    #hangingSpiders {
+        margin-top: 50px;
+    }
+
+    /* spiders */
 }

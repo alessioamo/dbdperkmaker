@@ -47,9 +47,21 @@ function switchPage(i) {
 
     if (i == 0) {
         showNavButton();
+        
+        if (window.innerWidth <= 500) {
+            document.getElementById("hangingSpiders").style.display = "block";
+            document.getElementById("hangingSpiders").style.marginTop = "50px";
+        }
+        else {
+            document.getElementById("hangingSpiders").style.marginTop = "";
+        }
     }
     else {
         hideNavButton();
+        if (window.innerWidth <= 500) {
+            console.log("ASDASD");
+            document.getElementById("hangingSpiders").style.display = "none";
+        }
     }
 
     switch (i) {
