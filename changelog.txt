@@ -2,7 +2,7 @@ Version 2.4
 - Happy Halloween! Haunted by Daylight has taken over the website! You can remove those pesky spiders by clicking on them! (They can be tricky to hit, try clicking when they move down)
 - Improved mobile styling throughout the entire website
 - Text boxes will now automatically expand if their limit is reached to allow for longer/larger concepts
-- Added a loading gif to the website and optimized loading times (if icons don't load in the icon editor, simply open another tab and go back)
+- Optimized loading times (if icons don't load in the icon editor, simply open another tab and go back)
 - Added timestamps for profile creations (only new ones will include them)
 - Added icons from Castelvania chapter, Lights Out event, Haunted by Daylight, and more
 - Added export all and import all options to profile to easily save and share all of your concepts at once

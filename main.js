@@ -1205,8 +1205,8 @@ function removeSpider(element) {
 /* Spider click */
 
 /* Loading Logo */
-window.onload = function() {
-    // Hide the loading screen
-    document.getElementById('loading-screen').style.display = 'none';
-};
+// window.onload = function() {
+//     // Hide the loading screen
+//     document.getElementById('loading-screen').style.display = 'none';
+// };
 /* Loading Logo */
