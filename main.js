@@ -30,10 +30,10 @@ function showNavButton() {
 
 function checkViewportWidth() {
     if (window.innerWidth <= 500 && document.getElementById("selectionButtonsDiv").style.display == "none") {
-        document.getElementById("headerIcon").style.display = "none";
+        // document.getElementById("headerIcon").style.display = "none";
         switchPage(currentPageIndex);
     } else {
-        document.getElementById("headerIcon").style.display = "block";
+        // document.getElementById("headerIcon").style.display = "block";
     }
 }
 
