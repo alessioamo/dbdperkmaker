@@ -18,8 +18,52 @@ function getCurrentPage() {
     return currentPage;
 }
 
+function hideNavButton() {
+    if (window.innerWidth <= 500) {
+        document.getElementById("headerIcon").style.display = "none";
+    }
+}
+
+function showNavButton() {
+    document.getElementById("headerIcon").style.display = "block";
+}
+
+function checkViewportWidth() {
+    if (window.innerWidth <= 500 && document.getElementById("selectionButtonsDiv").style.display == "none") {
+        document.getElementById("headerIcon").style.display = "none";
+        switchPage(currentPageIndex);
+    } else {
+        document.getElementById("headerIcon").style.display = "block";
+    }
+}
+
+window.addEventListener('resize', checkViewportWidth);
+
+let currentPageIndex = 0;
+
 function switchPage(i) {
+    currentPageIndex = i;
     document.getElementById("selectionButtonsDiv").style.display = "none";
+
+    if (i == 0) {
+        showNavButton();
+        
+        if (window.innerWidth <= 500) {
+            document.getElementById("hangingSpiders").style.display = "block";
+            document.getElementById("hangingSpiders").style.marginTop = "50px";
+        }
+        else {
+            document.getElementById("hangingSpiders").style.marginTop = "";
+        }
+    }
+    else {
+        hideNavButton();
+        if (window.innerWidth <= 500) {
+            console.log("ASDASD");
+            document.getElementById("hangingSpiders").style.display = "none";
+        }
+    }
+
     switch (i) {
         case 0:
             document.getElementById("selectionButtonsDiv").style.display = "block";
@@ -40,7 +84,13 @@ function switchPage(i) {
             document.getElementById("onePerk").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+            
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+            
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -49,7 +99,13 @@ function switchPage(i) {
             document.getElementById("threePerks").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -58,7 +114,9 @@ function switchPage(i) {
             document.getElementById("killerPower").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -67,7 +125,13 @@ function switchPage(i) {
             document.getElementById("fullKiller").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundPerkDropdown").style.display = "block";
+                document.getElementById("backgroundPerkDropdown").style.margin = "0 auto";
+            }
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
@@ -76,14 +140,22 @@ function switchPage(i) {
             document.getElementById("createAddon").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             if (document.getElementById("swapAddonItemButton").textContent == "To Item") {
                 document.getElementById("backgroundAddonDropdown").style.display = "inline-block";
+                if (window.innerWidth <= 500) {
+                    document.getElementById("backgroundAddonDropdown").style.display = "block";
+                }
                 document.getElementById("backgroundItemDropdown").style.display = "none";
             }
             else {
                 document.getElementById("backgroundAddonDropdown").style.display = "none";
                 document.getElementById("backgroundItemDropdown").style.display = "inline-block";
+                if (window.innerWidth <= 500) {
+                    document.getElementById("backgroundItemDropdown").style.display = "block";
+                }
             }
             
             document.getElementById("swapAddonItemButton").style.display = "inline-block";
@@ -92,12 +164,17 @@ function switchPage(i) {
             document.getElementById("lore").style.display = "block";
             document.getElementById("editTextButtonsDiv").style.display = "block";
             document.getElementById("body").style.paddingTop = "2%";
+            
             document.getElementById("backgroundPerkDropdown").style.display = "none";
+
             document.getElementById("backgroundAddonDropdown").style.display = "none";
             document.getElementById("backgroundItemDropdown").style.display = "none";
             document.getElementById("swapAddonItemButton").style.display = "none";
             break;
         case 7:
+            // Temp fix to load icons that didnt load properly
+            searchThroughIcons();
+
             document.getElementById("iconEditor").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
             break;
@@ -665,8 +742,33 @@ function confirmConceptName() {
 function addConceptToProfile(savedName) {
     let page = getCurrentPage();
 
+    // let today = new Date();
+    // let todayDate = today.toISOString().slice(0, 10);
+    
     let today = new Date();
-    let todayDate = today.toISOString().slice(0, 10);
+
+    // Get the date in yyyy-mm-dd format
+    let todayDateOnly = today.toISOString().slice(0, 10);
+
+    // Get the time in EST
+    let options = {
+        timeZone: 'America/New_York',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+
+    let formatter = new Intl.DateTimeFormat('en-US', options);
+    let timeParts = formatter.formatToParts(today);
+
+    // Extract the hour, minute, and second
+    let hour = timeParts.find(part => part.type === 'hour').value;
+    let minute = timeParts.find(part => part.type === 'minute').value;
+    let second = timeParts.find(part => part.type === 'second').value;
+
+    // Concatenate date and time
+    let todayDate = `${todayDateOnly} ${hour}:${minute}:${second}`;
 
     let dataStored = [];
     let editableTitleDivs;
@@ -1000,6 +1102,49 @@ function importConcept() {
     }
 }
 
+const exportDelimeter = '|~'
+
+function exportAllConcepts() {
+    let exportString = "";
+    for (i = 0; i < savedConcepts.length; i++) {
+        exportString += JSON.stringify(savedConcepts[i]) + exportDelimeter;
+    }
+
+    // -2 for the delimeter length
+    exportString = exportString.slice(0, -2);
+
+    navigator.clipboard.writeText(exportString)
+        .then(() => {
+            alert("Concept has been copied");
+        })
+        .catch(err => {
+            console.error('Could not copy text: ', err);
+            alert('Failed to copy the concept.');
+        });
+}
+
+function importAllConcepts() {
+    let concept = prompt("Paste your concept code.");
+
+    let retrievedConcepts = concept.split(exportDelimeter).map(item => JSON.parse(item));
+
+    for (i = 0; i < retrievedConcepts.length; i++) {
+        
+        let parsedConcept = retrievedConcepts[i];
+
+        if (parsedConcept != null) {
+            if (isValidConcept(parsedConcept)) {
+                savedConcepts.push(parsedConcept);
+                saveProfileConcepts();
+                loadProfile();
+            }
+            else {
+                alert("Invalid concept format.");
+            }
+        }
+    }
+}
+
 function isValidConcept(concept) {
     const expectedKeys = ['name', 'type', 'dateCreated', 'data'];
 
@@ -1017,3 +1162,51 @@ function isValidConcept(concept) {
 }
 
 /* Import Concept */
+
+/* Spider click */
+function removeSpider(element) {
+    const currentTop = element.getBoundingClientRect().top; // Distance from the top of the viewport
+    const elementHeight = element.offsetHeight; // Height of the element
+
+    // Set the ending position to the bottom of the screen
+    const endPosition = window.innerHeight - elementHeight - 150;
+    console.log(endPosition);
+
+    const randomMin = 720;
+    const randomMax = 1440;
+
+    // Generate a random rotation angle between 90 and 720 degrees
+    const randomAngle = Math.floor(Math.random() * (randomMax - randomMin + 1)) + randomMin;
+
+    // Randomize the direction (1 for clockwise, -1 for counterclockwise)
+    const direction = Math.random() < 0.5 ? 1 : -1;
+
+    // Calculate the final rotation value
+    const finalRotation = direction * randomAngle;
+
+    // Create a keyframe animation dynamically
+    const animation = element.animate([
+        { top: `${currentTop}px`, transform: `rotate(0deg)` },
+        { top: `${endPosition}px`, transform: `rotate(${finalRotation}deg)` }
+    ], {
+        duration: 2000,
+        easing: 'ease-in-out',
+        fill: 'forwards'
+    });
+
+    // Apply styles to the element after animation
+    animation.onfinish = () => {
+        element.style.top = `${endPosition}px`;
+        element.style.transform = `rotate(${finalRotation}deg)`;
+        element.remove();
+    };
+    //element.remove();
+}
+/* Spider click */
+
+/* Loading Logo */
+window.onload = function() {
+    // Hide the loading screen
+    document.getElementById('loading-screen').style.display = 'none';
+};
+/* Loading Logo */
