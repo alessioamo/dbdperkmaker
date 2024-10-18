@@ -1114,16 +1114,16 @@ function exportAllConcepts() {
 
     navigator.clipboard.writeText(exportString)
         .then(() => {
-            alert("Concept has been copied");
+            alert("Concepts have been copied");
         })
         .catch(err => {
             console.error('Could not copy text: ', err);
-            alert('Failed to copy the concept.');
+            alert('Failed to copy the concepts.');
         });
 }
 
 function importAllConcepts() {
-    let concept = prompt("Paste your concept code.");
+    let concept = prompt("Paste your concepts code.");
 
     let retrievedConcepts = concept.split(exportDelimeter).map(item => JSON.parse(item));
 
