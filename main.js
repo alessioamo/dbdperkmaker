@@ -59,7 +59,6 @@ function switchPage(i) {
     else {
         hideNavButton();
         if (window.innerWidth <= 500) {
-            console.log("ASDASD");
             document.getElementById("hangingSpiders").style.display = "none";
         }
     }
