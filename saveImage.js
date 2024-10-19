@@ -14,9 +14,25 @@ btns.forEach((btn) => {
                         if (btn.id === "saveImageButton") {
                             const newTab = window.open();
                             const newDoc = newTab.document;
-                            newDoc.write('<html><body><h1 style="text-align:center;">Right Click To Save Image</h1></body></html>'); // Create a new document
-                            newDoc.body.appendChild(canvas); // Append the canvas to the body of the new document
-                            newDoc.close(); // Close the document after adding the canvas
+                            
+                            newDoc.write(`
+                                <html>
+                                    <body>
+                                        <h1 style="text-align:center;">Right Click To Save Image (or use the button)</h1>
+                                        <button id="downloadImageButton" style="display:block; width: 150px; height:50px; margin:auto;">Download Image</button>
+                                    </body>
+                                </html>
+                            `);
+                            
+                            newDoc.body.appendChild(canvas);
+                            newDoc.close();
+
+                            newDoc.getElementById("downloadImageButton").addEventListener("click", () => {
+                                const link = document.createElement('a');
+                                link.href = canvas.toDataURL("image/png");
+                                link.download = 'image.png';
+                                link.click();
+                            });
                         }
                     });
                     srcElement.style.backgroundColor = "white";
@@ -27,9 +43,25 @@ btns.forEach((btn) => {
                         if (btn.id === "saveImageButton") {
                             const newTab = window.open();
                             const newDoc = newTab.document;
-                            newDoc.write('<html><body><h1 style="text-align:center;">Right Click To Save Image</h1></body></html>'); // Create a new document
-                            newDoc.body.appendChild(canvas); // Append the canvas to the body of the new document
-                            newDoc.close(); // Close the document after adding the canvas
+
+                            newDoc.write(`
+                                <html>
+                                    <body>
+                                        <h1 style="text-align:center;">Right Click To Save Image (or use the button)</h1>
+                                        <button id="downloadImageButton" style="display:block; width: 150px; height:50px; margin:auto;">Download Image</button>
+                                    </body>
+                                </html>
+                            `);
+                            
+                            newDoc.body.appendChild(canvas);
+                            newDoc.close();
+
+                            newDoc.getElementById("downloadImageButton").addEventListener("click", () => {
+                                const link = document.createElement('a');
+                                link.href = canvas.toDataURL("image/png");
+                                link.download = 'image.png';
+                                link.click();
+                            });
                         }
                     });
                 }
