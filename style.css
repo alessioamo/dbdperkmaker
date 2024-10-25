@@ -233,10 +233,11 @@ body {
     resize: none;
     text-align: left;
     overflow: hidden;
-    display: flex;
-    flex-direction: column; /* This ensures content grows top-down */
-    justify-content: flex-start; /* Align content to the top */
-    box-sizing: border-box; /* Ensure padding (if any) is included in height/width */
+    
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box; */
 }
 
 
