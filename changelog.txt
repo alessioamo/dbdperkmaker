@@ -1,3 +1,10 @@
+Version 2.5
+- Happy New Year! The Entity has concluded festivities and returned the website to normal
+- Added icons from the Houndmaster chapter and the holidays event
+- Fixed some bugs
+
+Updated on 01-10-2024
+
 Version 2.4
 - Happy Halloween! Haunted by Daylight has taken over the website! You can remove those pesky spiders by clicking on them! (They can be tricky to hit, try clicking when they move down)
 - Improved mobile styling throughout the entire website

@@ -373,4 +373,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-setTheme('halloween');
+// setTheme('halloween');
