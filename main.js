@@ -468,6 +468,7 @@ function changeAddonBackground(item) {
 
     var createAddonBackground = document.getElementById("createAddonTitle");
     var createAddonIconBackground = document.getElementById("createAddonIcon");
+    
     if (item == 0) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundCommonAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
@@ -486,7 +487,14 @@ function changeAddonBackground(item) {
     } else if (item == 5) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundEventAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
-    } else {
+    } else if (item == 6) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundGreenUncommonAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 7) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundBlueRareAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
+    }
+    else {
         console.log("Something went wrong.");
     }
 }
@@ -495,6 +503,7 @@ function changeItemBackground(item) {
     
     var createAddonBackground = document.getElementById("createAddonTitle");
     var createAddonIconBackground = document.getElementById("createAddonIcon");
+
     if (item == 0) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundCommonItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
@@ -516,6 +525,12 @@ function changeItemBackground(item) {
     } else if (item == 6) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
+    } else if (item == 7) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundGreenUncommonItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 8) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundBlueRareItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
     }
     else {
         console.log("Something went wrong.");
