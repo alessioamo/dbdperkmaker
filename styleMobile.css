@@ -626,6 +626,9 @@
     .selectionButtonsBR {
         display: none;
     }
+    .selectionButtonsNoBR {
+        display: inline-block;
+    }
 
     /* Home Button Split BR */
 }

@@ -11,7 +11,7 @@
 let currentPage;
 let listOfPages = ["Home", "One Perk", "Three Perks", "Killer Power", "Full Killer", "Addon/Item", "Lore", "iconEditor" , "faq", "profile", "Offering"];
 
-const numberOfImageUploads = 10;
+const numberOfImageUploads = 11;
 let uploadedImages = new Array(numberOfImageUploads);
 
 function getCurrentPage() {
@@ -475,7 +475,6 @@ function pushImageToArray(file, index) {
 
 //for changing perk background
 function changePerkBackground(item) {
-    console.log("item: " + item);
     var createPerkBackground = document.getElementsByClassName("perkTitle");
     var createPerkIconBackground = document.getElementsByClassName("perkIcons");
 
@@ -786,7 +785,8 @@ function confirmConceptName() {
         if (title != null) {
             for (let i = 0; i < savedConcepts.length; i++) {
                 let boolForAddonItem = false;
-                if (savedConcepts[i].type.slice(0, -1) == "Addon" || savedConcepts[i].type.slice(0, -1) == "Item") {
+                // Added offering here also for the removal of the rarity at the end
+                if (savedConcepts[i].type.slice(0, -1) == "Addon" || savedConcepts[i].type.slice(0, -1) == "Item" || savedConcepts[i].type.slice(0, -1) == "Offering") {
                     boolForAddonItem = true;
                 }
                 
@@ -905,6 +905,12 @@ function addConceptToProfile(savedName) {
             if (lastChar == "t") {
                 lastChar = "0";
             }
+
+            if (elementId.charAt(elementId.length - 2) == "1") {
+                // TODO - if adding more image uploads to be saved in profile, have to edit this to adapt
+                lastChar = "10";
+            }
+
             let newIndex = parseInt(lastChar);
             imageSrc = uploadedImages[newIndex];
         }
@@ -977,8 +983,6 @@ function loadConcept(index) {
 
         else if (slicedConcept == "Offering") {
             rarity = fullConceptType.charAt(fullConceptType.length - 1);
-
-            console.log("rarity is " + rarity);
 
             document.getElementById("backgroundOfferingDropdown").value = rarity;
 

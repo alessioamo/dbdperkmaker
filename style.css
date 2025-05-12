@@ -815,5 +815,8 @@ input[type="file"] + label::after {
 .selectionButtonsBR {
     display: inline-block;
 }
+.selectionButtonsNoBR {
+    display: none;
+}
 
 /* Home Button Split BR */
