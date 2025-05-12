@@ -598,6 +598,21 @@
         white-space: nowrap;
     }
 
+    /* TODO change backgorund image */
+    .createOffering {
+        background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
+        height:80px;
+        width: 95vw;
+        font-size: 28px;
+        color: white;
+        resize: none;
+        text-align: left;
+        text-transform: uppercase;
+        overflow: hidden;
+        text-indent: 5px;
+        white-space: nowrap;
+    }
+
     /* spiders */
 
     #hangingSpiders {
@@ -605,4 +620,12 @@
     }
 
     /* spiders */
+
+    /* Home Button Split BR */
+
+    .selectionButtonsBR {
+        display: none;
+    }
+
+    /* Home Button Split BR */
 }

@@ -9,7 +9,7 @@
 // imageHead.style.backgroundAttachment = "fixed";
 // imageHead.style.backgroundSize = "cover";
 let currentPage;
-let listOfPages = ["Home", "One Perk", "Three Perks", "Killer Power", "Full Killer", "Addon/Item", "Lore", "iconEditor" , "faq", "profile"];
+let listOfPages = ["Home", "One Perk", "Three Perks", "Killer Power", "Full Killer", "Addon/Item", "Lore", "iconEditor" , "faq", "profile", "Offering"];
 
 const numberOfImageUploads = 10;
 let uploadedImages = new Array(numberOfImageUploads);
@@ -63,6 +63,11 @@ function switchPage(i) {
         }
     }
 
+    document.getElementById("backgroundAddonDropdown").style.display = "none";
+    document.getElementById("backgroundItemDropdown").style.display = "none";
+    document.getElementById("swapAddonItemButton").style.display = "none";
+    document.getElementById("backgroundOfferingDropdown").style.display = "none";
+
     switch (i) {
         case 0:
             document.getElementById("selectionButtonsDiv").style.display = "block";
@@ -75,6 +80,7 @@ function switchPage(i) {
             document.getElementById("iconEditor").style.display = "none";
             document.getElementById("profile").style.display = "none";
             document.getElementById("faq").style.display = "none";
+            document.getElementById("createOffering").style.display = "none";
             document.getElementById("homeStuff").style.display = "none";
             document.getElementById("editTextButtonsDiv").style.display = "none";
             document.getElementById("body").style.paddingTop = "7%";
@@ -184,6 +190,19 @@ function switchPage(i) {
         case 9:
             document.getElementById("profile").style.display = "block";
             document.getElementById("body").style.paddingTop = "3%";
+            break;
+        case 10:
+            document.getElementById("createOffering").style.display = "block";
+            document.getElementById("editTextButtonsDiv").style.display = "block";
+            document.getElementById("body").style.paddingTop = "3%";
+
+            document.getElementById("backgroundPerkDropdown").style.display = "none";
+
+            document.getElementById("backgroundOfferingDropdown").style.display = "inline-block";
+            if (window.innerWidth <= 500) {
+                document.getElementById("backgroundOfferingDropdown").style.display = "block";
+            }
+            break;
     }
 
     currentPage = listOfPages[i];
@@ -434,6 +453,14 @@ var createAddonIcon = function(event) {
     pushImageToArray(event.target.files[0], 9);
 }
 
+var createOfferingIcon = function(event) {
+    var image = document.getElementById('output10');
+    image.src=URL.createObjectURL(event.target.files[0]);
+    image.classList.add('uploadedImage');
+
+    pushImageToArray(event.target.files[0], 10);
+}
+
 function pushImageToArray(file, index) {
     if (file) {
         const reader = new FileReader();
@@ -473,11 +500,11 @@ function changeAddonBackground(item) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundCommonAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
     } else if (item == 1) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundUncommonAddonText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
-    } else if (item == 2) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundRareAddonText.png')";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundGreenUncommonAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 2) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundBlueRareAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
     } else if (item == 3) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundVeryRareAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/veryRareAddon.png";
@@ -488,11 +515,11 @@ function changeAddonBackground(item) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundEventAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
     } else if (item == 6) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundGreenUncommonAddonText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundUncommonAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
     } else if (item == 7) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundBlueRareAddonText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundRareAddonText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
     }
     else {
         console.log("Something went wrong.");
@@ -508,11 +535,11 @@ function changeItemBackground(item) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundCommonItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/commonAddon.png";
     } else if (item == 1) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
-    } else if (item == 2) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundGreenUncommonItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
+    } else if (item == 2) {
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundBlueRareItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
     } else if (item == 3) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundVeryRareItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/veryRareAddon.png";
@@ -523,14 +550,49 @@ function changeItemBackground(item) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundEventItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
     } else if (item == 6) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
     } else if (item == 7) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundGreenUncommonItemText.png')";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
     } else if (item == 8) {
-        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundBlueRareItemText.png')";
-        createAddonIconBackground.src = "images/blankTemplates/Addons/blueRareAddon.png";
+        createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
+        createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
+    }
+    else {
+        console.log("Something went wrong.");
+    }
+}
+
+function changeOfferingBackground(item) {
+    
+    var createOfferingBackground = document.getElementById("createOfferingTitle");
+    var createOfferingIconBackground = document.getElementById("createOfferingIcon");
+
+    if (item == 0) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundCommonItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/commonOffering.png";
+    } else if (item == 1) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundGreenUncommonItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/rareOffering.png";
+    } else if (item == 2) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundBlueRareItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/blueRareOffering.png";
+    } else if (item == 3) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundVeryRareItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/veryRareOffering.png";
+    } else if (item == 4) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundIridescentItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/iridescentOffering.png";
+    } else if (item == 5) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundEventItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/eventOffering.png";
+    }  else if (item == 6) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/uncommonOffering.png";
+    } else if (item == 7) {
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
+        createOfferingIconBackground.src = "images/blankTemplates/Offerings/rareOffering.png";
     }
     else {
         console.log("Something went wrong.");
@@ -823,6 +885,11 @@ function addConceptToProfile(savedName) {
         editableTitleDivs = document.querySelectorAll('.loreTitle');
         editableDescriptionDivs = document.querySelectorAll('.loreDescription');
     }
+    else if (page == "Offering") {
+        editableTitleDivs = document.querySelectorAll('.createOfferingTitle');
+        editableDescriptionDivs = document.querySelectorAll('.createOfferingDescription');
+        outputId.push(document.getElementById("output10"));
+    }
 
     editableTitleDivs.forEach((titleDiv, index) => {
         const titleText = titleDiv.innerHTML.trim().toUpperCase();
@@ -896,6 +963,14 @@ function loadConcept(index) {
             swapAddonItemTabProfile(slicedConcept);
 
             concept.type = "Addon/Item";
+        }
+
+        if (slicedConcept == "Offering") {
+            rarity = fullConceptType.charAt(fullConceptType.length - 1);
+
+            document.getElementById("backgroundOfferingDropdown").value = rarity;
+
+            concept.type = "Offering";
         }
 
         let pageIndex = listOfPages.indexOf(concept.type);
@@ -1021,10 +1096,10 @@ function loadProfile() {
                 typeOfConcept = typeOfConcept.slice(0, -1);
                 switch (conceptRarity) {
                     case 0:
-                        typeOfConcept = "Uncommon " + typeOfConcept;
+                        typeOfConcept = "Common " + typeOfConcept;
                         break;
                     case 1:
-                        typeOfConcept = "Common " + typeOfConcept;
+                        typeOfConcept = "Uncommon " + typeOfConcept;
                         break;
                     case 2:
                         typeOfConcept = "Rare " + typeOfConcept;
@@ -1039,6 +1114,12 @@ function loadProfile() {
                         typeOfConcept = "Event " + typeOfConcept;
                         break;
                     case 6:
+                        typeOfConcept = "Uncommon " + typeOfConcept;
+                        break;
+                    case 7:
+                        typeOfConcept = "Rare " + typeOfConcept;
+                        break;
+                    case 8:
                         typeOfConcept = "Limited " + typeOfConcept;
                         break;
                 }

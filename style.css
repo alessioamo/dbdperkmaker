@@ -114,6 +114,10 @@ body {
     display: none;
 }
 
+#createOffering {
+    display: none;
+}
+
 #lore {
     display: none;
 }
@@ -256,6 +260,21 @@ body {
 }
 
 .createAddon {
+    background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
+    height:80px;
+    width:470px;
+    font-size: 28px;
+    color: white;
+    resize: none;
+    text-align: left;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-indent: 5px;
+    white-space: nowrap;
+}
+
+/* TODO change backgorund image */
+.createOffering {
     background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
     height:80px;
     width:470px;
@@ -790,3 +809,11 @@ input[type="file"] + label::after {
 }
 
 /* Loading Logo */
+
+/* Home Button Split BR */
+
+.selectionButtonsBR {
+    display: inline-block;
+}
+
+/* Home Button Split BR */

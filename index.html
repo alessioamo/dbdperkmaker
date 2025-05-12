@@ -363,7 +363,7 @@
                     </div>
                 </div>
         
-                <button class="selectionButtons" onclick="switchPage(1)">1 Perk</button>
+                <!-- <button class="selectionButtons" onclick="switchPage(1)">1 Perk</button>
                 <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
                 <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
                 <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
@@ -371,7 +371,21 @@
                 <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
                 <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
                 <button class="selectionButtons" onclick="switchPage(9)">Profile</button>
-                <!-- <button class="selectionButtons" onclick="tempAlert()">Icon Creator</button> -->
+                <button class="selectionButtons" onclick="switchPage(8)">FAQ</button> -->
+
+                <button class="selectionButtons" onclick="switchPage(1)">1 Perk</button>
+                <button class="selectionButtons" onclick="switchPage(3)">Killer Power</button>
+                <button class="selectionButtons" onclick="switchPage(5)">Addon/Item</button>
+                <button class="selectionButtons" onclick="switchPage(7)">Icon Creator</button>
+                <button class="selectionButtons" onclick="switchPage(9)">Profile</button>
+
+                <br class="selectionButtonsBR">
+                <br class="selectionButtonsBR">
+
+                <button class="selectionButtons" onclick="switchPage(2)">3 Perks</button>
+                <button class="selectionButtons" onclick="switchPage(4)">Full Killer</button>
+                <button class="selectionButtons" onclick="switchPage(10)">Offering</button>
+                <button class="selectionButtons" onclick="switchPage(6)">Lore</button>
                 <button class="selectionButtons" onclick="switchPage(8)">FAQ</button>
             </div>
         
@@ -509,6 +523,22 @@
                     </div>
                     <div id="createAddonTitle" class="createAddon createAddonTitle" contenteditable="true"></div>
                     <div class="perkDescription createAddonDescription" contenteditable="true"></div>
+                </div>
+                
+                <br><br>
+            </div>
+
+            <div id="createOffering">
+                <br>
+
+                <div style="display:inline-block">
+                    <div style="padding-bottom: 140px; padding-right: 110px;">
+                        <input style="color:transparent;" type="file" accept="image/*" onchange="createOfferingIcon(event)">
+                        <p><img onclick="removeUploadedImage('output10')" class="over" id="output10" width="120"/></p>
+                        <img id="createOfferingIcon" class="under" width="120px" height="120px" src="./images/blankTemplates/Offerings/commonOffering.png">
+                    </div>
+                    <div id="createOfferingTitle" class="createAddon createOfferingTitle" contenteditable="true"></div>
+                    <div class="perkDescription createOfferingDescription" contenteditable="true"></div>
                 </div>
                 
                 <br><br>
@@ -760,25 +790,36 @@
                 </select>
                 <select id="backgroundAddonDropdown" class="backgroundDropdown" onchange="changeAddonBackground(this.value)">
                     <option value="0">Common Addon</option>
-                    <option value="6">Uncommon Addon</option>
-                    <option value="7">Rare Addon</option>
+                    <option value="1">Uncommon Addon</option>
+                    <option value="2">Rare Addon</option>
                     <option value="3">Very Rare Addon</option>
                     <option value="4">Ultra Rare Addon</option>
                     <option value="5">Event Addon</option>
-                    <option value="1">Legacy Uncommon Addon</option>
-                    <option value="2">Legacy Rare Addon</option>
+                    <option value="6">Legacy Uncommon Addon</option>
+                    <option value="7">Legacy Rare Addon</option>
                 </select>
 
                 <select id="backgroundItemDropdown" class="backgroundDropdown" onchange="changeItemBackground(this.value)">
                     <option value="0">Common Item</option>
-                    <option value="7">Uncommon Item</option>
-                    <option value="8">Rare Item</option>
+                    <option value="1">Uncommon Item</option>
+                    <option value="2">Rare Item</option>
                     <option value="3">Very Rare Item</option>
                     <option value="4">Ultra Rare Item</option>
                     <option value="5">Event Item</option>
-                    <option value="6">Limited Item</option>
-                    <option value="1">Legacy Uncommon Item</option>
-                    <option value="2">Legacy Rare Item</option>
+                    <option value="8">Limited Item</option>
+                    <option value="6">Legacy Uncommon Item</option>
+                    <option value="7">Legacy Rare Item</option>
+                </select>
+
+                <select id="backgroundOfferingDropdown" class="backgroundDropdown" onchange="changeOfferingBackground(this.value)">
+                    <option value="0">Common Offering</option>
+                    <option value="1">Uncommon Offering</option>
+                    <option value="2">Rare Offering</option>
+                    <option value="3">Very Rare Offering</option>
+                    <option value="4">Ultra Rare Offering</option>
+                    <option value="5">Event Offering</option>
+                    <option value="7">Legacy Uncommon Offering</option>
+                    <option value="8">Legacy Rare Offering</option>
                 </select>
 
                 <button id="swapAddonItemButton" class="selectionButtons" onclick="swapAddonItemTab()">To Item</button>

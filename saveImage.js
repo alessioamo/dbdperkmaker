@@ -1,4 +1,4 @@
-var divId = ["onePerk", "threePerks", "killerPower", "fullKiller", "createAddon", "lore", "iconEditor"];
+var divId = ["onePerk", "threePerks", "killerPower", "fullKiller", "createAddon", "lore", "iconEditor", "createOffering"];
 
 btns = document.querySelectorAll("button");
 
