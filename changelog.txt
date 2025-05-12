@@ -1,9 +1,21 @@
+Version 3.0
+- Happy Birthday to dbdperkmaker.ca! (3 months late oops!) This update marks the second of many years of updates for this website!
+- The Entity wanted to celebrate this birthday, but instead is celebrating the upcoming release of Five Night's at Freddy's x DBD with a new theme!
+- Added a new Offering creation tab
+- Added new rarity types (green for uncommon and blue for rare) and kept old ones under legacy names
+- Added icons for the Freddy rework chapter, Kaneki chapter, Blood Moon event, and Orela Rose chapter
+- Improved and added more features to the icon creator tab
+- Improved mobile styling on all pages
+- Squashed many bugs
+
+Updated on 05-12-2025
+
 Version 2.5
 - Happy New Year! The Entity has concluded festivities and returned the website to normal
 - Added icons from the Houndmaster chapter and the holidays event
 - Fixed some bugs
 
-Updated on 01-10-2024
+Updated on 01-10-2025
 
 Version 2.4
 - Happy Halloween! Haunted by Daylight has taken over the website! You can remove those pesky spiders by clicking on them! (They can be tricky to hit, try clicking when they move down)

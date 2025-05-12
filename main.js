@@ -572,28 +572,28 @@ function changeOfferingBackground(item) {
     var createOfferingIconBackground = document.getElementById("createOfferingIcon");
 
     if (item == 0) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundCommonItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundCommonOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/commonOffering.png";
     } else if (item == 1) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundGreenUncommonItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundGreenUncommonOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/rareOffering.png";
     } else if (item == 2) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundBlueRareItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundBlueRareOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/blueRareOffering.png";
     } else if (item == 3) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundVeryRareItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundVeryRareOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/veryRareOffering.png";
     } else if (item == 4) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundIridescentItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundUltraRareOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/iridescentOffering.png";
     } else if (item == 5) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundEventItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundEventOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/eventOffering.png";
     }  else if (item == 8) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundUncommonOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/uncommonOffering.png";
     } else if (item == 9) {
-        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
+        createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Offerings/backgroundGreenRareOfferingText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/rareOffering.png";
     }
     else {

@@ -221,16 +221,23 @@
                 <!-- For Christmas, remove h1 with font size = 60px -->
                 <!-- <h1 style="font-size:60px" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1> -->
                 <h1 id="welcomeMessageTitleId" class="welcomeMessageTitle">Welcome to DBD Perk Maker!</h1>
-                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 2.5 (Click for updates)</p>
+                <p class="welcomeMessageVersion" id="welcomeMessageID">Version 3.0 (Click for updates)</p>
 
                 <div id="popupContainer" class="popupContainer">
                     <div class="updateNotes">
                         <span id="close" class="close">&times;</span>
                         <h2>New Changes</h2>
                         <p>
-                            - Happy New Year! The Entity has concluded festivities and returned the website to normal<br>
-                            - Added icons from the Houndmaster chapter and the holidays event<br>
-                            - Fixed some bugs<br>
+                            - Happy Birthday to dbdperkmaker.ca! (3 months late oops!) This update marks the second of many years of updates for this website!<br>
+                            - The Entity wanted to celebrate this birthday, but instead is celebrating the upcoming release of Five Night's at Freddy's x DBD with a new theme!<br>
+                            - Added a new Offering creation tab<br>
+                            - Added new rarity types (green for uncommon and blue for rare) and kept old ones under legacy names<br>
+                            - Added icons for the Freddy rework chapter, Kaneki chapter, Blood Moon event, and Orela Rose chapter<br>
+                            - Improved and added more features to the icon creator tab<br>
+                            - Improved mobile styling on all pages<br>
+                            - Squashed many bugs!<br>
+                        </p>
+                        <p>
                         </p>
                         <h2>Upcoming</h2>
                         <p>
@@ -241,9 +248,18 @@
                             <!-- - Better overall mobile functionality<br> -->
                         </p>
                         <p style="color: rgb(173, 173, 173);font-size:15px;">
-                            Updated on 01-10-2024
+                            Updated on 05-12-2025
                         </p>
                         <p>______________________________</p>
+                        <h2>Version 2.5 Changes</h2>
+                        <p>
+                            - Happy New Year! The Entity has concluded festivities and returned the website to normal<br>
+                            - Added icons from the Houndmaster chapter and the holidays event<br>
+                            - Fixed some bugs<br>
+                        </p>
+                        <p>______________________________</p>
+                        <h2><a href="changelog.txt" target="_blank">All Past Changes</a></h2>
+                        <!-- <p>______________________________</p>
                         <h2>Version 2.4 Changes</h2>
                         <p>
                             - Happy Halloween! Haunted by Daylight has taken over the website! You can remove those pesky spiders by clicking on them! (They can be tricky to hit, try clicking when they move down)<br>
@@ -360,7 +376,7 @@
                             - Made the overall styling of the perk layout more clean and more akin to how it is in game<br>
                             - Added an update notes feature<br>
                             - Fixed some minor bugs all around the site<br>
-                        </p>
+                        </p> -->
                     </div>
                 </div>
 
@@ -398,7 +414,7 @@
             <div id="homeStuff">
                 <button class="selectionButtons" id="homeButton" onclick="switchPage(0)">Home</button>
                 <button class="selectionButtons" id="blackBackgroundCheckButton" onclick="blackBackgroundCheck()" value="no">Background</button>
-                <button class="selectionButtons" id="saveImageButton">Save</button>
+                <button class="selectionButtons" id="saveImageButton" onclick="unselectImage()">Save</button>
                 <button class="selectionButtons" id="toProfile" onclick="confirmConceptName()">To Profile</button>
             </div>
 
@@ -543,7 +559,7 @@
                         <p><img onclick="removeUploadedImage('output10')" class="over" id="output10" width="120"/></p>
                         <img id="createOfferingIcon" class="under" width="120px" height="120px" src="./images/blankTemplates/Offerings/commonOffering.png">
                     </div>
-                    <div id="createOfferingTitle" class="createAddon createOfferingTitle" contenteditable="true"></div>
+                    <div id="createOfferingTitle" class="createOffering createOfferingTitle" contenteditable="true"></div>
                     <div class="perkDescription createOfferingDescription" contenteditable="true"></div>
                 </div>
                 
@@ -674,10 +690,18 @@
                         <option value="4">Brown Addon/Item</option>
                         <option value="5">Yellow Addon/Item</option>
                         <option value="6">Green Addon/Item</option>
-                        <option value="7">Purple Addon/Item</option>
-                        <option value="8">Ultra Rare Addon/Item</option>
-                        <option value="9">Event Addon/Item</option>
-                        <option value="10">Limited Item</option>
+                        <option value="7">Blue Addon/Item</option>
+                        <option value="8">Purple Addon/Item</option>
+                        <option value="9">Ultra Rare Addon/Item</option>
+                        <option value="10">Event Addon/Item</option>
+                        <option value="11">Limited Item</option>
+                        <option value="12">Brown Offering</option>
+                        <option value="13">Yellow Offering</option>
+                        <option value="14">Green Offering</option>
+                        <option value="15">Blue Offering</option>
+                        <option value="16">Purple Offering</option>
+                        <option value="17">Ultra Rare Offering</option>
+                        <option value="18">Event Offering</option>
                     </select>
                     <!-- <button class="changeCanvasButtons" onclick="changeCanvasBackground(0)">Perk Background</button>
                     <button class="changeCanvasButtons" onclick="changeCanvasBackground(1)">Power Background</button>

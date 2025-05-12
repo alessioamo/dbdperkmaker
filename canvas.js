@@ -305,13 +305,29 @@ function changeCanvasBackground(item) {
     } else if (item == 6) {
         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/rareAddon.png')";
     } else if (item == 7) {
-        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/veryRareAddon.png')";
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/blueRareAddon.png')";
     } else if (item == 8) {
-        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/iridescentAddon.png')";
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/veryRareAddon.png')";
     } else if (item == 9) {
-        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/eventAddon.png')";
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/iridescentAddon.png')";
     } else if (item == 10) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/eventAddon.png')";
+    } else if (item == 11) {
         tempCanvas.style.backgroundImage = "url('images/blankTemplates/Addons/limitedItem.png')";
+    } else if (item == 12) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/commonOffering.png')";
+    } else if (item == 13) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/uncommonOffering.png')";
+    } else if (item == 14) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/rareOffering.png')";
+    } else if (item == 15) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/blueRareOffering.png')";
+    } else if (item == 16) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/veryRareOffering.png')";
+    } else if (item == 17) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/iridescentOffering.png')";
+    } else if (item == 18) {
+        tempCanvas.style.backgroundImage = "url('images/blankTemplates/Offerings/eventOffering.png')";
     } else {
         console.log("Something went wrong.");
     }
@@ -611,5 +627,9 @@ function handleImageUpload(event) {
 function deselectImage() {
     canvas.discardActiveObject();
     canvas.renderAll();
+}
+
+function unselectImage() {
+    deselectImage();
 }
 /* Unselect highlighted image */

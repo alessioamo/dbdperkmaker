@@ -273,9 +273,8 @@ body {
     white-space: nowrap;
 }
 
-/* TODO change backgorund image */
 .createOffering {
-    background-image: url("./images/blankTemplates/Addons/backgroundCommonAddonText.png");
+    background-image: url("./images/blankTemplates/Offerings/backgroundCommonOfferingText.png");
     height:80px;
     width:470px;
     font-size: 28px;
