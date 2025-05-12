@@ -6,7 +6,9 @@ Version 3.0
 - Added icons for the Freddy rework chapter, Kaneki chapter, Blood Moon event, and Orela Rose chapter
 - Improved and added more features to the icon creator tab
 - Improved mobile styling on all pages
-- Squashed many bugs
+- Squashed many bugs!
+
+- I wanted to take this time to thank everyone that has used the website, reported feedback, and suggested improvements. I greatly appreciate it :)
 
 Updated on 05-12-2025
 
