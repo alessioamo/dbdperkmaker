@@ -249,6 +249,55 @@ const themes = {
         specialEffects: {
             id: 'hangingSpiders'
         }
+    },
+    fnaf: {
+        title: {
+            color: 'yellow',
+            textShadow: '0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black',
+            fontFamily: 'inherit',
+            fontSize: '32px',
+            letterSpacing: 'inherit',
+        },
+        welcomeMessageVersion: {
+            color: 'yellow'
+        },
+        iconPopupClick: {
+            color: 'yellow'
+        },
+        faqTitle: {
+            color: 'yellow'
+        },
+        homeButton: {
+            textAlign: 'center',
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(25, 127, 185)',
+            width: '100px',
+            height: '40px',
+            borderRadius: '20%',
+            hoverColor: 'rgb(50, 180, 255)',
+        },
+        blackBackgroundCheckButton: {
+            checkedColor: 'rgb(18, 84, 122)',
+            uncheckedColor: 'rgb(25, 127, 185)'
+        },
+        body: {
+            backgroundImage: "url('./images/fnafBackground2.png')"
+        },
+        selectionButtons: {
+            color: 'black',
+            fontSize: '15px',
+            backgroundColor: 'rgb(25, 127, 185)',
+            width: '100px',
+            height: '40px',
+            border: '2px solid rgb(0, 0, 0)',
+            borderRadius: '20%',
+            cursor: 'pointer',
+            hoverColor: 'rgb(50, 180, 255)',
+        },
+        specialEffects: {
+            id: ''
+        }
     }
 };
 
@@ -373,4 +422,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-// setTheme('halloween');
+setTheme('fnaf');

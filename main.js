@@ -492,7 +492,7 @@ function changePerkBackground(item) {
 }
 
 //for changing addon background (and offering)
-// NOTE - legacy uncommon and rare use 9 and 10 index to leave space for future additions
+// NOTE - legacy uncommon and rare use 8 and 9 index to leave space for future additions (if we end up using > 9, double digits, have to change a lot with saving)
 function changeAddonBackground(item) {
 
     var createAddonBackground = document.getElementById("createAddonTitle");
@@ -516,10 +516,10 @@ function changeAddonBackground(item) {
     } else if (item == 5) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundEventAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/eventAddon.png";
-    } else if (item == 9) {
+    } else if (item == 8) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundUncommonAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
-    } else if (item == 10) {
+    } else if (item == 9) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Addons/backgroundRareAddonText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
     }
@@ -554,10 +554,10 @@ function changeItemBackground(item) {
     } else if (item == 6) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundLimitedItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/limitedItem.png";
-    } else if (item == 9) {
+    } else if (item == 8) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/uncommonAddon.png";
-    } else if (item == 10) {
+    } else if (item == 9) {
         createAddonBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
         createAddonIconBackground.src = "images/blankTemplates/Addons/rareAddon.png";
     }
@@ -589,10 +589,10 @@ function changeOfferingBackground(item) {
     } else if (item == 5) {
         createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundEventItemText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/eventOffering.png";
-    }  else if (item == 9) {
+    }  else if (item == 8) {
         createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundUncommonItemText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/uncommonOffering.png";
-    } else if (item == 10) {
+    } else if (item == 9) {
         createOfferingBackground.style.backgroundImage = "url('images/blankTemplates/Items/backgroundRareItemText.png')";
         createOfferingIconBackground.src = "images/blankTemplates/Offerings/rareOffering.png";
     }
@@ -962,7 +962,7 @@ function addConceptToProfile(savedName) {
 function loadConcept(index) {
     let text = "Loading this concept will remove any concepts currently being worked on on that page. Do you wish to proceed?";
     if (confirm(text)) {
-        let concept = savedConcepts[index];
+        let concept = JSON.parse(JSON.stringify(savedConcepts[index]));
         let addonOrItem;
         let rarity;
         let fullConceptType = concept.type;
@@ -1111,45 +1111,45 @@ function loadProfile() {
             listItem.className = 'profileItem';
             listItem.setAttribute('onclick', `loadConcept(${originalIndex})`);
             
-            let typeOfConcept = concept.type;
-            let conceptRarity;
+            let displayType = concept.type;
 
-            if (typeOfConcept.slice(0, -1) == "Addon" || typeOfConcept.slice(0, -1) == "Item" || typeOfConcept.slice(0, -1) == "Offering") {
-                conceptRarity = parseInt(typeOfConcept.charAt(typeOfConcept.length - 1));
-                typeOfConcept = typeOfConcept.slice(0, -1);
-                switch (conceptRarity) {
+            if (displayType.slice(0, -1) == "Addon" || displayType.slice(0, -1) == "Item" || displayType.slice(0, -1) == "Offering") {
+                let baseType = displayType.slice(0, -1);
+                let rarityDigit = parseInt(displayType.charAt(displayType.length - 1));
+
+                switch (rarityDigit) {
                     case 0:
-                        typeOfConcept = "Common " + typeOfConcept;
+                        displayType = "Common " + baseType;
                         break;
                     case 1:
-                        typeOfConcept = "Uncommon " + typeOfConcept;
+                        displayType = "Uncommon " + baseType;
                         break;
                     case 2:
-                        typeOfConcept = "Rare " + typeOfConcept;
+                        displayType = "Rare " + baseType;
                         break;
                     case 3:
-                        typeOfConcept = "Very Rare " + typeOfConcept;
+                        displayType = "Very Rare " + baseType;
                         break;
                     case 4:
-                        typeOfConcept = "Ultra Rare " + typeOfConcept;
+                        displayType = "Ultra Rare " + baseType;
                         break;
                     case 5:
-                        typeOfConcept = "Event " + typeOfConcept;
+                        displayType = "Event " + baseType;
                         break;
                     case 6:
-                        typeOfConcept = "Limited " + typeOfConcept;
+                        displayType = "Limited " + baseType;
+                        break;
+                    case 8:
+                        displayType = "Legacy Uncommon " + baseType;
                         break;
                     case 9:
-                        typeOfConcept = "Legacy Uncommon " + typeOfConcept;
-                        break;
-                    case 10:
-                        typeOfConcept = "Legacy Rare " + typeOfConcept;
+                        displayType = "Legacy Rare " + baseType;
                         break;
                 }
             }
 
             listItem.innerHTML = `
-                ${concept.name + " - " + typeOfConcept}
+                ${concept.name + " - " + displayType}
                 <div class="buttonGroupProfile">
                     <span>Created on ${concept.dateCreated}</span>
                     <button class="share-button" onclick="confirmShare(event, ${originalIndex})">
