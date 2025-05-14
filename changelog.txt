@@ -5,6 +5,7 @@ Version 3.0
 - Added new rarity types (green for uncommon and blue for rare) and kept old ones under legacy names
 - Added icons for the Freddy rework chapter, Kaneki chapter, Blood Moon event, and Orela Rose chapter
 - Improved and added more features to the icon creator tab
+- Fixed font issues across different browsers
 - Improved mobile styling on all pages
 - Squashed many bugs!
 

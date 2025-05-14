@@ -1340,6 +1340,29 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(div => {
 
         selection.collapseToEnd();
     });
+
+    // TODO - eventually prevent default bold -> this makes it so you can ctrl+b twice for even more bold
+    // div.addEventListener('keydown', function (e) {
+    //     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'b') {
+    //         e.preventDefault();
+
+    //         const selection = window.getSelection();
+
+    //         if (!selection.rangeCount) {
+    //             return;
+    //         }
+
+    //         const range = selection.getRangeAt(0);
+
+    //         const selectedText = range.extractContents();
+    //         const span = document.createElement('span');
+    //         span.className = 'span-b';
+    //         span.appendChild(selectedText);
+    //         range.insertNode(span);
+
+    //         selection.collapse(span, 1);
+    //     }
+    // });
 });
 
 /* Prevent paste from using default font (wrong size for perk descriptions) */
