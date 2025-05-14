@@ -1322,6 +1322,28 @@ function removeSpider(element) {
 }
 /* Spider click */
 
+/* Prevent paste from using default font (wrong size for perk descriptions) */
+
+document.querySelectorAll('.perkDescription, .loreDescription').forEach(div => {
+    div.addEventListener('paste', function (e) {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData('text');
+
+        const selection = window.getSelection();
+
+        if (!selection.rangeCount) {
+            return;
+        }
+
+        selection.deleteFromDocument();
+        selection.getRangeAt(0).insertNode(document.createTextNode(text));
+
+        selection.collapseToEnd();
+    });
+});
+
+/* Prevent paste from using default font (wrong size for perk descriptions) */
+
 /* Loading Logo */
 // window.onload = function() {
 //     // Hide the loading screen
