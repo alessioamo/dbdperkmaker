@@ -1,3 +1,12 @@
+Version 3.1
+- Added icons for the FNAF chapter, 9th Anniversary event, and The Walking Dead Chapter (Fog Vials included)
+- Added center/left align option for description boxes for more flexibility
+- Lore description box can now use styling buttons
+- Slightly improved icon creator loading time
+- Reverted theme to normal
+
+Updated on 08-11-2025
+
 Version 3.0
 - Happy Birthday to dbdperkmaker.ca! (3 months late oops!) This update marks the second of many years of updates for this website!
 - The Entity wanted to celebrate this birthday, but instead is celebrating the upcoming release of Five Night's at Freddy's x DBD with a new theme!
