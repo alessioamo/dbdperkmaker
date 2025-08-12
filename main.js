@@ -345,13 +345,17 @@ function changeStyle(style) {
       var e = document.createElement('span');
       e.classList.add(style.value); // Selected style (class)
       e.innerHTML = sel.toString(); // Selected text
+
+    //   if (style.value == "span-0") {
+    //     leftAlignDiv();
+    //   }
   
       // https://developer.mozilla.org/en-US/docs/Web/API/Selection/getRangeAt
       var range = sel.getRangeAt(0);
       range.deleteContents(); // Deletes selected text…
       range.insertNode(e); // … and inserts the new element at its place
     }
-  }
+}
 
 function getSelectionText() {
     var text = "";
@@ -1366,6 +1370,51 @@ document.querySelectorAll('.perkDescription, .loreDescription').forEach(div => {
 });
 
 /* Prevent paste from using default font (wrong size for perk descriptions) */
+
+/* Center Text */
+let isCenter = true;
+
+function cycleCenterDiv() {
+    if (isCenter) {
+        centerDiv();
+    }
+    else {
+        leftAlignDiv();
+    }
+
+    isCenter = !isCenter;
+}
+
+function centerDiv() {
+    let allPerkDescriptions = document.querySelectorAll('.perkDescription');
+
+    allPerkDescriptions.forEach(description => {
+        description.classList.add("span-c");
+    });
+
+    let allLoreDescriptions = document.querySelectorAll('.loreDescription');
+    allLoreDescriptions.forEach(description => {
+        description.classList.add("span-c");
+    });
+
+    document.getElementById("centerDivButton").innerHTML = "Left";
+}
+
+function leftAlignDiv() {
+    let allPerkDescriptions = document.querySelectorAll('.perkDescription');
+    
+    allPerkDescriptions.forEach(description => {
+        description.classList.remove("span-c");
+    });
+
+    let allLoreDescriptions = document.querySelectorAll('.loreDescription');
+    allLoreDescriptions.forEach(description => {
+        description.classList.remove("span-c");
+    });
+
+    document.getElementById("centerDivButton").innerHTML = "Center";
+}
+/* Center Text */
 
 /* Loading Logo */
 // window.onload = function() {

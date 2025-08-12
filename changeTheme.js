@@ -422,4 +422,4 @@ function getCurrentTheme() {
     return currentTheme;
 }
 
-setTheme('fnaf');
+// setTheme('fnaf');
